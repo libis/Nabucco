@@ -51,17 +51,17 @@
     </div>        
    
     <div class="primary-section">
-        <h2>Titel</h2>
+        <h2>Title</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget vestibulum ligula. Vivamus volutpat condimentum massa vel dignissim. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent suscipit fermentum augue, eget venenatis nisi ornare nec. Sed sit amet ex pharetra, ornare nisi quis, sodales tellus. Aliquam quis massa ornare, bibendum mauris vel, pellentesque arcu. Phasellus at augue quis justo malesuada consequat. Quisque porta euismod velit. Vivamus iaculis rutrum nibh eget malesuada. Nullam a aliquet libero. Praesent hendrerit ultrices odio ut tempus. Ut vitae accumsan est, quis ultricies lorem. </p>
     </div>
     <div class="primary-section">
         <div class="section-left">
-            <h2>Titel</h2>
+            <h2>Title</h2>
             <img src="<?php echo img('placeholder.png');?>">
             <p>Vivamus pretium pretium nisl id tempor. Pellentesque sagittis dignissim erat nec viverra. Nunc in velit feugiat, mollis risus ut, laoreet enim. Nulla facilisi. Phasellus ac placerat elit, eu condimentum tortor. </p>
         </div>
         <div class="section-right">
-            <h2>Titel</h2>            
+            <h2>Title</h2>            
             <p>Nulla eget risus placerat, commodo erat a, vehicula lacus. Mauris arcu urna, auctor id convallis eu, bibendum ornare erat. Integer quis accumsan lorem. Duis ultrices consectetur elit eu dictum. Maecenas augue risus, pellentesque consequat tellus et, dignissim dictum est. </p>
         </div>
     </div>
