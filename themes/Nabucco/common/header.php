@@ -43,8 +43,10 @@
         <header role="banner">
 
             <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
-            <div id="map"><img src='<?php echo img('world.jpg');?>'></div>
-            <div id="site-title">Na.Bu.CCo<?php //echo link_to_home_page(theme_logo()); ?></div>
+            <div id="map"><img src='<?php echo img('Logo_NaBuCCo.jpg');?>'></div>
+            <div id="site-title">
+                N<span class="smallcaps">a</span>B<span class="smallcaps">u</span>CC<span class="smallcaps">o</span><?php //echo link_to_home_page(theme_logo()); ?>
+            </div>
 
             <div id="search-container">
                 <?php if (get_theme_option('use_advanced_search') === null || get_theme_option('use_advanced_search')): ?>

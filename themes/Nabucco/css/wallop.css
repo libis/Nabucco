@@ -1,7 +1,8 @@
 .photo-slider {
-  margin-bottom: 20px;
+  margin-bottom: 0.5em;
+  padding-bottom:1em;
   display: inline-block;
-  max-width: 612px;
+  
 }
 
 .wallop-slider {

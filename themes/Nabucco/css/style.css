@@ -106,7 +106,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     margin-bottom: 0.85714em;
     padding-bottom:8px;
     border-bottom:1px dotted #ccc;  
-    
+    color:#843418;    
   }
 
   h3 {
@@ -339,7 +339,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
   #content > #primary:not(:only-child) {
     float: left;
-    width: 65%;
+    width: 75%;
     padding: 1em;
     margin: 1em 0;
     position: relative;
@@ -371,6 +371,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       margin: 4px 8px 0px 0;
   }
   
+  .welcome{
+      font-size:1.5em;
+      font-family: "Lato",sans-serif;
+      font-weight:100;      
+      border-left: 10px solid #843418;         
+  }
+  
+  .welcome p{
+      margin:0.5em 1em 1em 1em;
+      line-height: 1.6em!important; 
+  }
+  
+  .welcome .start{
+      color:#843418;
+      font-weight:bold;      
+      text-transform:uppercase;  
+      border-bottom: 1px dotted #843418;      
+  }
+  
   .section-left, .section-right{
       width:48.5%;
   }
@@ -385,7 +404,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
   #secondary {
     float: right;
-    width: 33.5%;    
+    width: 23.5%;    
     word-wrap: break-word;    
     margin-left: 1em;    
   }
@@ -395,6 +414,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     padding: 1em;
     margin: 0 0 1em 0;
     border-bottom:2px solid #aaa;
+  }
+  
+  .secondary-block ul,.featured ul{
+      margin-bottom:0.5em;
   }
 
   .navigation {
@@ -547,25 +570,29 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   /* @end */
   /* @group ----- Header ----- */
   header {    
-    background: #fff url('../images/banner-piece-1.jpg') no-repeat right bottom;
+    background: #fff url('../images/Handcopypart.jpg') no-repeat right bottom;
     overflow:hidden;
   }
 
   #site-title {   
-    font-size: 3.5em;
+    font-size: 4em;
     padding:15px 0 0 0;
-    line-height: 42px;    
+    line-height: 42px;
   }
+  
+  #site-title .smallcaps{
+      font-variant: small-caps;
+  }
+  
   #map{
       float:left;
       padding:5px 0;
       margin-right:10px;
       border-right:1px dotted #843418;
+      background-color: #fff;
   }
   #map img{    
-    height:100px;
-    padding-right:7px;
-    
+    height:110px;
   }
   
   #caroussel img{
@@ -578,7 +605,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     text-align: right;
     vertical-align: top;
     width: 27%;
-    padding:5px 0 10px;
+    padding:10px 0 10px;
     
   }
   #search-container form {
@@ -687,8 +714,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     padding: 0;
     z-index: 15;
     float: left;
-    border-top:1px dotted #843418;
-    border-bottom:2px solid #843418;   
+    border-top:2px solid #843418;
+    border-bottom:1px dotted #843418;   
     background:#fff;
     text-align:center;
   }
@@ -713,6 +740,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     position: relative;    
   }
   
+  .nav-item a{
+      
+  }
+  
   .nav-item +li {      
       border-left:1px solid #843418;
       padding-left: 1em;
@@ -725,6 +756,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     padding: 0.75em 1em 0.75em 0;
     margin: 0;
     border: 0;
+    font-size:110%;
   }
 
   /* focus/open states of first descendant link within a top level 
@@ -845,8 +877,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
   #footer-text {
     float:right;  
-    width: 50%;
-    margin-bottom: 0;
+    width: 40%;
+    margin-bottom: 0.2em;
     line-height:1.5em;
     font-family: "Lato",sans-serif;
     font-size:0.9em;
@@ -856,6 +888,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   
   #footer-logo{
       float:left;
+      vertical-align: top;
+  }
+  
+  #footer-logo img {
+      max-width:200px;
+      max-height:100px;
+      padding-right:10px;
+      vertical-align: top;
   }
 
   /* @end */
@@ -927,19 +967,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     overflow: hidden;
     background: #7B8D78;
     color: #fff;
-    padding: 1.5em 1.5em 0;
-    border-color: #4F584D;
-    border-bottom-width: 0.21429em;
-    border-bottom-style: solid;
-    padding-bottom: 1.28571em;
-    margin-bottom: 1.5em;
+    padding: 1em;
+    border-bottom:2px solid #4F584D;
+   
   }
   .featured h2,
   #featured-exhibit h2 {
-    font-size: 17.5px;
-    font-weight: bold;
-    margin: -1.5em -1.5em 1.2em;
-    padding: 0.75em 1.5em;
+    margin:-1.5em -1.5em 0 -1.5em;
+    margin-bottom: 0.85714em;
+    padding:1.5em 1.5em 0.5em 1.5em;
     background: #4F584D;
     color: #fff;
   }

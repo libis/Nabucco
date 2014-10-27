@@ -5,14 +5,20 @@
             <nav id="bottom-nav">
                 <?php //echo public_nav_main(); ?>
                 <ul>
-                    <li><a href="">Staff</a></li>
+                    <li><a href="">Technical info</a></li>
                     <li><a href="">Credits and copyright</a></li>
                     <li><a href="">Contact</a></li>
                 </ul>
             </nav>
             </div>
             <div id="footer-content">                
-                <div id="footer-logo"><p><a href="http://kuleuven.be"><img src="<?php echo img('logo_kuleuven.png');?>"></a></p></div>
+                <div id="footer-logo">
+                    <p>
+                        <a href="http://kuleuven.be"><img src="<?php echo img('logo_kuleuven.png');?>"></a>
+                        <a href="http://kuleuven.be"><img src="<?php echo img('wien_logo.jpg');?>"></a>
+                        <a href="http://kuleuven.be"><img src="<?php echo img('belspo_logo.jpeg');?>"></a>                    
+                    </p>
+                </div>
                 <div id="footer-text">
                     <?php echo get_theme_option('Footer Text'); ?>
                     <?php if ((get_theme_option('Display Footer Copyright') == 1) && $copyright = option('copyright')): ?>
@@ -30,7 +36,7 @@
         var photoslider = new WallopSlider('.photo-slider');
     jQuery(document).ready(function() {
         
-        jQuery('#wrap').backstretch("<?php echo img('bg2.jpg')?>");
+        jQuery('#wrap').backstretch("<?php echo img('bg4.jpg')?>");
             
         jQuery("#top-nav").accessibleMegaMenu({
             /* prefix for generated unique id attributes, which are required 
