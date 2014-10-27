@@ -13,36 +13,33 @@
    
         <ul class="wallop-slider__list">
           <li class="wallop-slider__item wallop-slider__item--current">
-            <div class="slide-description">
-                <div class="slide-title slide-text">
-                <a href="">Tablet A - Babylon</a>
-                </div>
-                <div class="slide-text">
-                <a href="">Lorem ipsum - 2301 BC.</a>
-                </div>
-            </div>  
-            <img src="<?php echo img("slide.jpg");?>">
-          </li>
-          <li class="wallop-slider__item">
-            <div class="slide-description">
-                <div class="slide-title slide-text">
-                <a href="">Tablet B - Babylon</a>
-                </div>
-                <div class="slide-text">
-                <a href="">Lorem ipsum - 2301 BC.</a>
-                </div>
-            </div>  
-            <img src="<?php echo img("slide.jpg");?>">
-          </li>
-          <li class="wallop-slider__item">
-            <div class="slide-description">
-                <div class="slide-title slide-text">
+            <div class="slide-title slide-text">
                 <a href="">Tablet C - Babylon</a>
-                </div>
-                <div class="slide-text">
+             </div>   
+        
+             <div class="slide-content slide-text">
                 <a href="">Lorem ipsum - 2301 BC.</a>
-                </div>
-            </div>  
+            </div>
+            <img src="<?php echo img("slide.jpg");?>">
+          </li>
+          <li class="wallop-slider__item">
+            <div class="slide-title slide-text">
+                <a href="">Tablet C - Babylon</a>
+             </div>   
+        
+             <div class="slide-content slide-text">
+                <a href="">Lorem ipsum - 2301 BC.</a>
+            </div>
+            <img src="<?php echo img("slide.jpg");?>">
+          </li>
+          <li class="wallop-slider__item">
+             <div class="slide-title slide-text">
+                <a href="">Tablet C - Babylon</a>
+             </div>   
+        
+             <div class="slide-content slide-text">
+                <a href="">Lorem ipsum - 2301 BC.</a>
+            </div>
             <img src="<?php echo img("slide.jpg");?>">
           </li>
         </ul>
@@ -52,7 +49,7 @@
    
     <div class="primary-section">
         <div class="welcome">
-        <p><span class="start">The Neo-Babylonian Cuneiform Corpus (<b>NaBuCCo</b>)</span><br>
+        <p><span class="start">The Neo-Babylonian Cuneiform Corpus (<b>NaBuCCo</b>)</span>
             aims at making available the large corpus of archival documents from first millennium BCE Babylonia to historians of the ancient world in general and Assyriologists in particular.</p>
         </div>
     </div>
