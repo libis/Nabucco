@@ -9,39 +9,27 @@
 
 <div id="primary">
     
-    <div class="wallop-slider photo-slider wallop-slider wallop-slider--vertical-slide">        
+    <div class="wallop-slider photo-slider wallop-slider--slide">        
    
         <ul class="wallop-slider__list">
-          <li class="wallop-slider__item wallop-slider__item--current">
-            <div class="slide-title slide-text">
-                <a href="">Tablet C - Babylon</a>
-             </div>   
-        
-             <div class="slide-content slide-text">
-                <a href="">Lorem ipsum - 2301 BC.</a>
-            </div>
-            <img src="<?php echo img("slide.jpg");?>">
-          </li>
-          <li class="wallop-slider__item">
-            <div class="slide-title slide-text">
-                <a href="">Tablet C - Babylon</a>
-             </div>   
-        
-             <div class="slide-content slide-text">
-                <a href="">Lorem ipsum - 2301 BC.</a>
-            </div>
-            <img src="<?php echo img("slide.jpg");?>">
-          </li>
-          <li class="wallop-slider__item">
-             <div class="slide-title slide-text">
-                <a href="">Tablet C - Babylon</a>
-             </div>   
-        
-             <div class="slide-content slide-text">
-                <a href="">Lorem ipsum - 2301 BC.</a>
-            </div>
-            <img src="<?php echo img("slide.jpg");?>">
-          </li>
+            <?php $items = get_records('Item', array('type'=>'Fotoshow'));?>
+            <?php $current=true;$class="";?>
+            <?php foreach($items as $item):?>
+                <?php if($current){$class="wallop-slider__item--current";}?>
+                <li class="wallop-slider__item <?php echo $class;?>">
+                <?php $current = false;$class=""; ?>    
+                <div class="slide-title slide-text">
+                    <a href="<?php echo record_url($item);?>"><?php echo metadata($item,array('Dublin Core','Title')); ?></a>
+                </div>   
+                <div class="slide-content slide-text">
+                    <a href="<?php echo record_url($item);?>"><?php echo metadata($item,array('Dublin Core','Description'),array('snippet'=>250)); ?></a>
+                </div>    
+                <?php if(metadata($item,array('Dublin Core','Rights'))):?>
+                    <div class="rights">&copy;<?php echo " ".metadata($item,array('Dublin Core','Rights')); ?></div>
+                <?php endif;?> 
+                <a href="<?php echo record_url($item);?>"><?php echo item_image('fullsize', array(), 0, $item);?></a>
+                </li>
+            <?php endforeach; ?>         
         </ul>
         <button class="wallop-slider__btn wallop-slider__btn--previous btn btn--previous" disabled="disabled"><img src="<?php echo img("left.png")?>"></button>
         <button class="wallop-slider__btn wallop-slider__btn--next btn btn--next"><img src="<?php echo img("right.png")?>"></button>
@@ -64,34 +52,18 @@
     <div class="secondary-block">
         <h2>About</h2>
         <div id="right-nav">
-            <ul>
-                <li><a href="">About the project</a></li>
-                <li><a href="">Funding</a></li>
-                <li><a href="">Current coverage</a></li>
-                <li><a href="">Staff</a></li>
-            </ul>
+            <?php echo nav(simple_pages_get_links_for_children_pages(12));?>            
         </div>    
     </div>
     
     <div class="secondary-block">
-        <h2>Related projects</h2>
-        <div id="right-nav" class="links">
-            <ul>
-                <li><a href="">Link to other project 1</a></li>
-                <li><a href="">Link to other project 2</a></li>
-                <li><a href="">Link to other project 3</a></li>
-            </ul>
-        </div>        
+        <?php echo libis_get_simple_page_content('Related projects');?>
     </div>
     
     <div class="featured">
         <h2>News</h2>
         <div id="right-nav" class="links">
-            <ul>
-                <li><a href="">Link to news 1</a></li>
-                <li><a href="">Link to news 2</a></li>
-                <li><a href="">Link to news 3</a></li>
-            </ul>
+            <?php echo libis_get_news();?>
         </div>     
     </div>
     <?php if (get_theme_option('Display Featured Collection') !== '0'): ?>
@@ -109,5 +81,25 @@
     <?php echo exhibit_builder_display_random_featured_exhibit(); ?>
     <?php endif; ?>
 </div>
+
+<script>
+jQuery(document).ready(function() {
+         var photoslider = new WallopSlider('.photo-slider');
+    //autoplay
+    var count = photoslider.allItemsArrayLength;
+    var start = photoslider.currentItemIndex;
+    var end = count+1;
+    var index = start;
+    
+   
+    jQuery(function(){
+        setInterval(function() {
+            photoslider.goTo(index);     
+            ++index;
+            if (index == end) {index=start}
+        },5000);
+    });
+});
+</script>
 
 <?php echo foot(); ?>

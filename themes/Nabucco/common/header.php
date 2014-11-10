@@ -62,7 +62,8 @@
             </div>
         </header>
         <nav id="top-nav">
-            <?php //echo public_nav_main(); ?>
+            <?php echo public_nav_main(); ?>
+            <!--
             <ul class="navigation nav-menu">
             <li class="nav-item">
             <a id="" href="">Home</a>
@@ -88,7 +89,7 @@
             <li class="nav-item">
             <a id="" href="">Explore</a>
             </li>
-            </ul>
+            </ul>-->
         </nav>
         
         <article id="content">

@@ -338,20 +338,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     display: inline-block;
   }
 
-  #content > #primary:not(:only-child) {
+  #content > #primary {
     float: left;
-    width: 75%;
+    width: 100%;
     padding: 1em;
     margin: 1em 0;
     position: relative;
     background: #fff;
     border-bottom:2px solid #aaa;
   }
-  #content > #primary:not(:only-child) > h1:first-child, #content > #primary:not(:only-child) > h2:first-child {
+  #content > #primary > h1:first-child, #content > #primary > h2:first-child {
     margin-top: 0em;
     margin-bottom: 0.75em;
   }
-  #content > #primary:not(:only-child):after {
+  #content > #primary:after {
     content: "";
     display: block;
     position: absolute;
@@ -360,7 +360,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     bottom: 0;    
     width: 1px;
   }
-
+  
+   #content > #primary:not(:only-child) {
+      width: 75%;
+  }
+  
   #content nav {
     overflow: hidden;
   }
@@ -425,9 +429,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       margin-bottom:0.5em;
   }
 
-  .navigation {
+  #top-nav .navigation {
     list-style: none;
     margin-left: 0;
+  }
+  
+  #home #right-nav .navigation li ul{
+      display:none;
   }
 
   .pagination-nav {
@@ -777,13 +785,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
      navigation item */
   .nav-item > a:focus,
   .nav-item > a.open {
-    background-color: #000;
+    background-color: #fff;
   }
 
   /* open state of first descendant link within a top level 
      navigation item */
   .nav-item > a.open {
-    background-color: #000;
+    background-color: #fff;
     border-bottom: none;
     z-index: 1;
   }
@@ -791,20 +799,29 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   /* sub-navigation panel */
   .sub-nav {
     position: absolute;
+    color:#fff;
     display: none;
-    top: 3em;
-    padding: 1.5em;
+    top: 2.7em;
+    padding: 0.5em 1em;
     border: 0;
     margin: 0;
-    background-color: #843418;
+    background-color: #843418;     
     z-index: 2;
+    left:0;
+    width:auto;
+    text-align:left;
+  }
+  
+  .sub-nav a{
+      color:#fff;
+      
   }
 
   /* sub-navigation panel open state */
   .sub-nav.open {
     display: block;
-    background-color: #000;
-    min-width: 150%;
+    background-color: #843418;
+    white-space:nowrap;
   }
 
   /* list of items within sub-navigation panel */
@@ -824,6 +841,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     list-style-type: none;
     margin: 0;
     padding: 0;
+  }
+  
+  .sub-nav li +li{
+      padding-top:0.3em;
   }
 
   #header-image {
@@ -891,7 +912,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
   #footer-text {
     float:right;  
-    width: 40%;
+    width: 30%;
     margin-bottom: 0.2em;
     line-height:1.5em;
     font-family: "Lato",sans-serif;
@@ -906,7 +927,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
   
   #footer-logo img {
-      max-width:200px;
+      max-width:150px;
       max-height:100px;
       padding-right:10px;
       vertical-align: top;
@@ -1032,6 +1053,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   /* @group ----- Items ----- */
   .items.show #content > #primary {
     padding-top: 1.5em;
+    background:#fff;
   }
 
   .items.show #secondary {
@@ -1085,13 +1107,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
 
   .item img,
-  .item-file img {
-    width: 6em;
-    height: auto;
-    padding: 3px;
-    border: 1px solid #ccc;
-    background-color: #fff;
+  .item-file img {    
     float: left;
+    overflow:hidden;
   }
 
   .item-img img {
@@ -1099,7 +1117,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
 
   #itemfiles + * {
-    clear: left;
+    /*clear: left;*/
   }
 
   .element-text {
@@ -1110,14 +1128,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   .element-text-empty {
     display: none;
   }
+  
+  .date{
+      color:#999;
+  }
 
   .item-pagination {
     clear: both;
     overflow: hidden;
-    border-color: #dddddd;
+    border-top: 1px dotted #ccc;
     font-weight: bold;
-    border-top-width: 0.07143em;
-    border-top-style: solid;
+   
     padding-top: 1.42857em;
     margin: 1.5em 0 0;
     float: left;
@@ -1126,7 +1147,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   .item-pagination li {
     display: block;
     float: left;
-    width: 400px;
+    width: 200px;
     margin-bottom: 0;
   }
   .item-pagination li.next {
@@ -1137,7 +1158,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     text-decoration: none;
     display: block;
     float: left;
-    width: 400px;
+    width: 200px;
   }
 
   .item-file {
@@ -1148,9 +1169,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     display: block;
   }
   .item-file img {
-    height: 6em;
-    width: auto;
-    margin-bottom: 1.5em;
+   
+    margin:0 0.5em 0.5em 0;
   }
 
   #sort-links {
@@ -1213,6 +1233,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     position: absolute;
     line-height: 31.5px;
   }
+  
+   
+  #search-filters{
+      margin-bottom:1em;
+  }
 
   /* @end */
   /* @group ----- Collections ----- */
@@ -1240,9 +1265,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   /* @end */
   /* @group ----- Simple Pages ----- */
   .page #primary {
-    width: 100% !important;
-    border-right: 0 !important;
-    padding-top: 1.5em !important;
+    
   }
 
   /* @end */
@@ -1344,6 +1367,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     width: 100%;
     margin-bottom: 1.5em;
   }
+ 
 }
 @media screen and (max-width: 480px) {
   .navigation {

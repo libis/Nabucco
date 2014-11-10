@@ -3,21 +3,16 @@
         <footer>
             <div id="footer-nav-container">
             <nav id="bottom-nav">
-                <?php //echo public_nav_main(); ?>
                 <ul>
-                    <li><a href="">Technical info</a></li>
-                    <li><a href="">Credits and copyright</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="<?php echo url("technical-info")?>">Technical info</a></li>
+                    <li><a href="<?php echo url("credits-and-copyright")?>">Credits and copyright</a></li>
+                    <li><a href="<?php echo url("contact")?>">Contact</a></li>
                 </ul>
             </nav>
             </div>
             <div id="footer-content">                
                 <div id="footer-logo">
-                    <p>
-                        <a href="http://kuleuven.be"><img src="<?php echo img('logo_kuleuven.png');?>"></a>
-                        <a href="http://kuleuven.be"><img src="<?php echo img('wien_logo.jpg');?>"></a>
-                        <a href="http://kuleuven.be"><img src="<?php echo img('belspo_logo.jpeg');?>"></a>                    
-                    </p>
+                    <?php echo libis_get_simple_page_content('Logos');?>                    
                 </div>
                 <div id="footer-text">
                     <?php echo get_theme_option('Footer Text'); ?>
@@ -33,8 +28,10 @@
 
     <script>
         
-        var photoslider = new WallopSlider('.photo-slider');
+   
+      
     jQuery(document).ready(function() {
+         
         
         jQuery('#wrap').backstretch("<?php echo img('bg4.jpg')?>");
             
