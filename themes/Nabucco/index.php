@@ -22,7 +22,7 @@
                     <a href="<?php echo record_url($item);?>"><?php echo metadata($item,array('Dublin Core','Title')); ?></a>
                 </div>   
                 <div class="slide-content slide-text">
-                    <a href="<?php echo record_url($item);?>"><?php echo metadata($item,array('Dublin Core','Description'),array('snippet'=>250)); ?></a>
+                    <a href="<?php echo record_url($item);?>"><?php echo metadata($item,array('Dublin Core','Description'),array('snippet'=>50)); ?></a>
                 </div>    
                 <?php if(metadata($item,array('Dublin Core','Rights'))):?>
                     <div class="rights">&copy;<?php echo " ".metadata($item,array('Dublin Core','Rights')); ?></div>
@@ -37,8 +37,7 @@
    
     <div class="primary-section">
         <div class="welcome">
-        <p><span class="start">The Neo-Babylonian Cuneiform Corpus (<b>NaBuCCo</b>)</span>
-            aims at making available the large corpus of archival documents from first millennium BCE Babylonia to historians of the ancient world in general and Assyriologists in particular.</p>
+            <?php echo libis_get_simple_page_content('Welcome');?>
         </div>
     </div>
     <div class="primary-section">

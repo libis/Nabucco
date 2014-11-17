@@ -345,7 +345,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     margin: 1em 0;
     position: relative;
     background: #fff;
-    border-bottom:2px solid #aaa;
+    /*border-bottom:2px solid #aaa;*/
+    border:1px solid #843418;
   }
   #content > #primary > h1:first-child, #content > #primary > h2:first-child {
     margin-top: 0em;
@@ -423,6 +424,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     padding: 1em;
     margin: 0 0 1em 0;
     border-bottom:2px solid #aaa;
+    border:1px solid #843418;
+   
   }
   
   .secondary-block ul,.featured ul{
@@ -839,6 +842,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   .sub-nav li {
     display: block;
     list-style-type: none;
+    list-style-image: url(data:0);
     margin: 0;
     padding: 0;
   }
