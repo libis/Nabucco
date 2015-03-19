@@ -94,9 +94,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 
   h1 {
-    font-size: 2px;
-    line-height: 42px;
+    font-size: 1.5em;
     margin-bottom: 1.5em;
+    font-family: "Lato",sans-serif;
+    color: #843418;
+    text-transform: uppercase;
+    
   }
 
   h2 {
@@ -341,7 +344,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   #content > #primary {
     float: left;
     width: 100%;
-    padding: 1em;
+    padding: 20px;
     margin: 1em 0;
     position: relative;
     background: #fff;
@@ -450,7 +453,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     height: 2.25em;
     clear: both;
     margin: 0 0 1.5em;
-    background-color: #dddddd;
     display: inline-block;
     vertical-align: top;
   }
@@ -467,14 +469,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
   .pagination_next,
   .pagination_previous {
-    background-color: #a49d4c;
     font-size: 14px;
     padding: 0 10px;
     position: relative;
   }
   .pagination_next a,
   .pagination_previous a {
-    color: #fff;
+    color: #666;
     text-decoration: none;
     font-weight: bold;
     height: 2.25em;
@@ -629,7 +630,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     text-align: right;
     vertical-align: top;
     width: 295px;
-    padding:5px 0;   
+    padding:5px;   
     overflow:hidden;    
   }
   #search-container form {
@@ -644,7 +645,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
   #search-container input {
     vertical-align: top;
-    margin: 0;
+    margin: 0 0 10px 0;
   }
   #search-container input[type=text] {
     width: 100%;
@@ -692,7 +693,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
 
   #advanced-form {
-    position: absolute;
+    
     top: 2.625em;
     background-color: #fff;
     z-index: 20;
@@ -706,10 +707,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     padding: 0.75em;
   }
   #advanced-form.closed {
-    left: -9999px;
+    display:none;
   }
   #advanced-form.open {
-    left: 0;
+    display:block;
   }
   #advanced-form p {
     margin-bottom: 0.75em;
@@ -955,7 +956,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
   #item-filters > ul > li,
   #search-filters > ul > li {
-    padding: 0.75em 10px;
+    padding: 0.4em 10px;
     background-color: #e2dfc0;
     color: #706b34;
   }
@@ -1063,6 +1064,87 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   .items.show #secondary {
     padding-top: 0;
   }
+  
+  .title-type{
+      font-style: italic;
+      margin-right:5px;
+      text-transform: lowercase;
+      font-family: "kepler-std",Georgia,Times,serif;
+  }
+  
+  .show-title{
+    font-family: "Lato",sans-serif;
+    font-size: 1em;
+    margin-bottom: 0;
+    width: auto;
+    color: #7b8d78;   
+    line-height: 21px;
+    margin-right:5px;
+    display: inline-block;
+    width:20%;
+  }
+  
+  .show .item h3{
+      margin-bottom:10px;
+      font-family: "Lato",sans-serif;
+      font-size:1em;
+      width:auto;
+  }  
+  
+  .show .middle-table td{
+      padding:0 20px;
+      border:none;
+      width:30%;
+  }  
+    
+  .show-section{     
+      margin-bottom:20px;
+  }
+  
+  .show-block{
+      vertical-align: top;      
+      margin-bottom:30px;
+  }
+  
+   .show-block:last-child{
+      border-right:none;
+  }
+  
+  .show-block:last-child p{
+      margin-bottom:20px;
+  }
+  
+  
+ 
+  .show-block:first-child p{
+      margin-bottom:0.1em;
+  }
+  
+  .show-block table{
+      margin:0;
+      width:100%;
+  }
+  
+  .show-block th, .show-block td{
+      padding:20px 40px 20px 0px;
+      white-space:nowrap;
+      font-weight: normal;
+      
+  }
+  
+  .show-block th{
+      padding:0px 40px 0px 0px;
+  }
+  
+  .show-interal-block{
+      border-top:1px solid #eee;
+      margin-top:10px;
+      padding-top:10px;
+  }
+  
+  #item-relations-display-item-relations{
+      display:none;
+  }
 
   .items-nav,
   #secondary-nav,
@@ -1104,10 +1186,123 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   div.item {
     clear: both;
     overflow: hidden;
-    border-color: #dddddd;
-    border-top-width: 0.07143em;
-    border-top-style: solid;
-    padding-top: 1.42857em;
+    padding: 1.42857em 1.5em;
+  }
+  
+  .map-links-wrapper{
+      background:#eee;
+      padding:10px;
+      border-top:2px solid #843418;
+      border-bottom:1px solid #843418;
+  }
+  
+  #map-links .map-tree li{
+      padding:0;
+      padding-left:20px;
+      margin:0;
+  }
+  
+  #map-links li a{
+      display:initial;
+  }
+  
+  #map-links .map-tree-hidden{
+      display:none;
+  }
+  
+  .map-tree-button{
+      font-weight:bold;
+      margin-right:5px;
+  }
+  
+  .browse .item table{
+      width:70%;
+      margin:10px 0;
+  }
+  .browse .item h3{
+      margin-bottom:0;
+      font-family: "Lato",sans-serif;
+      font-size:1em;
+      width:auto;
+  }
+  
+  .browse .item td{
+      border:none;
+      padding:5px 20px;
+      color:#333;      
+  }
+  
+  .alphabet_list{
+      list-style:none;
+      margin: 1.5em 0;
+      width:100%;
+      text-align:center;
+      border-top:1px solid #843418;
+      border-bottom:1px solid #843418;
+      overflow:hidden;
+  }
+  
+  .alphabet_list li{
+      display:inline;
+      padding:8px;
+      float:left;
+      width:19px;
+  }
+  
+  .gloss-0{
+      border-left: 1px dotted #843418;
+      margin:10px;
+      padding-left:10px;      
+      text-transform: uppercase;
+      font-family: "Lato",serif;
+      font-weight:bold;
+      display:block;
+      float:left;
+      width:280px;
+  }
+  
+  .gloss-0 li{
+     list-style:none;
+     font-size:1em;
+     
+  }
+  
+  .top-li{
+      border-bottom:1px dotted #843418;
+      color:#843418;
+     
+  }
+  
+  .gloss-0 ul{
+      font-weight:normal;
+      
+  }
+  
+  .gloss-0 ul li{
+      font-weight:normal;
+      padding:3px 0;
+      margin:0 10px;
+      list-style:square;
+      font-size:0.8em;
+      border:none;
+  }
+  
+  .item td.title-cell{
+      background:none;
+      width:40%;
+  }
+  
+  .search-description{
+      color:#666;
+      font-style:italic;
+      text-align: justify;
+      text-justify: inter-word;
+  }
+  
+  .museum{
+      text-transform: none;
+      font-style:italic;
+      margin-right:1%;
   }
 
   .item img,
@@ -1194,7 +1389,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   .asc a:after, .desc a:after {
     display: inline-block;
     font-family: "FontAwesome";
-    text-decoration: underline;
   }
 
   .asc a:after {
@@ -1242,6 +1436,42 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   #search-filters{
       margin-bottom:1em;
   }
+  
+  #content > #primary.browse h1{
+      margin-bottom:1.5em;
+  }
+  
+  .browse #search-form{
+      margin:0;
+  }
+  
+  .browse #primary #search-container{
+      width:100%;
+      padding:0;
+  }
+  
+  .browse #primary #left{
+      width:30%;
+      padding-right:2%;
+      float:left;
+  }
+  
+  .advanced-search-link{
+      font-size:1em;
+      border-left:5px solid #843418;
+      padding-left:7px;
+      font-family: lato, sans-serif;
+      text-transform: uppercase;
+      text-decoration:underline;
+  }
+  
+  .browse #primary #right{
+      width:70%;
+      padding-left:2%;
+      float:right;
+      border-left: 1px dotted #ccc;
+  }
+ 
 
   /* @end */
   /* @group ----- Collections ----- */

@@ -9,7 +9,7 @@
 }
 
 #map_browse {
-    height: 436px; 
+    height: 550px;
 }
 
 #map-links ul {
@@ -59,11 +59,11 @@ div.map-notification {
 @media screen and (min-width:768px) {
 
     #map-links {
-        padding: 0 10px 10px 10px;
+        padding: 10px;
         -moz-box-sizing: border-box !important;
         box-sizing: border-box !important;
-        height: 436px;
-        width: 30%;
+        height: 550px;
+        width: 28%;
         float: left;
         overflow-y: auto;
         margin-bottom: 0 !important;
@@ -79,8 +79,21 @@ div.map-notification {
     }
 
     #map_browse { 
-        float:left;
+        float:right;
         width:70%;
         margin-bottom: 0 !important;
+        border-top:2px solid #843418;
+        border-bottom:1px solid #843418;
+    }
+    
+    #map-public-search{
+        border-top:2px solid #843418;
+        float:right;
+        width: 70%;
+        padding-top:10px;
+    }
+    
+    #map-public-search .map-input{
+        display: initial;
     }
 }

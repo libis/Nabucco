@@ -1,34 +1,33 @@
 <?php
 /**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id$
- */
-
+* Zend Framework
+*
+* LICENSE
+*
+* This source file is subject to the new BSD license that is bundled
+* with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://framework.zend.com/license/new-bsd
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@zend.com so we can send you a copy immediately.
+*
+* @category   Zend
+* @package    Zend_Validate
+* @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+* @license    http://framework.zend.com/license/new-bsd     New BSD License
+* @version    $Id$
+*/
 /**
- * Ressource file for japanese idn validation
- *
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+* Ressource file for japanese idn validation
+*
+* @category   Zend
+* @package    Zend_Validate
+* @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+* @license    http://framework.zend.com/license/new-bsd     New BSD License
+*/
 return array(
-    1  => '/^[\x{002d}0-9a-z\x{3005}-\x{3007}\x{3041}-\x{3093}\x{309D}\x{309E}' .
+1  => '/^[\x{002d}0-9a-z\x{3005}-\x{3007}\x{3041}-\x{3093}\x{309D}\x{309E}' .
 '\x{30A1}-\x{30F6}\x{30FC}' .
 '\x{30FD}\x{30FE}\x{4E00}\x{4E01}\x{4E03}\x{4E07}\x{4E08}\x{4E09}\x{4E0A}' .
 '\x{4E0B}\x{4E0D}\x{4E0E}\x{4E10}\x{4E11}\x{4E14}\x{4E15}\x{4E16}\x{4E17}' .

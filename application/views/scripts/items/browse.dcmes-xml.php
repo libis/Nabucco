@@ -6,7 +6,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <?php 
 $convert = new Output_ItemDcmesXml; 
 foreach (loop('items') as $item) {
-    echo $convert->recordToDcmesXml($item);
+echo $convert->recordToDcmesXml($item);
 }
 ?>
 </rdf:RDF>

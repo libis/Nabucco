@@ -1,34 +1,33 @@
 <?php
 /**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id$
- */
-
+* Zend Framework
+*
+* LICENSE
+*
+* This source file is subject to the new BSD license that is bundled
+* with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://framework.zend.com/license/new-bsd
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@zend.com so we can send you a copy immediately.
+*
+* @category   Zend
+* @package    Zend_Validate
+* @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+* @license    http://framework.zend.com/license/new-bsd     New BSD License
+* @version    $Id$
+*/
 /**
- * Ressource file for chinese idn validation
- *
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
+* Ressource file for chinese idn validation
+*
+* @category   Zend
+* @package    Zend_Validate
+* @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+* @license    http://framework.zend.com/license/new-bsd     New BSD License
+*/
 return array(
-    1  => '/^[\x{002d}0-9a-z\x{3447}\x{3473}\x{359E}\x{360E}\x{361A}\x{3918}\x{396E}\x{39CF}\x{39D0}' .
+1  => '/^[\x{002d}0-9a-z\x{3447}\x{3473}\x{359E}\x{360E}\x{361A}\x{3918}\x{396E}\x{39CF}\x{39D0}' .
 '\x{39DF}\x{3A73}\x{3B4E}\x{3C6E}\x{3CE0}\x{4056}\x{415F}\x{4337}\x{43AC}' .
 '\x{43B1}\x{43DD}\x{44D6}\x{464C}\x{4661}\x{4723}\x{4729}\x{477C}\x{478D}' .
 '\x{4947}\x{497A}\x{497D}\x{4982}\x{4983}\x{4985}\x{4986}\x{499B}\x{499F}' .
