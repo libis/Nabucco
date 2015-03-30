@@ -215,27 +215,36 @@ function libis_print_person($people, $meta) {
 
 function findTextPairs($elementID) {
     $db = get_Db();
-    echo $elementID;
-    $texts = $db->getTable('ElementText')->findByElement(50);
+    $texts = findUniqueByElement($elementID);
     $selectOptions = array();
     foreach ($texts as $text) {
-        $selectOptions[$text['id']] = __($text['text']);
+        $selectOptions[$text['text']] = __($text['text']);
     }
     return label_table_options($selectOptions);
+}
+
+function findUniqueByElement($elementID){
+    $db = get_Db();
+    $texts = $db->getTable('ElementText');
+    $select = $texts->getSelect()->where('element_texts.element_id = ?', (int)$elementID)->group('element_texts.text');
+    return $texts->fetchObjects($select);
 }
 
 function libis_advanced_search_seperate_fields() {
     $db = get_db();
     $elements = $db->getTable('Element')->findByItemType(21);
+    $list = array('Period','Type and content','Month','King','Other markings','Akkadian keywords','General keywords');
     $i = 0;
     foreach ($elements as $element):
-        $form .= $element->name . " " . formSelect(
-                        "advanced[$i][element_id]", $element->id, array(
-                    'title' => __("Search Terms Select"),
-                    'id' => null,
-                    'class' => 'advanced-search-element'
-                        ), findTextPairs($element->id)
-        );
+        if(in_array($element->name,$list)):
+            $form .= $element->name . " " . formSelect(
+                            "advanced[$i][element_id]", $element->id, array(
+                        'title' => __("Search Terms Select"),
+                        'id' => null,
+                        'class' => 'advanced-search-element'
+                            ), findTextPairs($element->id)
+            );
+        endif;
         $i++;
     endforeach;
 }
