@@ -102,6 +102,16 @@
                             ?></p>
                             </div>
                                 <?php endif; ?>
+                        <?php if (isset($object_relations['tablets'])): ?>
+                            <div class="item-meta">
+                                <p><span class="show-title">Duplicate</span>
+                            <?php
+                            foreach ($object_relations['tablets'] as $tablet):
+                                echo link_to($tablet, null, metadata($tablet, array('Dublin Core', 'Title')));
+                            endforeach;
+                            ?></p>
+                            </div>
+                                <?php endif; ?>
                     </div>
                     <div class="show-interal-block">   
                                 <?php if ($text = metadata($item, array('Item Type Metadata', 'Publication'))): ?>
@@ -132,6 +142,18 @@
                     <?php if ($text = metadata($item, array('Item Type Metadata', 'Paraphrase'))): ?>
                         <div class="item-meta">
                             <h3>Paraphrase</h3>
+                            <p><?php echo html_entity_decode($text); ?></p>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Transliteration'))): ?>
+                        <div class="item-meta">
+                            <h3>Transliteration</h3>
+                            <p><?php echo $text;?></p>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Items and quantifiable data'))): ?>
+                        <div class="item-meta">
+                            <h3>Items and quantifiable data</h3>
                             <p><?php echo html_entity_decode($text); ?></p>
                         </div>
                     <?php endif; ?>
