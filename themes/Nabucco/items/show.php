@@ -16,12 +16,12 @@
         <div class="item hentry">  
             <div class="show-section">
                 <div class="show-block">        
-                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Object ID'))): ?>
-                        <div class="item-meta ">
-                            <p><span class="show-title">ID n°</span>
-                                <?php echo $text; ?></p>
-                        </div>  
-                    <?php endif; ?>
+                    <?php if ($text = metadata($item, array('Item Type Metadata', 'NaBuCCo No.'))): ?>
+                        <div class="item-meta">
+                            <p><span class="show-title">NaBuCCo No.</span>
+                                <?php echo $text; ?>
+                        </div>
+                    <?php endif; ?>  
                     <?php if ($text = metadata($item, array('Item Type Metadata', 'Period'))): ?>
                         <div class="item-meta">
                             <p><span class="show-title">Period</span>
@@ -122,7 +122,7 @@
     <?php endif; ?>
                     <?php if ($text = metadata($item, array('Item Type Metadata', 'Type and content'))): ?>                
                             <div class="item-meta">
-                                <p><span class="show-title">Text Type</span>
+                                <p><span class="show-title">Type and content</span>
         <?php echo $text; ?></p>
                             </div>                
                     <?php endif; ?>
