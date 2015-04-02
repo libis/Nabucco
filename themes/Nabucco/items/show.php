@@ -311,6 +311,12 @@
                     <p><?php echo $text; ?></p>
                 </div>
             <?php endif; ?> 
+            <?php if ($text = metadata($item, array('Item Type Metadata', 'Editor'))): ?>
+                <div class="item-meta">
+                    <h3>Editor</h3>
+                    <p><?php echo $text; ?></p>
+                </div>
+            <?php endif; ?>     
             <?php if ($text = metadata($item, array('Item Type Metadata', 'Related objects'))): ?>
                 <div class="item-meta">
                     <h3>Related objects</h3>
