@@ -21,14 +21,15 @@
                             <p><span class="show-title">NaBuCCo No.</span>
                                 <?php echo $text; ?>
                         </div>
-                    <?php endif; ?>  
+                    <?php endif; ?>
                     
                     <?php if ($text = metadata($item, array('Item Type Metadata', 'Museum No.'))): ?>
                         <div class="item-meta">
                             <p><span class="show-title">Museum No.</span>
                         <?php echo $text; ?></p>
                         </div>  
-                    <?php endif; ?>  
+                    <?php endif; ?>
+                    
                     <?php if ($text = metadata($item, array('Item Type Metadata', 'Museum inv.'))): ?>
                         <div class="item-meta">
                             <p><span class="show-title">Museum Inv.</span>
@@ -72,10 +73,10 @@
                     
                     <div class="show-interal-block">  
                         <?php if ($text = metadata($item, array('Item Type Metadata', 'Period'))): ?>
-                        <div class="item-meta">
-                            <p><span class="show-title">Period</span>
+                            <div class="item-meta">
+                                <p><span class="show-title">Period</span>
                                 <?php echo $text; ?>
-                        </div>
+                            </div>
                         <?php endif; ?>  
                         <?php
                         if ($day = metadata($item, array('Item Type Metadata', 'Day'))):
@@ -116,8 +117,7 @@
                             </div>      
                         <?php endif; ?>
                     </div>    
-                    <div class="show-interal-block">  
-                           
+                    <div class="show-interal-block">                           
                         <?php if (isset($object_relations['places'])): ?>
                                 <div class="item-meta">
                                     <p><span class="show-title">Place of issue</span>
@@ -195,11 +195,12 @@
                     ?>
                     </table>
                 </div>
+                <?php endif; ?>
                 <div class="show-block">
-                <?php if ($text = metadata($item, array('Item Type Metadata', 'Transliteration'))): ?>
+                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Transliteration'))): ?>
                         <div class="item-meta">
                             <h3>Transliteration</h3>
-                            <p><?php echo $text;?></p>
+                            <p><?php echo html_entity_decode($text);?></p>
                         </div>
                     <?php endif; ?>
                     <?php if ($text = metadata($item, array('Item Type Metadata', 'Items and quantifiable data'))): ?>
@@ -207,11 +208,11 @@
                             <h3>Items and quantifiable data</h3>
                             <p><?php echo html_entity_decode($text); ?></p>
                         </div>
-                    <?php endif; ?>
-                <?php endif; ?>
+                    <?php endif; ?>                
                 </div>
-            </div>         
-            <?php endif; ?>
+            </div> 
+        </div>
+        <?php endif; ?>
         <!-- PEOPLE -->  
         <?php if ($item->getItemType()->name == 'People'): ?>
         <div class="item hentry">
@@ -263,6 +264,7 @@
                     <p><?php echo $text; ?></p>
                 </div>
             <?php endif; ?> 
+        </div>    
         <?php endif; ?>
         <!-- Bibliography -->  
         <?php if ($item->getItemType()->name == 'Bibliography'): ?>
@@ -321,6 +323,7 @@
                     <p><?php echo $text; ?></p>
                 </div>
             <?php endif; ?> 
+            </div>    
         <?php endif; ?>
         
         <!-- Archive -->
@@ -344,6 +347,7 @@
                     <p><?php echo $text; ?></p>
                 </div>
             <?php endif; ?> 
+            </div>    
         <?php endif; ?>   
         
         <!-- PLACES -->
@@ -373,9 +377,10 @@
                     </ul></p>
                 </div>
             <?php endif; ?>
+                 </div>
         <?php endif; ?>
             <?php fire_plugin_hook('public_items_show', array('view' => $this, 'item' => $item)); ?>
-        </div><!-- end class="item hentry" -->   
+       <!-- end class="item hentry" -->   
                     <!--  The following function prints all the the metadata associated with an item: Dublin Core, extra element sets, etc. See http://omeka.org/codex or the examples on items/browse for information on how to print only select metadata fields. -->
         <?php //echo all_element_texts($item);  ?>
         <!-- The following returns all of the files associated with an item. -->
