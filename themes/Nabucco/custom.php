@@ -77,6 +77,12 @@ function libis_get_date($date, $remark) {
         case '[]':
             $date = '[' . $date . ']';
             break;
+        case '[ ]':
+            $date = '[' . $date . ']';
+            break;
+        case '[ ]?':
+            $date = '[' . $date . ']?';
+            break;
         case '[-]':
             $date = $remark;
             break;

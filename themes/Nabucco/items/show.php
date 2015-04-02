@@ -104,7 +104,7 @@
                        
                         <?php if ($text = metadata($item, array('Item Type Metadata', 'Date remark'))): ?>                    
                              <div class="item-meta">    
-                            <p><span class="show-title">Babylonian date</span>   
+                            <p><span class="show-title">Date remark</span>   
                             <?php echo $text; ?></p>    
                             </div>
                         <?php endif; ?>  
