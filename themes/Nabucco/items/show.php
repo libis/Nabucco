@@ -53,10 +53,10 @@
                                     <p><span class="show-title">Publication</span>                       
                                         <?php echo $text; ?>                                       
                                         <?php if ($text = metadata($item, array('Item Type Metadata', 'Text number'))): ?>
-                                            <?php echo ", Text " . $text; ?>    
+                                            <?php echo " " . $text; ?>    
                                         <?php endif; ?>
                                         <?php if ($text = metadata($item, array('Item Type Metadata', 'Page number'))): ?>
-                                            <?php echo ", Page " . $text; ?>    
+                                            <?php echo ", " . $text; ?>    
                                         <?php endif; ?>
                                     </p>
                                 </div>  
