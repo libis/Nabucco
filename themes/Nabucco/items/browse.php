@@ -41,7 +41,7 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
     <h1><?php echo $pageTitle; ?> <?php echo __('(%s total)', $total_results); ?></h1>
     <div id="left">
         <div id="search-container">        
-            <form id="search-form" method="get" action="/omeka/nabucco/items/browse" name="search-form">
+            <form id="search-form" method="get" action="<?php echo WEB_ROOT;?>/items/browse" name="search-form">
                 <input id="query" type="text" title="Search" value="" name="search">
                 <input type="hidden" name="type" value="<?php echo $type; ?>">
                 <button id="submit_search" value="Search" type="submit" name="submit_search">Search</button>
