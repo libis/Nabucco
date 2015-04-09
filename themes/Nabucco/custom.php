@@ -166,6 +166,9 @@ function libis_get_relations($item, $direction = 'subject') {
             case('Place'):
                 $item_relations['places'][] = $item;
                 break;
+            case('Publication'):
+                $item_relations['publications'][] = $item;
+                break;
             case('Archive'):
                 $item_relations['archives'][] = $item;
                 break;

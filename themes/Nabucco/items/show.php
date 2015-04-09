@@ -327,13 +327,19 @@
                     <p><?php echo $text; ?></p>
                 </div>
             <?php endif; ?>     
-            <?php if ($text = metadata($item, array('Item Type Metadata', 'Related objects'))): ?>
+            <?php if (isset($relations['publications'])): ?>
                 <div class="item-meta">
-                    <h3>Related objects</h3>
-                    <p><?php echo $text; ?></p>
+                    <h3>Related publications</h3>
+                    <ul>
+                    <?php
+                    foreach ($relations['publications'] as $publications):
+                        echo "<li>" . link_to($publications, null, metadata($publications, array('Dublin Core', 'Title'))) . "</li>";
+                    endforeach;
+                    ?>
+                    </ul>
                 </div>
-            <?php endif; ?> 
-           <?php if (isset($relations['tablets'])): ?>
+            <?php endif; ?>
+            <?php if (isset($relations['tablets'])): ?>
                 <div class="item-meta">
                     <h3>Related objects</h3>
                     <ul>
