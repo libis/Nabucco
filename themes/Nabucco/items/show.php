@@ -234,10 +234,14 @@
                     <p><?php echo $text; ?></p>
                 </div>
             <?php endif; ?> 
-            <?php if ($text = metadata($item, array('Item Type Metadata', 'Place of origin'))): ?>
+            <?php if (isset($relations['places'])): ?>
                 <div class="item-meta">
                     <h3>Place of origin</h3>
-                    <p><?php echo $text; ?></p>
+                        <p><?php
+                        foreach ($relations['places'] as $place):
+                            echo link_to($place, null, metadata($place, array('Dublin Core', 'Title')));
+                        endforeach;
+                        ?></p>
                 </div>
             <?php endif; ?>
             <?php if ($text = metadata($item, array('Item Type Metadata', 'Kinship circle'))): ?>
