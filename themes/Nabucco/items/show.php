@@ -49,16 +49,23 @@
                     <?php endif; ?>
                     
                     <div class="show-interal-block">   
-                            <?php if ($text = metadata($item, array('Item Type Metadata', 'Publication'))): ?>
+                            <?php if ($pub = metadata($item, array('Item Type Metadata', 'Publication'))): ?>
                                 <div class="item-meta">
-                                    <p><span class="show-title">Publication</span>                       
-                                        <?php echo $text; ?>                                       
-                                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Text number'))): ?>
-                                            <?php echo " " . $text; ?>    
-                                        <?php endif; ?>
-                                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Page number'))): ?>
-                                            <?php echo ", " . $text; ?>    
-                                        <?php endif; ?>
+                                    <p><span class="show-title">Publication</span>
+                                    <?php 
+                                    if ($text = metadata($item, array('Item Type Metadata', 'Text number'))):
+                                        $pub .= " " . $text;    
+                                    endif;
+                                    if ($text = metadata($item, array('Item Type Metadata', 'Page number'))):
+                                        $pub .= ", " . $text; 
+                                    endif;
+                                    
+                                    if (isset($object_relations['bibliographies'])):                                    
+                                        echo link_to($object_relations['bibliographies'][0], null,$text);
+                                    else:
+                                        echo $pub;
+                                    endif; 
+                                    ?>                                       
                                     </p>
                                 </div>  
                             <?php endif; ?>
