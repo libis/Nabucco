@@ -262,12 +262,18 @@
                     <p><?php echo $text; ?></p>
                 </div>
             <?php endif; ?> 
-            <?php if ($text = metadata($item, array('Item Type Metadata', 'Related objects'))): ?>
+            <?php if (isset($relations['tablets'])): ?>
                 <div class="item-meta">
                     <h3>Related objects</h3>
-                    <p><?php echo $text; ?></p>
+                    <ul>
+                    <?php
+                    foreach ($relations['tablets'] as $tablet):
+                        echo "<li>" . link_to($tablet, null, metadata($tablet, array('Dublin Core', 'Title'))) . "</li>";
+                    endforeach;
+                    ?>
+                    </ul>
                 </div>
-            <?php endif; ?> 
+            <?php endif; ?>
         </div>    
         <?php endif; ?>
         <!-- Bibliography -->  
@@ -327,12 +333,18 @@
                     <p><?php echo $text; ?></p>
                 </div>
             <?php endif; ?> 
-            <?php if ($text = metadata($item, array('Item Type Metadata', 'Related publications'))): ?>
+           <?php if (isset($relations['tablets'])): ?>
                 <div class="item-meta">
                     <h3>Related objects</h3>
-                    <p><?php echo $text; ?></p>
+                    <ul>
+                    <?php
+                    foreach ($relations['tablets'] as $tablet):
+                        echo "<li>" . link_to($tablet, null, metadata($tablet, array('Dublin Core', 'Title'))) . "</li>";
+                    endforeach;
+                    ?>
+                    </ul>
                 </div>
-            <?php endif; ?> 
+            <?php endif; ?>
             </div>    
         <?php endif; ?>
         
@@ -351,12 +363,18 @@
                     <p><?php echo $text; ?></p>
                 </div>
             <?php endif; ?> 
-            <?php if ($text = metadata($item, array('Item Type Metadata', 'Related objects'))): ?>
+            <?php if (isset($relations['tablets'])): ?>
                 <div class="item-meta">
-                    <h3>Related objects</h3>
-                    <p><?php echo $text; ?></p>
+                    <p><span class="show-title">Related objects</span>
+                    <ul>
+                    <?php
+                    foreach ($relations['tablets'] as $tablet):
+                        echo "<li>" . link_to($tablet, null, metadata($tablet, array('Dublin Core', 'Title'))) . "</li>";
+                    endforeach;
+                    ?>
+                    </ul></p>
                 </div>
-            <?php endif; ?> 
+            <?php endif; ?>
             </div>    
         <?php endif; ?>   
         
