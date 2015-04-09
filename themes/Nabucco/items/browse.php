@@ -188,7 +188,7 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                                         </td><td><?php echo $text; ?>
                                         </td></tr>
                                     <?php endif; ?>   
-                            <?php if ($text = metadata($item, array('Item Type Metadata', 'Author'))): ?>                
+                            <?php if ($text = metadata($item, array('Item Type Metadata', 'Author'),array('all'=>'true','delimiter'=>'<br>'))): ?>                
                                     <tr><td class="title-cell">
                                             <h3>Author</h3>
                                         </td><td><?php echo $text; ?>
