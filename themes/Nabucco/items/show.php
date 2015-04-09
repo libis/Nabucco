@@ -334,13 +334,13 @@
                     <p><?php echo $text; ?></p>
                 </div>
             <?php endif; ?>     
-            <?php if (isset($relations['publications'])): ?>
+            <?php if (isset($relations['bibliographies'])): ?>
                 <div class="item-meta">
                     <h3>Related publications</h3>
                     <ul>
                     <?php
-                    foreach ($relations['publications'] as $publications):
-                        echo "<li>" . link_to($publications, null, metadata($publications, array('Dublin Core', 'Title'))) . "</li>";
+                    foreach ($relations['bibliographies'] as $bibliography):
+                        echo "<li>" . link_to($bibliography, null, metadata($publications, array('Dublin Core', 'Title'))) . "</li>";
                     endforeach;
                     ?>
                     </ul>
