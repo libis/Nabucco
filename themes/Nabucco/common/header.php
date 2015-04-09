@@ -42,11 +42,11 @@ echo head_js();
 N<span class="smallcaps">a</span>B<span class="smallcaps">u</span>CC<span class="smallcaps">o</span><?php //echo link_to_home_page(theme_logo()); ?>
 </div>
 <div id="search-container">
-<?php if (get_theme_option('use_advanced_search') === null || get_theme_option('use_advanced_search')): ?>
-<?php echo search_form(array('show_advanced' => true)); ?>
-<?php else: ?>
-<?php echo search_form(); ?>
-<?php endif; ?>
+    <form id="search-form" method="get" action="<?php echo WEB_ROOT;?>/search" name="search-form">
+        <input id="query" type="text" title="Search" value="Frau" name="query">
+        <input type="hidden" name="query_type" value="exact_match">
+        <button id="submit_search" value="Search" type="submit" name="submit_search">Search</button>
+    </form>
 </div>           
 <?php echo theme_header_image(); ?>
 </div>
