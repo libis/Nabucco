@@ -204,18 +204,19 @@
                 </div>
                 <?php endif; ?>
                 <div class="show-block">
+                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Items and quantifiable data'))): ?>
+                        <div class="item-meta">
+                            <h3>Items and quantifiable data</h3>
+                            <p><?php echo html_entity_decode($text); ?></p>
+                        </div>
+                    <?php endif; ?>   
                     <?php if ($text = metadata($item, array('Item Type Metadata', 'Transliteration'))): ?>
                         <div class="item-meta">
                             <h3>Transliteration</h3>
                             <p><?php echo html_entity_decode($text);?></p>
                         </div>
                     <?php endif; ?>
-                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Items and quantifiable data'))): ?>
-                        <div class="item-meta">
-                            <h3>Items and quantifiable data</h3>
-                            <p><?php echo html_entity_decode($text); ?></p>
-                        </div>
-                    <?php endif; ?>                
+                                 
                 </div>
             </div> 
         </div>

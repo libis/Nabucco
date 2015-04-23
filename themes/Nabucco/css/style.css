@@ -1136,7 +1136,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       padding:0px 40px 0px 0px;
   }
   
-  .show-interal-block{
+  .show-interal-block .item-meta:last-child{
       border-top:1px solid #eee;
       margin-top:10px;
       padding-top:10px;
