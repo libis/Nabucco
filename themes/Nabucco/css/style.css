@@ -1229,7 +1229,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   .browse .item td{
       border:none;
       padding:5px 20px;
-      color:#333;      
+      color:#333;  
+      vertical-align: baseline;
   }
   
   .browse .item li{
