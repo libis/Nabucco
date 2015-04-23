@@ -71,21 +71,44 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
         <?php else: ?>
             <h3>No results were found.</h3> 
         <?php endif; ?>
-        <?php foreach (loop('items') as $item): ?>        
+        <?php foreach (loop('items') as $item): ?>     
+            <?php
+                $relations = libis_get_relations($item, 'subject');
+                $object_relations = libis_get_relations($item, 'object');
+            ?>
             <?php if ($item->getItemType()->name == 'Tablet'): ?>
                 <div class="item hentry">   
                     <h2><?php echo link_to_item('<span class="museum">museum n°    </span>' . metadata($item, array('Item Type Metadata', 'Museum No.'), array('class' => 'permalink'))); ?></h2>
                     <table>               
-                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Publication'))): ?>
+                        <?php if ($pub = metadata($item, array('Item Type Metadata', 'Publication'))): ?>
                             <tr><td class="title-cell">
                                     <h3>Publication</h3>
-                                </td><td><?php echo $text; ?>
+                                </td><td>
+                                    <?php 
+                                    if ($text = metadata($item, array('Item Type Metadata', 'Text number'))):
+                                        $pub .= " " . $text;    
+                                    endif;
+                                    if ($text = metadata($item, array('Item Type Metadata', 'Page number'))):
+                                        $pub .= ", " . $text; 
+                                    endif;
+                                    
+                                    if (isset($object_relations['bibliographies'])):                                    
+                                        echo link_to($object_relations['bibliographies'][0], null,$text);
+                                    else:
+                                        echo $pub;
+                                    endif; 
+                                    ?>       
                                 </td></tr>
                         <?php endif; ?>
-                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Archive'))): ?>
+                        <?php if (isset($object_relations['archives'])): ?>
                             <tr><td class="title-cell">
                                     <h3>Archive</h3>
-                                </td><td><?php echo $text; ?>
+                                </td><td>
+                                     <?php
+                                        foreach ($object_relations['archives'] as $archive):
+                                            echo link_to($archive, null, metadata($archive, array('Dublin Core', 'Title')));
+                                        endforeach;
+                                        ?>
                                 </td></tr>
                         <?php endif; ?>
                         <?php
