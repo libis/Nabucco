@@ -174,20 +174,8 @@ $formAttributes['method'] = 'GET';
                     'type', @$_REQUEST['type'], array('id' => 'item-type-search'), get_table_options('ItemType')
             );
             ?> 
-    <div class="field">
-    <?php echo $this->formLabel('featured', __('Featured/Non-Featured')); ?>
-        <div class="inputs">
-    <?php
-    echo $this->formSelect(
-            'featured', @$_REQUEST['featured'], array(), label_table_options(array(
-        '1' => __('Only Featured Items'),
-        '0' => __('Only Non-Featured Items')
-            ))
-    );
-    ?>
-        </div>
-    </div>
-            <?php fire_plugin_hook('public_items_search', array('view' => $this)); ?>
+   
+            <?php //fire_plugin_hook('public_items_search', array('view' => $this)); ?>
     <div>
             <?php if (!isset($buttonText)) $buttonText = __('Search'); ?>
         <input type="submit" class="submit" name="submit_search" id="submit_search_advanced" value="<?php echo $buttonText ?>">
