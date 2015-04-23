@@ -226,10 +226,15 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                                             </td><td><?php echo $text; ?>
                                             </td></tr>
                                     <?php endif; ?>
-                                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Related objects'))): ?>
+                                    <?php if (isset($relations['tablets'])): ?>
                                         <tr><td class="title-cell">
                                                 <h3>Related objects</h3>
-                                            </td><td><?php echo $text; ?>
+                                            </td><td>
+                                                <?php
+                                                foreach ($relations['tablets'] as $tablet):
+                                                    echo "<li>" . link_to($tablet, null, metadata($tablet, array('Dublin Core', 'Title'))) . "</li>";
+                                                endforeach;
+                                                ?>
                                             </td></tr>
                                     <?php endif; ?>   
                                 </table>  
