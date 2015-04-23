@@ -171,13 +171,13 @@
                             <p><?php echo html_entity_decode($text); ?></p>
                         </div>
                     <?php endif; ?>
-                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Akkadian keywords'))): ?>
+                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Akkadian keywords'),array('all'=>'true','delimiter'=>', '))): ?>
                         <div class="item-meta">
                             <h3>Akkadian keywords</h3>
                             <p><?php echo $text; ?></p>
                         </div>
                     <?php endif; ?>
-                    <?php if ($text = metadata($item, array('Item Type Metadata', 'General keywords'))): ?>
+                    <?php if ($text = metadata($item, array('Item Type Metadata', 'General keywords'),array('all'=>'true','delimiter'=>', '))): ?>
                         <div class="item-meta">
                             <h3>General keywords</h3>
                             <p><?php echo $text; ?></p>
