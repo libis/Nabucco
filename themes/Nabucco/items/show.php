@@ -60,8 +60,8 @@
                                         $pub .= ", " . $text; 
                                     endif;
                                     
-                                    if (isset($object_relations['bibliographies'])):                                    
-                                        echo link_to($object_relations['bibliographies'][0], null,$text);
+                                    if (isset($object_relations['bibliographies'])):
+                                        echo link_to($object_relations['bibliographies'][0], null,$pub);
                                     else:
                                         echo $pub;
                                     endif; 

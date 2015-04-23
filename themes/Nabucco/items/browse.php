@@ -93,7 +93,7 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                                     endif;
                                     
                                     if (isset($object_relations['bibliographies'])):                                    
-                                        echo link_to($object_relations['bibliographies'][0], null,$text);
+                                        echo link_to($object_relations['bibliographies'][0], null,$pub);
                                     else:
                                         echo $pub;
                                     endif; 
