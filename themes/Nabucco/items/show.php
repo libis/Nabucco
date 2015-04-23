@@ -341,12 +341,14 @@
                     <ul>
                     <?php
                     foreach ($relations['bibliographies'] as $bibliography):
-                        echo "<li>" . link_to($bibliography, null, metadata($publications, array('Dublin Core', 'Title'))) . "</li>";
+                        echo "<li>" . link_to($bibliography, null, metadata($bibliography, array('Dublin Core', 'Title'))) . "</li>";
                     endforeach;
+                   
                     ?>
                     </ul>
                 </div>
             <?php endif; ?>
+                
             <?php if (isset($relations['tablets'])): ?>
                 <div class="item-meta">
                     <h3>Related objects</h3>
