@@ -170,16 +170,14 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                                     </td><td><?php echo $text; ?>
                                     </td></tr>
                             <?php endif; ?>   
-                            <?php if ($text = metadata($item, array('Item Type Metadata', 'Name'))): ?>
-                                <tr><td class="title-cell">
-                                        <h3>Name</h3>
-                                    </td><td><?php echo $text; ?>
-                                    </td></tr>
-                            <?php endif; ?>
-                            <?php if ($text = metadata($item, array('Item Type Metadata', 'Place of origin'))): ?>
+                            <?php if (isset($relations['places'])): ?>
                                 <tr><td class="title-cell">
                                         <h3>Place of origin</h3>
-                                    </td><td><?php echo $text; ?>
+                                    </td><td><ul><?php
+                                        foreach ($relations['places'] as $place):
+                                            echo "<li>".link_to($place, null, metadata($place, array('Dublin Core', 'Title')))."</li>";
+                                        endforeach;
+                                        ?></ul>
                                     </td></tr>
                             <?php endif; ?>
                         </table>  
