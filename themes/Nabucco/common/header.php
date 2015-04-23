@@ -43,7 +43,7 @@ N<span class="smallcaps">a</span>B<span class="smallcaps">u</span>CC<span class=
 </div>
 <div id="search-container">
     <form id="search-form" method="get" action="<?php echo WEB_ROOT;?>/search" name="search-form">
-        <input id="query" type="text" title="Search" value="Frau" name="query">
+        <input id="query" type="text" title="Search" name="query">
         <input type="hidden" name="query_type" value="exact_match">
         <button id="submit_search" value="Search" type="submit" name="submit_search">Search</button>
     </form>
