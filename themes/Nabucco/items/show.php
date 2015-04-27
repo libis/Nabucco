@@ -423,6 +423,31 @@
             <?php endif; ?>
                  </div>
         <?php endif; ?>
+        
+        <!-- GLOSSARY -->
+        <?php if ($item->getItemType()->name == 'Glossary'): ?>
+            <div class="item hentry">
+            <?php if ($text = metadata($item, array('Item Type Metadata', 'Description'))): ?>
+                <div class="item-meta">
+                    <h3>Description</h3>
+                    <p><?php echo $text; ?></p>
+                </div>
+            <?php endif; ?>  
+            
+            <?php if (isset($relations['tablets'])): ?>
+                <div class="item-meta">
+                    <p><span class="show-title">Related objects</span>
+                    <ul>
+                    <?php
+                    foreach ($relations['tablets'] as $tablet):
+                        echo "<li>" . link_to($tablet, null, metadata($tablet, array('Dublin Core', 'Title'))) . "</li>";
+                    endforeach;
+                    ?>
+                    </ul></p>
+                </div>
+            <?php endif; ?>
+                 </div>
+        <?php endif; ?>
             <?php fire_plugin_hook('public_items_show', array('view' => $this, 'item' => $item)); ?>
        <!-- end class="item hentry" -->   
                     <!--  The following function prints all the the metadata associated with an item: Dublin Core, extra element sets, etc. See http://omeka.org/codex or the examples on items/browse for information on how to print only select metadata fields. -->

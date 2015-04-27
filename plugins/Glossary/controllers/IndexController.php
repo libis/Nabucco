@@ -23,7 +23,6 @@ class Glossary_IndexController extends Omeka_Controller_AbstractActionController
         
         $params = $this->getAllParams();
         $params['type'] = 'Glossary';
-        print_r($params);
       
         // Get the records filtered to Omeka_Db_Table::applySearchFilters().
         $records = $this->_helper->db->findBy($params);

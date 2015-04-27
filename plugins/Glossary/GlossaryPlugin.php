@@ -70,22 +70,22 @@ class GlossaryPlugin extends Omeka_Plugin_AbstractPlugin
         foreach($item_array as $row):            
             if(!isset($tree[$row['hierarchy'][0]])):
                 $tree[$row['hierarchy'][0]]=array();
-                $tree[$row['hierarchy'][0]]['Related objects']=$row['objects'];
+                //$tree[$row['hierarchy'][0]]['Related objects']=$row['objects'];
             endif;
             
             if(isset($row['hierarchy'][1]) && !isset($tree[$row['hierarchy'][0]][$row['hierarchy'][1]])):
                 $tree[$row['hierarchy'][0]][$row['hierarchy'][1]]=array();
-                $tree[$row['hierarchy'][0]][$row['hierarchy'][1]]['Related objects']=$row['objects'];
+                //$tree[$row['hierarchy'][0]][$row['hierarchy'][1]]['Related objects']=$row['objects'];
             endif;
             
             if(isset($row['hierarchy'][2]) && !isset($tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]])):
                 $tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]]=array();
-                $tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]]['Related objects']=$row['objects'];
+                //$tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]]['Related objects']=$row['objects'];
             endif;
             
             if(isset($row['hierarchy'][3]) && !isset($tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]][$row['hierarchy'][3]])):
                 $tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]][$row['hierarchy'][3]]=array();
-                $tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]][$row['hierarchy'][3]]['Related objects']=$row['objects'];
+                //$tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]][$row['hierarchy'][3]]['Related objects']=$row['objects'];
             endif;           
         endforeach;
         
