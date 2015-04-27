@@ -1254,22 +1254,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       width:19px;
   }
   
-  .gloss-0{
-      border-left: 1px dotted #843418;
-      margin:10px;
-      padding-left:10px;      
+  .gloss{
+      margin:0 10px 0 0;          
       text-transform: uppercase;
       font-family: "Lato",serif;
       font-weight:bold;
       display:block;
       float:left;
       width:280px;
-  }
+  } 
   
-  .gloss-0 li{
+  .gloss li{
      list-style:none;
-     font-size:1em;
-     
+     font-size:1em;     
   }
   
   .top-li{
@@ -1278,12 +1275,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
      
   }
   
-  .gloss-0 ul{
+  .gloss ul{
       font-weight:normal;
       
   }
   
-  .gloss-0 ul li{
+  .gloss ul li{
       font-weight:normal;
       padding:3px 0;
       margin:0 10px;

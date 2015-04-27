@@ -243,7 +243,35 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                                             <?php echo tag_string('items'); ?></p>
                                     </div>
                                 <?php endif; ?>
-                            <?php endif; ?>        
+                            <?php endif; ?>   
+                             <?php if ($item->getItemType()->name == 'Glossary'): ?>
+                            <div class="item hentry">   
+                                <h2><?php echo link_to_item(metadata($item, array('Item Type Metadata', 'Title'), array('class' => 'permalink'))); ?></h2>
+                                <table>               
+                                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Alternative name'))): ?>
+                                        <tr><td class="title-cell">
+                                                <h3>Alternative name</h3>
+                                            </td><td><?php echo $text; ?>
+                                            </td></tr>
+                                    <?php endif; ?>
+                                    <?php if (isset($relations['tablets'])): ?>
+                                        <tr><td class="title-cell">
+                                                <h3>Related objects</h3>
+                                            </td><td>
+                                                <?php
+                                                foreach ($relations['tablets'] as $tablet):
+                                                    echo "<li>" . link_to($tablet, null, metadata($tablet, array('Dublin Core', 'Title'))) . "</li>";
+                                                endforeach;
+                                                ?>
+                                            </td></tr>
+                                    <?php endif; ?>   
+                                </table>  
+                                <?php if (metadata($item, 'has tags')): ?>
+                                    <div class="tags"><p><strong><?php echo __('Tags'); ?>: </strong>
+                                            <?php echo tag_string('items'); ?></p>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>      
                             <?php echo fire_plugin_hook('public_items_browse_each', array('view' => $this, 'item' => $item)); ?>
                         </div><!-- end class="item hentry" -->
                     <?php endforeach; ?>

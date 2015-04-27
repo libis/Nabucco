@@ -3,7 +3,7 @@ require_once dirname(__FILE__) . '/helpers/GlossaryFunctions.php';
 
 class GlossaryPlugin extends Omeka_Plugin_AbstractPlugin
 {
-    protected $_hooks = array('initialize');
+    protected $_hooks = array('initialize','define_routes');
     
     /**
     * Add the translations.
@@ -14,14 +14,43 @@ class GlossaryPlugin extends Omeka_Plugin_AbstractPlugin
     }   
 
     
+    function hookDefineRoutes($args)
+    {
+        $router = $args['router'];
+        $router->addRoute(
+            'glossary_index', 
+            new Zend_Controller_Router_Route(
+                'glossary/', 
+                array('module'       => 'glossary')
+            )
+        );
+       
+    }
+
+    
     public function shortcode($args, $view)
     {
         //$params['hasImage'] = 1;
-        $items = get_records('Item', array('type' => 'Glossary'), 999);
-        
+        $items = get_records('Item', array('type' => 'Glossary'), 999);        
         
         $item_array = array();
         $tree = array();
+        
+        $html = '';
+        
+        $html .='<form id="search-form" name="search-form" action="" method="get">
+        <input id="query" type="text" name="query" title="Search">
+        <input type="hidden" value="glossary" name="type">
+        <button id="submit_search" name="submit_search" type="submit" value="Search">Search</button>
+        </form>';        
+        
+        echo search_form();
+      
+        // Get the records filtered to Omeka_Db_Table::applySearchFilters().
+        $db = get_db();
+        var_dump($_GET);
+        $records = $db->getTable('Item')->findBy();
+        echo sizeof($records);
         
         foreach($items as $item):
             $title = metadata($item,array('Item Type Metadata','Label'));
@@ -60,7 +89,7 @@ class GlossaryPlugin extends Omeka_Plugin_AbstractPlugin
             endif;           
         endforeach;
         
-        $html = '';
+        
         foreach($tree as $key=>$value):
             $html .= "<ul class='gloss-0'>";
             $html .= "<li><span class='top-li'>".$key."</span></li>";
