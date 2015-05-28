@@ -57,7 +57,9 @@ echo head(array('title' => 'Browse glossaries', 'bodyclass' => 'items browse'));
         
         foreach($tree as $key=>$value):?>
             <ul class='gloss gloss-first'>
-            <li><span class='top-li'><?php echo $item_links[$key] ?></span></li>
+            <?php if(isset($item_links[$key])):?>    
+                <li><span class='top-li'><?php echo $item_links[$key] ?></span></li>
+            <?php endif;?>
             <?php if(is_array($value)):?>
                 <ul>
                 <?php foreach($value as $key=>$value):?>        
@@ -76,10 +78,11 @@ echo head(array('title' => 'Browse glossaries', 'bodyclass' => 'items browse'));
                         <?php endforeach;?>
                         </ul>                
                     <?php endif;?>
+                
                 <?php endforeach;?>
                 </ul>                
             <?php endif;?>            
-            </ul>
+            </ul>   
         <?php endforeach;?>
     </div>
     <?php echo foot(); ?>
