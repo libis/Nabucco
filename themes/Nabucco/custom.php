@@ -90,6 +90,13 @@ function libis_get_date($date, $remark) {
             $date = $remark;
             break;
     endswitch;
+    
+    if($date == '-'):
+        if($remark == 'no day' || $remark =='no year' || $remark =='no month' || $remark =='no king'):
+            $date = $remark;
+        endif;
+    endif;
+    
     return $date;
 }
 
