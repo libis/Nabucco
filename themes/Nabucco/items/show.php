@@ -193,11 +193,9 @@
                         <th><h3>Profession</h3></th>
                         <th><h3>Status</h3></th>
                         </tr>        
-                    <?php
+                    <?php                    
                     foreach ($relations['people'] as $person):
-                        $people = $person[0];
-                        $meta = $person[1];
-                        echo "<tr>" . libis_print_person($people, $meta) . "</tr>";
+                       echo "<tr>" . libis_print_person($person, $item) . "</tr>";
                     endforeach;
                     ?>
                     </table>

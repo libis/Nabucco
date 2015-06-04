@@ -165,10 +165,8 @@ function libis_get_relations($item, $direction = 'subject') {
         endif;
         $itemtype = $item->getItemType()->name;
         switch ($itemtype):
-            case('Tablet Person metadata'):
-                if ($person = libis_get_people_relation($item)):
-                    $item_relations['people'][] = $person;
-                endif;
+            case('People'):                
+                $item_relations['people'][] = $item;
                 break;
             case('Place'):
                 $item_relations['places'][] = $item;
@@ -194,39 +192,33 @@ function libis_get_relations($item, $direction = 'subject') {
     endif;
 }
 
-function libis_get_people_relation($metaitem) {
-    $relations = ItemRelationsPlugin::prepareObjectRelations($metaitem);
-    foreach ($relations as $relation):
-        $item = get_record_by_id('item', $relation['subject_item_id']);
-        if ($item->getItemType()->name == 'People'):
-            return array($item, $metaitem);
+function libis_find_meta_person($id,$metas){
+    $result='';
+    foreach($metas as $meta):
+        $meta = explode(';',$meta);
+        if($meta[0]== $id):
+            $result = $meta[1];
+            break;
         endif;
     endforeach;
-    return false;
+    return $result;
 }
 
-function libis_print_person($people, $meta) {
-    $people_entity = metadata($people, array('Item Type Metadata', "Entity ID"));
-    $meta_enities = metadata($meta, array('Item Type Metadata', "Entity ID"), 'all');
-    $index = array_search($people_entity, $meta_enities);
-    $roles = metadata($meta, array('Item Type Metadata', "Role"), 'all');
-    $role = $roles[$index];
-    $professions = metadata($meta, array('Item Type Metadata', "Profession"), 'all');
-    if (isset($professions[$index])):
-        $profession = $professions[$index];
-    else:
-        $profession = '';
-    endif;
-    $status = metadata($meta, array('Item Type Metadata', "Status"), 'all');
-    if (isset($status[$index])):
-        $status = $status[$index];
-    else:
-        $status = '';
-    endif;
-    return "<td>" . link_to($people, $action = null, metadata($people, array('Item Type Metadata', 'Name'))) . "</td>"
-            . "<td>" . $role . "</td>"
-            . "<td>" . $profession . "</td>"
-            . "<td>" . $status . "</td>";
+function libis_print_person($person, $tablet) {
+    $id = metadata($person, array('Item Type Metadata', "Entity ID"));
+    
+    $roles = metadata($tablet, array('Item Type Metadata', "Person role"),array('all'=>true));
+    $profs = metadata($tablet, array('Item Type Metadata', "Person profession"),array('all'=>true));
+    $statuss = metadata($tablet, array('Item Type Metadata', "Person status"),array('all'=>true));
+    
+    $role = str_replace(array("<br>", "<br />"), "", libis_find_meta_person($id,$roles));
+    $prof = str_replace(array("<br>", "<br />"), "", libis_find_meta_person($id,$profs));
+    $status = str_replace(array("<br>", "<br />"), "", libis_find_meta_person($id,$statuss));   
+   
+    return "<td>" . link_to($person, $action = null, metadata($person, array('Item Type Metadata', 'Name'))) . "</td>"
+            . "<td>" . rtrim($role, ',') . "</td>"
+            . "<td>" . rtrim($prof, ',') . "</td>"
+            . "<td>" . rtrim($status, ',') . "</td>";
 }
 
 function findTextPairs($elementID) {
