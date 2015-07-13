@@ -1418,6 +1418,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   #advanced-search-form input {
     display: inline-block;
   }
+  
+  #advanced-search-form th,td{
+      border:none;
+      font-size:1.2em;
+      padding:10px 0 10px 10px;
+      border-top:1px solid #ddd;
+  }
+  
+  #advanced-search-form tr td:first-child{
+      background:none;
+  }
 
   .remove_search {
     padding: 0.375em 10px;

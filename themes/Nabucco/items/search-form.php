@@ -115,7 +115,7 @@ $formAttributes['method'] = 'GET';
   }
   ?>
   <center>
-      <table width=90%>
+      <table>
           <?php foreach($medium_commonly_searched_fields as $i => $table_option): ?>
               <tr>
                   <td>
