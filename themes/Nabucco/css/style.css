@@ -206,21 +206,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   table {
     width: 100%;
     margin: 3em 0;
-    border-collapse: collapse;
-    border-spacing: 0px;
+    font-size:0.9em;
   }
 
   th, td {
     margin: 0;
-    padding: 10px 0;
-    border-bottom: 1px solid #dddddd;
+    padding: 10px 10px;
+    border: 1px solid #dddddd;
+  }
+  
+  tr td:first-child {
+      background: #eee;
   }
 
   th {
     text-align: left;
-    color: #a49d4c;
+    background: #a49d4c;
     font-weight: bold;
-    border-bottom: 2px solid #dddddd;
+    color:#fff;
+    border-bottom: 1px solid #dddddd;
   }
 
   input {
@@ -1453,7 +1457,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
   
   .browse #primary #left{
-      width:30%;
+      width:25%;
       padding-right:2%;
       float:left;
   }
@@ -1468,7 +1472,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
   
   .browse #primary #right{
-      width:70%;
+      width:75%;
       padding-left:2%;
       float:right;
       border-left: 1px dotted #ccc;

@@ -71,46 +71,72 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
         <?php else: ?>
             <h3>No results were found.</h3> 
         <?php endif; ?>
+        
+        
+        <table>
+            <tr>  
+        <?php if($type == 'tablet'):?>            
+                <th>Museum n°</th>
+                <th>Publication</th>
+                <th>Archive</th>
+                <th>Babylonian date</th>
+                <th>Julian date</th>
+                <th>Type & content</th>
+                <th>Place of issue</th>  
+        <?php endif;?>                
+        <?php if($type == 'people'):?>           
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Places</th>
+        <?php endif;?>
+        <?php if($type == 'archive'):?>            
+                <th>Name</th>
+                <th>Alternative name</th>
+                <th>Related objects</th>
+        <?php endif;?>
+        <?php if($type == 'bibliography'):?>            
+                <th>Title</th>
+                <th>Short title</th>
+                <th>Publication year</th>
+                <th>Author</th>
+        <?php endif;?>   
+        <tr>        
+            
         <?php foreach (loop('items') as $item): ?>     
             <?php
                 $relations = libis_get_relations($item, 'subject');
                 $object_relations = libis_get_relations($item, 'object');
             ?>
-            <?php if ($item->getItemType()->name == 'Tablet'): ?>
-                <div class="item hentry">   
-                    <h2><?php echo link_to_item('<span class="museum">museum n°    </span>' . metadata($item, array('Item Type Metadata', 'Museum No.'), array('class' => 'permalink'))); ?></h2>
-                    <table>               
-                        <?php if ($pub = metadata($item, array('Item Type Metadata', 'Publication'))): ?>
-                            <tr><td class="title-cell">
-                                    <h3>Publication</h3>
-                                </td><td>
-                                    <?php 
-                                    if ($text = metadata($item, array('Item Type Metadata', 'Text number'))):
-                                        $pub .= " " . $text;    
-                                    endif;
-                                    if ($text = metadata($item, array('Item Type Metadata', 'Page number'))):
-                                        $pub .= ", " . $text; 
-                                    endif;
-                                    
-                                    if (isset($object_relations['bibliographies'])):                                    
-                                        echo link_to($object_relations['bibliographies'][0], null,$pub);
-                                    else:
-                                        echo $pub;
-                                    endif; 
-                                    ?>       
-                                </td></tr>
-                        <?php endif; ?>
-                        <?php if (isset($object_relations['archives'])): ?>
-                            <tr><td class="title-cell">
-                                    <h3>Archive</h3>
-                                </td><td>
-                                     <?php
-                                        foreach ($object_relations['archives'] as $archive):
-                                            echo link_to($archive, null, metadata($archive, array('Dublin Core', 'Title')));
-                                        endforeach;
-                                        ?>
-                                </td></tr>
-                        <?php endif; ?>
+            <tr>  
+            <?php if ($item->getItemType()->name == 'Tablet'): ?>                 
+                    <td><?php echo link_to_item(metadata($item, array('Item Type Metadata', 'Museum No.'), array('class' => 'permalink'))); ?></td>
+                    <td>
+                        <?php if ($pub = metadata($item, array('Item Type Metadata', 'Publication'))): 
+                            if ($text = metadata($item, array('Item Type Metadata', 'Text number'))):
+                                $pub .= " " . $text;    
+                            endif;
+                            if ($text = metadata($item, array('Item Type Metadata', 'Page number'))):
+                                $pub .= ", " . $text; 
+                            endif;
+                            if (isset($object_relations['bibliographies'])):                                    
+                                echo link_to($object_relations['bibliographies'][0], null,$pub);
+                            else:
+                                echo $pub;
+                            endif; 
+                        endif;?>      
+                    </td>
+                    <td>
+                        <?php
+                        if(isset($object_relations['archives'])):
+                           $text = ''; 
+                           foreach ($object_relations['archives'] as $archive):
+                                $text .= link_to($archive, null, metadata($archive, array('Dublin Core', 'Title')));
+                            endforeach;                            
+                            echo rtrim($text, ', ');
+                        endif;
+                        ?>
+                    </td>    
+                    <td>
                         <?php
                         if ($day = metadata($item, array('Item Type Metadata', 'Day'))):
                             $day = libis_get_date($day, metadata($item, array('Item Type Metadata', 'Day remark')));
@@ -131,150 +157,96 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                             $king = libis_get_date($king, metadata($item, array('Item Type Metadata', 'King remark')));
                         endif;
                         ?>
-                        <tr><td class="title-cell">
-                                <h3>Babylonian date</h3>
-                            </td><td><?php echo $day . "." . $month . "." . $year . " " . $king; ?>
-                            </td></tr>
+                      
+                        <?php echo $day . "." . $month . "." . $year . " " . $king; ?>
+                            
+                    </td>
+                    <td>
                         <?php if ($text = metadata($item, array('Item Type Metadata', 'Julian date'))): ?>
-                            <tr><td class="title-cell">
-                                    <h3>Julian date</h3>
-                                </td><td><?php echo $text; ?>
-                                </td></tr>
+                           <?php echo $text; ?>
                         <?php endif; ?>
+                    </td>
+                    <td>
                         <?php if ($text = metadata($item, array('Item Type Metadata', 'Type and content'))): ?>
-                            <tr><td class="title-cell">
-                                    <h3>Type and content</h3>
-                                </td><td><?php echo $text; ?>
-                                </td></tr>
+                           <?php echo $text; ?>
                         <?php endif; ?>
-                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Place of issue'))): ?>
-                            <tr><td class="title-cell">
-                                    <h3>Place of issue</h3>
-                                </td><td><?php echo $text; ?>
-                                </td></tr>
-                        <?php endif; ?>                
-                    </table>  
-                    <?php if (metadata($item, 'has tags')): ?>
-                        <div class="tags"><p><strong><?php echo __('Tags'); ?>: </strong>
-                                <?php echo tag_string('items'); ?></p>
-                        </div>
-                    <?php endif; ?>
-                <?php endif; ?>
+                    </td>
+                    <td>
+                        <?php if (isset($object_relations['places'])): ?>
+                            <?php
+                                $text = ''; 
+                                foreach ($object_relations['places'] as $place):
+                                    $text .= link_to($place, null, metadata($place, array('Dublin Core', 'Title'))).", ";
+                                endforeach;
+                                echo rtrim($text, ', ');
+                             ?>
+                        <?php endif; ?>     
+                    </td>
+                </tr>                    
+                
+                <?php endif; ?>                    
+                 
+                    
                 <?php if ($item->getItemType()->name == 'People'): ?>
-                    <div class="item hentry">   
-                        <h2><?php echo link_to_item('<span class="museum">Name    </span>' . metadata($item, array('Item Type Metadata', 'Name'), array('class' => 'permalink'))); ?></h2>
-                        <table>               
-                            <?php if ($text = metadata($item, array('Item Type Metadata', 'Gender'))): ?>
-                                <tr><td class="title-cell">
-                                        <h3>Gender</h3>
-                                    </td><td><?php echo $text; ?>
-                                    </td></tr>
-                            <?php endif; ?>   
-                            <?php if (isset($relations['places'])): ?>
-                                <tr><td class="title-cell">
-                                        <h3>Place of origin</h3>
-                                    </td><td><ul><?php
-                                        foreach ($relations['places'] as $place):
-                                            echo "<li>".link_to($place, null, metadata($place, array('Dublin Core', 'Title')))."</li>";
-                                        endforeach;
-                                        ?></ul>
-                                    </td></tr>
-                            <?php endif; ?>
-                        </table>  
-                        <?php if (metadata($item, 'has tags')): ?>
-                            <div class="tags"><p><strong><?php echo __('Tags'); ?>: </strong>
-                                    <?php echo tag_string('items'); ?></p>
-                            </div>
+                    <td><?php echo metadata($item, array('Item Type Metadata', 'Name'), array('class' => 'permalink')); ?></td>
+                    <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Gender'))): ?>
+                        <?php echo $text; ?>
+                        <?php endif; ?>   
+                    </td>
+                    <td>
+                        <?php if (isset($relations['places'])): ?>
+                            <?php
+                                $text = ''; 
+                                foreach ($relations['places'] as $place):
+                                    $text .= link_to($place, null, metadata($place, array('Dublin Core', 'Title'))).", ";
+                                endforeach;
+                                echo rtrim($text, ', ');
+                             ?>
                         <?php endif; ?>
+                    </td>  
+                        
                     <?php endif; ?>
                     <?php if ($item->getItemType()->name == 'Bibliography'): ?>
-                        <div class="item hentry">   
-                            <h2><?php echo link_to_item(metadata($item, array('Item Type Metadata', 'Title'), array('class' => 'permalink'))); ?></h2>
-                            <table>               
-                                <?php if ($text = metadata($item, array('Item Type Metadata', 'Short title'))): ?>
-                                    <tr><td class="title-cell">
-                                            <h3>Short title</h3>
-                                        </td><td><?php echo $text; ?>
-                                        </td></tr>
-                                <?php endif; ?>
-                                <?php if ($text = metadata($item, array('Item Type Metadata', 'Publication year'))): ?>
-                                    <tr><td class="title-cell">
-                                            <h3>Year</h3>
-                                        </td><td><?php echo $text; ?>
-                                        </td></tr>
-                                <?php endif; ?>   
-                                <?php if ($text = metadata($item, array('Item Type Metadata', 'Author'), array('all' => 'true', 'delimiter' => '<br>'))): ?>                
-                                    <tr><td class="title-cell">
-                                            <h3>Author</h3>
-                                        </td><td><?php echo $text; ?>
-                                        </td></tr>                
-                                <?php endif; ?>
-                            </table>  
-                            <?php if (metadata($item, 'has tags')): ?>
-                                <div class="tags"><p><strong><?php echo __('Tags'); ?>: </strong>
-                                        <?php echo tag_string('items'); ?></p>
-                                </div>
+                        <td><?php echo link_to_item(metadata($item, array('Item Type Metadata', 'Title'), array('class' => 'permalink'))); ?></td>
+                        <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Short title'))): ?>
+                            <?php echo $text; ?>
                             <?php endif; ?>
-                        <?php endif; ?>   
-                        <?php if ($item->getItemType()->name == 'Archive'): ?>
-                            <div class="item hentry">   
-                                <h2><?php echo link_to_item(metadata($item, array('Item Type Metadata', 'Title'), array('class' => 'permalink'))); ?></h2>
-                                <table>               
-                                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Alternative name'))): ?>
-                                        <tr><td class="title-cell">
-                                                <h3>Alternative name</h3>
-                                            </td><td><?php echo $text; ?>
-                                            </td></tr>
-                                    <?php endif; ?>
-                                    <?php if (isset($relations['tablets'])): ?>
-                                        <tr><td class="title-cell">
-                                                <h3>Related objects</h3>
-                                            </td><td>
-                                                <?php
-                                                foreach ($relations['tablets'] as $tablet):
-                                                    echo "<li>" . link_to($tablet, null, metadata($tablet, array('Dublin Core', 'Title'))) . "</li>";
-                                                endforeach;
-                                                ?>
-                                            </td></tr>
-                                    <?php endif; ?>   
-                                </table>  
-                                <?php if (metadata($item, 'has tags')): ?>
-                                    <div class="tags"><p><strong><?php echo __('Tags'); ?>: </strong>
-                                            <?php echo tag_string('items'); ?></p>
-                                    </div>
-                                <?php endif; ?>
+                        </td>
+                        <td>
+                            <?php if ($text = metadata($item, array('Item Type Metadata', 'Publication year'))): ?>
+                            <?php echo $text; ?>
                             <?php endif; ?>   
-                             <?php if ($item->getItemType()->name == 'Glossary'): ?>
-                            <div class="item hentry">   
-                                <h2><?php echo link_to_item(metadata($item, array('Item Type Metadata', 'Title'), array('class' => 'permalink'))); ?></h2>
-                                <table>               
-                                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Alternative name'))): ?>
-                                        <tr><td class="title-cell">
-                                                <h3>Alternative name</h3>
-                                            </td><td><?php echo $text; ?>
-                                            </td></tr>
-                                    <?php endif; ?>
-                                    <?php if (isset($relations['tablets'])): ?>
-                                        <tr><td class="title-cell">
-                                                <h3>Related objects</h3>
-                                            </td><td>
-                                                <?php
-                                                foreach ($relations['tablets'] as $tablet):
-                                                    echo "<li>" . link_to($tablet, null, metadata($tablet, array('Dublin Core', 'Title'))) . "</li>";
-                                                endforeach;
-                                                ?>
-                                            </td></tr>
-                                    <?php endif; ?>   
-                                </table>  
-                                <?php if (metadata($item, 'has tags')): ?>
-                                    <div class="tags"><p><strong><?php echo __('Tags'); ?>: </strong>
-                                            <?php echo tag_string('items'); ?></p>
-                                    </div>
-                                <?php endif; ?>
-                            <?php endif; ?>      
-                            <?php echo fire_plugin_hook('public_items_browse_each', array('view' => $this, 'item' => $item)); ?>
-                        </div><!-- end class="item hentry" -->
+                        </td>
+                        <td>
+                            <?php if ($text = metadata($item, array('Item Type Metadata', 'Author'), array('all' => 'true', 'delimiter' => '<br>'))): ?>                
+                            <?php echo $text; ?>
+                            <?php endif; ?>
+                        </td>      
+                    <?php endif;?>    
+                    <?php if ($item->getItemType()->name == 'Archive'): ?>
+                        <td><?php echo link_to_item(metadata($item, array('Item Type Metadata', 'Title'), array('class' => 'permalink'))); ?></td>
+                        <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Alternative name'))): ?>
+                            <?php echo $text; ?>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <?php if (isset($relations['tablets'])): ?>
+                            <?php
+                                foreach ($relations['tablets'] as $tablet):
+                                    $text =  link_to($tablet, null, metadata($tablet, array('Dublin Core', 'Title'))) . ", ";
+                                endforeach;
+                                echo rtrim($text, ', ');
+                            ?>   
+                            <?php endif; ?>   
+                        </td>      
+
+                    <?php endif; ?>         
+                             
+                    </tr>
                     <?php endforeach; ?>
+                   
+                    </table>                        
+                                           
                     <?php echo fire_plugin_hook('public_items_browse', array('items' => $items, 'view' => $this)); ?>
                     <?php echo pagination_links(); ?>
                 </div>
