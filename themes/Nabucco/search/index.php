@@ -11,7 +11,7 @@ $searchRecordTypes = get_search_record_types();
         <table id="search-results">
             <thead>
                 <tr>
-                    <th><?php echo __('Record Type'); ?></th>
+                    <th><?php echo __('Type'); ?></th>
                     <th><?php echo __('Title'); ?></th>
                 </tr>
             </thead>
@@ -23,7 +23,11 @@ $searchRecordTypes = get_search_record_types();
                     <?php set_current_record($recordType, $record); ?>
                     <tr class="<?php echo strtolower($filter->filter($recordType)); ?>">
                         <td>
-                            <?php echo $searchRecordTypes[$recordType]; ?>
+                            <?php if($searchRecordTypes[$recordType] == 'Item'):
+                                echo $record->getItemType()->name;                                
+                            else:
+                                echo $searchRecordTypes[$recordType];
+                            endif;?>
                         </td>
                         <td>
                             <?php if ($recordImage = record_image($recordType, 'square_thumbnail')): ?>
