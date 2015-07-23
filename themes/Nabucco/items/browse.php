@@ -192,7 +192,7 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                  
                     
                 <?php if ($item->getItemType()->name == 'People'): ?>
-                    <td><?php echo metadata($item, array('Item Type Metadata', 'Name'), array('class' => 'permalink')); ?></td>
+                    <td><?php echo link_to_item(metadata($item, array('Item Type Metadata', 'Name'), array('class' => 'permalink'))); ?></td>
                     <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Gender'))): ?>
                         <?php echo $text; ?>
                         <?php endif; ?>   
