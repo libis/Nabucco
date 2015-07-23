@@ -459,6 +459,7 @@
                 <div class="element-text tags"><?php echo tag_string('item'); ?></div>
             </div>
         <?php endif; ?>
+        <b><i><a href="<?php echo url('items/browse').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></b>
         <ul class="item-pagination navigation">    
             <?php custom_paging(); ?>
         </ul>    
