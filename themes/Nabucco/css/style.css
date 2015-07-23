@@ -1262,9 +1262,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   
   .alphabet_list li{
       display:inline;
-      padding:8px;
+      padding:8px 4px;
       float:left;
-      width:19px;
+      width:16px;
   }
   
   .gloss{
