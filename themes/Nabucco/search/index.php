@@ -33,7 +33,12 @@ $searchRecordTypes = get_search_record_types();
                             <?php if ($recordImage = record_image($recordType, 'square_thumbnail')): ?>
                                 <?php echo link_to($record, 'show', $recordImage, array('class' => 'image')); ?>
                             <?php endif; ?>
-                            <a href="<?php echo record_url($record, 'show'); ?>"><?php echo $searchText['title'] ? $searchText['title'] : '[Unknown]'; ?></a>
+                            <?php if(isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])):?>
+                                <?php $searchlink = record_url($record, 'show').'?' . $_SERVER['QUERY_STRING'];?>
+                                <a href="<?php echo $searchlink; ?>"><?php echo $searchText['title'] ? $searchText['title'] : '[Unknown]'; ?></a>
+                            <?php else:?>
+                                <a href="<?php echo record_url($record, 'show'); ?>"><?php echo $searchText['title'] ? $searchText['title'] : '[Unknown]'; ?></a>
+                            <?php endif;?>                        
                         </td>
                     </tr>
                 <?php endforeach; ?>

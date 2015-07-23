@@ -110,10 +110,15 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
             <?php
                 $relations = libis_get_relations($item, 'subject');
                 $object_relations = libis_get_relations($item, 'object');
+                if(isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])):
+                    $showlink = record_url('item').'?' . $_SERVER['QUERY_STRING'];
+                else:
+                    $showlink = record_url('item');
+                endif;
             ?>
             <tr>  
             <?php if ($item->getItemType()->name == 'Tablet'): ?>                 
-                    <td><?php echo link_to_item(metadata($item, array('Item Type Metadata', 'Museum No.'), array('class' => 'permalink'))); ?></td>
+                    <td><?php echo '<a href="'.$showlink.'">'.metadata($item, array('Item Type Metadata', 'Museum No.')).'</a>'; ?></td>
                     <td>
                         <?php if ($pub = metadata($item, array('Item Type Metadata', 'Publication'))): 
                             if ($text = metadata($item, array('Item Type Metadata', 'Text number'))):
@@ -192,7 +197,7 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                  
                     
                 <?php if ($item->getItemType()->name == 'People'): ?>
-                    <td><?php echo link_to_item(metadata($item, array('Item Type Metadata', 'Name'), array('class' => 'permalink'))); ?></td>
+                    <td><?php echo '<a href="'.$showlink.'">'.metadata($item, array('Item Type Metadata', 'Name')).'</a>'; ?></td>
                     <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Gender'))): ?>
                         <?php echo $text; ?>
                         <?php endif; ?>   
@@ -211,7 +216,7 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                         
                     <?php endif; ?>
                     <?php if ($item->getItemType()->name == 'Bibliography'): ?>
-                        <td><?php echo link_to_item(metadata($item, array('Item Type Metadata', 'Title'), array('class' => 'permalink'))); ?></td>
+                        <td><?php echo '<a href="'.$showlink.'">'.metadata($item, array('Dublin Core', 'Title')).'</a>'; ?></td>
                         <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Short title'))): ?>
                             <?php echo $text; ?>
                             <?php endif; ?>
@@ -228,7 +233,7 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                         </td>      
                     <?php endif;?>    
                     <?php if ($item->getItemType()->name == 'Archive'): ?>
-                        <td><?php echo link_to_item(metadata($item, array('Item Type Metadata', 'Title'), array('class' => 'permalink'))); ?></td>
+                        <td><?php echo '<a href="'.$showlink.'">'.metadata($item, array('Dublin Core', 'Title')).'</a>'; ?></td>
                         <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Alternative name'))): ?>
                             <?php echo $text; ?>
                             <?php endif; ?>
