@@ -114,8 +114,11 @@ $formAttributes['method'] = 'GET';
       $search = array();
   }
   ?>
-  <center>
-      <table>
+    <?php if (!isset($buttonText)) $buttonText = __('Search'); ?>
+     
+    <input type="submit" class="submit" name="submit_search" id="submit_search_advanced" value="<?php echo $buttonText ?>">
+    <input type="submit" class="submit" name="submit_search" id="reset_search_advanced" value="Reset">
+    <table>
           <?php foreach($medium_commonly_searched_fields as $i => $table_option): ?>
               <tr>
                   <td>
@@ -179,6 +182,7 @@ $formAttributes['method'] = 'GET';
     <div>
             <?php if (!isset($buttonText)) $buttonText = __('Search'); ?>
         <input type="submit" class="submit" name="submit_search" id="submit_search_advanced" value="<?php echo $buttonText ?>">
+        
     </div>
 </form>
     <?php echo js_tag('items-search'); ?>
@@ -278,5 +282,11 @@ $formAttributes['method'] = 'GET';
                 }
             });
         });
+        
+        jQuery('#reset_search_advanced').click(function(event) {
+            event.preventDefault();
+            window.location.href = "<?php echo url('items/search/');?>";
+        });
+                
     });
 </script>

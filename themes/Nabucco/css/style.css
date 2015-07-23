@@ -1419,7 +1419,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     display: inline-block;
   }
   
-  #advanced-search-form th,td{
+  #advanced-search-form th,#advanced-search-form td{
       border:none;
       font-size:1.2em;
       padding:10px 0 10px 10px;

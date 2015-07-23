@@ -8,7 +8,10 @@ switch ($type):
         $pageTitle = 'Catalogue';
         $element = 'Item Type Metadata,Museum No.';
         $sortLinks[__('Museum n°')] = 'Item Type Metadata,Museum No.';
-        $sortLinks[__('Publication')] = 'Item Type Metadata,Publication';
+        $sortLinks[__('Publication')] = 'Item Type Metadata,Publication';        
+        $sortLinks[__('Archive')] = 'Item Type Metadata,Place of issue';        
+        $sortLinks[__('Julian date')] = 'Item Type Metadata,Type & Julian date';
+        $sortLinks[__('Type & content')] = 'Item Type Metadata,Type & content';
         $sortLinks[__('Place of issue')] = 'Item Type Metadata,Place of issue';
         break;
     case 'people':
@@ -32,7 +35,6 @@ switch ($type):
         $pageTitle = __('Browse');
         $element = '';
         $sortLinks[__('Title')] = 'Dublin Core,Title';
-        $sortLinks[__('Date Added')] = 'added';
         break;
 endswitch;
 echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
@@ -62,10 +64,7 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
         <?php echo item_search_filters(); ?>
         <?php echo pagination_links(); ?>
         <?php if ($total_results > 0): ?>
-            <?php
-            $sortLinks[__('Date Added')] = 'added';
-            ?>
-            <div id="sort-links">
+                <div id="sort-links">
                 <span class="sort-label"><?php echo __('Sort by: '); ?></span><?php echo browse_sort_links($sortLinks); ?>
             </div>
         <?php else: ?>
