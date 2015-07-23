@@ -5,8 +5,7 @@ echo head(array('title' => $pageTitle,
 ?>
 <div id="primary">    
 <h1><?php echo $pageTitle; ?></h1>
-<p class="search-description">
-Proin tincidunt tempus turpis vitae iaculis. Proin at condimentum elit, a tempus enim. Nullam dignissim augue sed feugiat viverra. Vestibulum luctus mattis accumsan.
+<p class="search-description"><?php echo libis_get_simple_page_content('search_info_catalogue_advanced');?>
 </p> 
 <?php echo $this->partial('items/search-form.php',
 array('formAttributes' =>

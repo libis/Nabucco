@@ -12,6 +12,7 @@ echo head(array('title' => 'Browse glossaries', 'bodyclass' => 'items browse'));
             </form>   
         </div>   
         <?php echo alphabet_browser_nav('Glossary', 'Dublin Core,Title');?>
+        <p class="search-description"><?php echo libis_get_simple_page_content('search_info_glossary');?>
     </div>
     <div id="right">
         <?php echo item_search_filters(); ?>

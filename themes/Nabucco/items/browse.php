@@ -13,11 +13,13 @@ switch ($type):
         $sortLinks[__('Julian date')] = 'Item Type Metadata,Type & Julian date';
         $sortLinks[__('Type & content')] = 'Item Type Metadata,Type & content';
         $sortLinks[__('Place of issue')] = 'Item Type Metadata,Place of issue';
+        $search_info = libis_get_simple_page_content('search_info_catalogue');
         break;
     case 'people':
         $pageTitle = 'People';
         $element = 'Item Type Metadata,Name';
         $sortLinks[__('Name')] = 'Item Type Metadata,Name';
+        $search_info = libis_get_simple_page_content('search_info_people');
         break;
     case 'bibliography':
         $pageTitle = 'Biblography';
@@ -25,16 +27,19 @@ switch ($type):
         $sortLinks[__('Title')] = $element;
         $sortLinks[__('Year')] = 'Item Type Metadata,Publication year';
         $sortLinks[__('Author')] = 'Item Type Metadata,Author';
+        $search_info = libis_get_simple_page_content('search_info_bibliography');
         break;
     case 'archive':
         $pageTitle = 'Archives';
         $element = 'Item Type Metadata,Archive name';
         $sortLinks[__('Archive name')] = $element;
+        $search_info = libis_get_simple_page_content('search_info_archive');
         break;
     default:
         $pageTitle = __('Browse');
         $element = '';
         $sortLinks[__('Title')] = 'Dublin Core,Title';
+        $search_info = "";
         break;
 endswitch;
 echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
@@ -57,7 +62,7 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
         endif;
         ?>
         <p class="search-description">
-            Proin tincidunt tempus turpis vitae iaculis. Proin at condimentum elit, a tempus enim. Nullam dignissim augue sed feugiat viverra. Vestibulum luctus mattis accumsan.
+           <?php echo $search_info;?>
         </p>    
     </div>
     <div id="right">

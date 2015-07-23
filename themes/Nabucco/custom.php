@@ -30,7 +30,11 @@ function emiglio_exhibit_builder_page_nav($exhibitPage = null) {
 
 function libis_get_simple_page_content($title) {
     $page = get_record('SimplePagesPage', array('title' => $title));
-    return $page->text;
+    if($page):
+        return $page->text;
+    else:
+        return false;
+    endif;
 }
 
 function libis_get_news() {
