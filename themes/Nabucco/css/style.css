@@ -1125,19 +1125,28 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
   
   .show-block table{
-      margin:0;
       width:100%;
+      margin: 0 0 3em 0;
+      border:none;
+      border-collapse:collapse;
+      font-size:1em;
   }
   
   .show-block th, .show-block td{
       padding:20px 40px 20px 0px;
-      white-space:nowrap;
       font-weight: normal;
+      border:none;
+      background:none;
       
+  }
+  
+  .show-block td:first-child{
+      background:none;
   }
   
   .show-block th{
       padding:0px 40px 0px 0px;
+      border-bottom:1px solid #ddd;
   }
   
   .show-interal-block .item-meta:last-child{
