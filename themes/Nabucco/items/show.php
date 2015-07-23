@@ -80,7 +80,7 @@
                         <?php endif; ?>  
                         
                         
-                    </div>    
+                      
                     <div class="show-interal-block"> 
                          <?php if (isset($object_relations['tablets'])): ?>
                         <div class="item-meta">
@@ -459,7 +459,8 @@
                 <div class="element-text tags"><?php echo tag_string('item'); ?></div>
             </div>
         <?php endif; ?>
-            
+        <ul class="item-pagination navigation">    
             <?php custom_paging(); ?>
+        </ul>    
     </div><!-- end primary -->
 <?php echo foot(); ?>
