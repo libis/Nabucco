@@ -205,6 +205,14 @@
                     <?php endif; ?>
                                  
                 </div>
+                <div class="show-block">
+                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Photo'))): ?>
+                        <div class="item-meta">
+                            <h3>Photo</h3>
+                            <p><img src="<?php echo $text;?>"></p>
+                        </div>
+                    <?php endif; ?>
+                </div>
            
         <?php endif; ?>
         <!-- PEOPLE -->  
