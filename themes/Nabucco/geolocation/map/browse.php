@@ -26,7 +26,7 @@ echo head(array('title' => $title, 'bodyclass' => 'map browse'));
             array('id' => 'query','class'=>'map-input', 'size' => '40')
         );
     ?> 
-    <p class='search-description'>Use the name or part of a name of a city or place to filter the map below.</p>
+    <p class='search-description'><?php echo libis_get_simple_page_content('search_info_places'); ?></p>
     </form>    
         
     <div id="map-links" class="map-links-wrapper">
