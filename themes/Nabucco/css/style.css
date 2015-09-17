@@ -1126,14 +1126,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   
   .show-block table{
       width:100%;
-      margin: 0 0 3em 0;
+      margin: 0 0 2em 0;
       border:none;
       border-collapse:collapse;
       font-size:1em;
   }
   
   .show-block th, .show-block td{
-      padding:20px 40px 20px 0px;
+      padding:10px 40px 10px 0px;
       font-weight: normal;
       border:none;
       background:none;
@@ -1145,8 +1145,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
   
   .show-block th{
-      padding:0px 40px 0px 0px;
-      border-bottom:1px solid #ddd;
+      padding:20px 40px 0px 0px;
   }
   
   .show-interal-block .item-meta:last-child{
@@ -1322,7 +1321,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
   .item img,
   .item-file img {    
-    float: left;
+    width:400px;
+    height:auto;
     overflow:hidden;
   }
 
