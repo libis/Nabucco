@@ -36,7 +36,10 @@ echo head_js();
 <div id="wrap">
 <header role="banner">
 <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
-    <div id="map"><?php echo link_to_home_page('<img src='.img('Logo_NaBuCCo.jpg').'>');?></div>
+    <div id="map">
+    <a href="<?php echo url("/");?>">
+    <img src='<?php echo img('Logo_NaBuCCo.jpg');?>'>
+    </a></div>
 <div id="header-wrapper">
 <div id="site-title">
 N<span class="smallcaps">a</span>B<span class="smallcaps">u</span>CC<span class="smallcaps">o</span>
