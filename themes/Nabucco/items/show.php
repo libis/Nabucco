@@ -143,6 +143,12 @@
                                         <?php echo $text; ?></p>
                                 </div>                
                             <?php endif; ?>
+                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Items and quantifiable data'),array('all'=>'true','delimiter'=>'; '))): ?>
+                        <div class="item-meta">
+                            <p><span class="show-title">Items and quantifiable data</span>
+                            <?php echo html_entity_decode($text); ?></p>
+                        </div>
+                    <?php endif; ?>  
                         <?php if ($text = metadata($item, array('Item Type Metadata', 'Other markings'))): ?>
                             <div class="item-meta">
                                 <p><span class="show-title">Other Markings</span>
@@ -157,21 +163,7 @@
                             <p><?php echo html_entity_decode($text); ?></p>
                         </div>
                     <?php endif; ?>
-                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Akkadian keywords'),array('all'=>'true','delimiter'=>', '))): ?>
-                        <div class="item-meta">
-                            <h3>Akkadian keywords</h3>
-                            <p><?php echo $text; ?></p>
-                        </div>
-                    <?php endif; ?>
-                    <?php if ($text = metadata($item, array('Item Type Metadata', 'General keywords'),array('all'=>'true','delimiter'=>', '))): ?>
-                        <div class="item-meta">
-                            <h3>General keywords</h3>
-                            <p><?php echo $text; ?></p>
-                        </div>                  
-                    <?php endif; ?>                 
-                </div>
-                <?php if (isset($relations['people'])): ?>
-                <div class="show-block"> 
+                    <?php if (isset($relations['people'])): ?>
                     <table>
                         <tr>
                             <th><h3>Persons</h3></th>
@@ -185,15 +177,22 @@
                     endforeach;
                     ?>
                     </table>
-                </div>
                 <?php endif; ?>
-                <div class="show-block">
-                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Items and quantifiable data'))): ?>
+                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Akkadian keywords'),array('all'=>'true','delimiter'=>', '))): ?>
                         <div class="item-meta">
-                            <h3>Items and quantifiable data</h3>
-                            <p><?php echo html_entity_decode($text); ?></p>
+                            <h3>Akkadian keywords</h3>
+                            <p><?php echo $text; ?></p>
                         </div>
-                    <?php endif; ?>   
+                    <?php endif; ?>
+                    <?php if ($text = metadata($item, array('Item Type Metadata', 'General keywords'),array('all'=>'true','delimiter'=>', '))): ?>
+                        <div class="item-meta">
+                            <h3>General keywords</h3>
+                            <p><?php echo $text; ?></p>
+                        </div>                  
+                    <?php endif; ?>                 
+                </div>
+                
+                <div class="show-block">                     
                     <?php if ($text = metadata($item, array('Item Type Metadata', 'Transliteration'))): ?>
                         <div class="item-meta">
                             <h3>Transliteration</h3>
