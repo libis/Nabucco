@@ -214,12 +214,14 @@ function libis_print_person($person, $tablet) {
     $roles = metadata($tablet, array('Item Type Metadata', "Person role"),array('all'=>true));
     $profs = metadata($tablet, array('Item Type Metadata', "Person profession"),array('all'=>true));
     $statuss = metadata($tablet, array('Item Type Metadata', "Person status"),array('all'=>true));
+    $codes = metadata($tablet, array('Item Type Metadata', "Person code"),array('all'=>true));
     
     $role = str_replace(array("<br>", "<br />"), "", libis_find_meta_person($id,$roles));
     $prof = str_replace(array("<br>", "<br />"), "", libis_find_meta_person($id,$profs));
-    $status = str_replace(array("<br>", "<br />"), "", libis_find_meta_person($id,$statuss));   
+    $status = str_replace(array("<br>", "<br />"), "", libis_find_meta_person($id,$statuss));    
+    $code = str_replace(array("<br>", "<br />"), "", libis_find_meta_person($id,$codes)); 
    
-    return "<td>" . link_to($person, $action = null, metadata($person, array('Item Type Metadata', 'Name'))) . "</td>"
+    return "<td>" . link_to($person, $action = null, "<b>".$code."</b> ".metadata($person, array('Item Type Metadata', 'Name'))) . "</td>"
             . "<td>" . rtrim($role, ',') . "</td>"
             . "<td>" . rtrim($prof, ',') . "</td>"
             . "<td>" . rtrim($status, ',') . "</td>";
