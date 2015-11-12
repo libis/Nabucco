@@ -10,6 +10,9 @@ $formAttributes['method'] = 'GET';
 <form <?php echo tag_attributes($formAttributes); ?>>
     <div id="search-keywords" class="field">
         <?php echo $this->formLabel('keyword-search', __('Search for Keywords')); ?>
+        <p class="search-description">
+            <?php echo libis_get_simple_page_content('search_info_advanced_1');?>
+        </p>
         <div class="inputs">
             <?php
             echo $this->formText(
@@ -17,10 +20,15 @@ $formAttributes['method'] = 'GET';
             );
             ?>
         </div>
+        
     </div>
+    
     
     <div id="search-narrow-by-fields" class="field">
         <div class="label"><?php echo __('Narrow by Specific Fields'); ?></div>
+        <p class="search-description">
+            <?php echo libis_get_simple_page_content('search_info_advanced_2');?>
+        </p>    
         <div class="inputs">
             <?php
 // If the form has been submitted, retain the number of search
@@ -116,8 +124,10 @@ $formAttributes['method'] = 'GET';
   ?>
     <?php if (!isset($buttonText)) $buttonText = __('Search'); ?>
      
-    <input type="submit" class="submit" name="submit_search" id="submit_search_advanced" value="<?php echo $buttonText ?>">
-    <input type="submit" class="submit" name="submit_search" id="reset_search_advanced" value="Reset">
+   
+    <p class="search-description">
+        <?php echo libis_get_simple_page_content('search_info_advanced_3');?>
+    </p>
     <table>
           <?php foreach($medium_commonly_searched_fields as $i => $table_option): ?>
               <tr>
@@ -182,7 +192,8 @@ $formAttributes['method'] = 'GET';
     <div>
             <?php if (!isset($buttonText)) $buttonText = __('Search'); ?>
         <input type="submit" class="submit" name="submit_search" id="submit_search_advanced" value="<?php echo $buttonText ?>">
-        
+         
+    <input type="submit" class="submit" name="submit_search" id="reset_search_advanced" value="Reset">
     </div>
 </form>
     <?php echo js_tag('items-search'); ?>

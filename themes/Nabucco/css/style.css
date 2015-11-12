@@ -1327,6 +1327,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       font-style:italic;
       text-align: justify;
       text-justify: inter-word;
+      margin: 5px 0 5px 0;
+  }
+  
+  #search-by-certain-fields table{
+      margin-top:5px;
   }
   
   .museum{

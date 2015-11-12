@@ -53,6 +53,9 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
 ?>
 <div id="primary" class="browse">
     <h1><?php echo $pageTitle; ?> <?php echo __('(%s total)', $total_results); ?></h1>
+    <p class="search-description">
+        <?php echo $search_info;?>
+    </p>
     <div id="left">
         <div id="search-container">        
             <form id="search-form" method="get" action="<?php echo WEB_ROOT; ?>/items/browse" name="search-form">
@@ -68,9 +71,7 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
             echo alphabet_browser_nav($type, $element);
         endif;
         ?>
-        <p class="search-description">
-           <?php echo $search_info;?>
-        </p>    
+            
     </div>
     <div id="right">
         <?php echo item_search_filters(); ?>
