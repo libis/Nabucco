@@ -1,5 +1,12 @@
 <?php
 $type = false;
+
+if(isset($GET_['per_page'])):
+    $per_page = $GET_['per_page'];
+else:
+    $per_page = get_option('public_per_page');
+endif;
+
 if (isset($_GET['type'])):
     $type = strip_tags($_GET['type']);
 endif;
@@ -67,7 +74,8 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
     </div>
     <div id="right">
         <?php echo item_search_filters(); ?>
-        <?php echo pagination_links(); ?>
+        <?php echo pagination_links(array('per_page'=>$per_page)); ?>
+        
         <?php if ($total_results > 0): ?>
                 <div id="sort-links">
                 <span class="sort-label"><?php echo __('Sort by: '); ?></span><?php echo browse_sort_links($sortLinks); ?>
@@ -257,7 +265,7 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                     </table>                        
                                            
                     <?php echo fire_plugin_hook('public_items_browse', array('items' => $items, 'view' => $this)); ?>
-                    <?php echo pagination_links(); ?>
+                    <?php echo pagination_links(array('per_page'=>$per_page)); ?>
                 </div>
             </div>
             <?php echo foot(); ?>

@@ -470,6 +470,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   .page-input {
     padding-right: 10px;
   }
+  
+  .per_page_select{
+      float:right;
+      vertical-align: top;
+      margin:0 0 0 5px;
+  }
+  
+  .per_page_select select{
+      margin:0 0 0 5px;
+      padding: 0.30357em;
+      background:#fff;
+      border-color: #843418;
+      font-family: "Lato",sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+  }    
 
   .pagination_next,
   .pagination_previous {
