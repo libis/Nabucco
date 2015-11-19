@@ -475,6 +475,12 @@ function custom_paging()
                 $text = __('&larr; Previous Item');
             echo '<li id="previous-item" class="previous"><a href="' . html_escape($previousUrl) . '">' . $text . '</a></li>';
         }
+        
+        if(substr($_SERVER['QUERY_STRING'], 0, 5) == 'query'):?>
+            <center><li class="return"><i><a href="<?php echo url('search').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
+        <?php else:?>
+            <center><li class="return"><i><a href="<?php echo url('items/browse').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
+        <?php endif;
 
         // If we aren't at the end, print a Next link
         if ($key >= 0 && $key < (count($list) - 1)) {
@@ -486,6 +492,11 @@ function custom_paging()
     } else {
         // If a search was not run, then the normal next/previous navigation is displayed.
         echo '<li id="previous-item" class="previous">'.link_to_previous_item_show().'</li>';
+        if(substr($_SERVER['QUERY_STRING'], 0, 5) == 'query'):?>
+            <center><li class="return"><i><a href="<?php echo url('search').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
+        <?php else:?>
+            <center><li class="return"><i><a href="<?php echo url('items/browse').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
+        <?php endif;
         echo '<li id="next-item" class="next">'.link_to_next_item_show().'</li>';
     }
 }

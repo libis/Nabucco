@@ -1385,6 +1385,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     width: 200px;
     margin-bottom: 0;
   }
+ 
+  .item-pagination li.return {
+    float: none;
+  }
+  
   .item-pagination li.next {
     float: right;
     text-align: right;
