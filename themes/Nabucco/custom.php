@@ -268,19 +268,20 @@ function libis_places_tree(){
     
     
     $places = libis_order_places($places);
-    
+    //var_dump($places);
     $html = "<ul class='map-tree'>";
     foreach($places as $place):
         $place_item = get_record_by_id('Item', $place['id']);
-        $html .= "<li><a class='map-tree-button' href='#'>+</a>".link_to($place_item,null,metadata($place_item,array('Item Type Metadata','Place name')))."</li>";
-        if(!empty($place['children'])):
-            $html .= "<li class='map-tree-hidden'><ul>";
-            foreach($place['children'] as $child):                
-                $child = get_record_by_id('Item', $child);
-                $html .= "<li>".link_to($child,null,metadata($child,array('Item Type Metadata','Place name')))."</li>";
-            endforeach;
-            $html .="</ul></li>";
-        endif;
+        
+            $html .= "<li><a class='map-tree-button' href='#'>+</a>".link_to($place_item,null,metadata($place_item,array('Item Type Metadata','Place name')))."</li>";
+            if(!empty($place['children'])):
+                $html .= "<li class='map-tree-hidden'><ul>";
+                foreach($place['children'] as $child):                
+                    $child = get_record_by_id('Item', $child);
+                    $html .= "<li>".link_to($child,null,metadata($child,array('Item Type Metadata','Place name')))."</li>";
+                endforeach;
+                $html .="</ul></li>";
+            endif;
         
     endforeach;
     $html .="</ul>";
@@ -299,7 +300,7 @@ function libis_order_places($places){
         if ( $pid === null ) {
             if ( !array_key_exists( $id, $p ) ) {
               $p[ $id ] = array(
-                'id' => '',
+                'id' => $place->id,
                 'children' => array()
               );
             }
@@ -307,7 +308,7 @@ function libis_order_places($places){
         }else {
             if ( !array_key_exists( $pid, $p ) ) {
               $p[ $pid ] = array(
-                'id' => '',
+                'id' => $place->id,
                 'children' => array()
               );
             }
