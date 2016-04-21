@@ -27,16 +27,18 @@ echo head(array('title' => 'Browse glossaries', 'bodyclass' => 'items browse'));
         $title = metadata($item,array('Item Type Metadata','Label'));
         $hierarchy = metadata($item,array('Item Type Metadata','Hierarchy'),array('all'=>true));
         foreach($hierarchy as $temp):
-            $hierarchy[]=trim($temp);
+            $hierarchy_new[]=trim($temp);
         endforeach;
             
-        $item_array[$title]['hierarchy'] =  $hierarchy;
-        $relations = libis_get_relations($item,'subject');
+        $item_array[$title]['hierarchy'] = $hierarchy_new;
+        $hierarchy_new=array();
+        //$relations = libis_get_relations($item,'subject');
         
         $item_array[$title]['objects']=array();
+       
         $item_links[$title] = link_to($item,'show',$title);
     endforeach;
-     
+       
     foreach($item_array as $row):            
             if(!isset($tree[$row['hierarchy'][0]])):
                 $tree[$row['hierarchy'][0]]=array();
