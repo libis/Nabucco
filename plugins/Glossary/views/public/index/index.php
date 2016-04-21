@@ -26,6 +26,10 @@ echo head(array('title' => 'Browse glossaries', 'bodyclass' => 'items browse'));
     foreach($items as $item):
         $title = metadata($item,array('Item Type Metadata','Label'));
         $hierarchy = metadata($item,array('Item Type Metadata','Hierarchy'),array('all'=>true));
+        foreach($hierarchy as $temp):
+            $hierarchy[]=trim($temp);
+        endforeach;
+            
         $item_array[$title]['hierarchy'] =  $hierarchy;
         $relations = libis_get_relations($item,'subject');
         
@@ -54,12 +58,11 @@ echo head(array('title' => 'Browse glossaries', 'bodyclass' => 'items browse'));
                 //$tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]][$row['hierarchy'][3]]['Related objects']=$row['objects'];
             endif;           
         endforeach;
-        
-        
+                
         foreach($tree as $key=>$value):?>
             <ul class='gloss gloss-first'>
-            <?php if(isset($item_links[$key])):?>                
-                <li><span class='top-li'><?php echo $item_links[$key] ?></span></li>                
+            <?php if(isset($item_links[$key])):?>    
+                <li><span class='top-li'><?php echo $item_links[$key] ?></span></li>          
             <?php endif;?>
             <?php if(is_array($value)):?>
                 <ul>
@@ -80,7 +83,7 @@ echo head(array('title' => 'Browse glossaries', 'bodyclass' => 'items browse'));
                                     <li><?php echo $item_links[$key];?></li> 
                                     <?php endif;?>
                                 <?php endforeach;?>
-                                </ul>                
+                                </ul>  
                             <?php endif;?>
                         <?php endforeach;?>
                         </ul>                
