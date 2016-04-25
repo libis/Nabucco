@@ -160,7 +160,7 @@
                     <?php if ($text = metadata($item, array('Item Type Metadata', 'Paraphrase'))): ?>
                         <div class="item-meta">
                             <h3>Paraphrase</h3>
-                            <p><?php echo html_entity_decode($text); ?></p>
+                            <p><?php echo $text; ?></p>
                         </div>
                     <?php endif; ?>
                     <?php if (isset($relations['people'])): ?>
