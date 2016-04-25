@@ -146,7 +146,7 @@
                         <?php if ($text = metadata($item, array('Item Type Metadata', 'Items and quantifiable data'),array('all'=>'true','delimiter'=>'; '))): ?>
                         <div class="item-meta">
                             <p><span class="show-title">Items and quantifiable data</span>
-                            <?php echo html_entity_decode($text); ?></p>
+                            <?php echo $text; ?></p>
                         </div>
                     <?php endif; ?>  
                         <?php if ($text = metadata($item, array('Item Type Metadata', 'Other markings'))): ?>
@@ -196,7 +196,7 @@
                     <?php if ($text = metadata($item, array('Item Type Metadata', 'Transliteration'))): ?>
                         <div class="item-meta">
                             <h3>Transliteration</h3>
-                            <p><?php echo html_entity_decode($text);?></p>
+                            <p><?php echo $text;?></p>
                         </div>
                     <?php endif; ?>
                                  
