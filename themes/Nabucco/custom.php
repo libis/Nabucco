@@ -278,7 +278,9 @@ function libis_places_tree(){
                 $html .= "<li class='map-tree-hidden'><ul>";
                 foreach($place['children'] as $child):                
                     $child = get_record_by_id('Item', $child);
-                    $html .= "<li>".link_to($child,null,metadata($child,array('Item Type Metadata','Place name')))."</li>";
+                    if($child->id != $place_item->id):
+                        $html .= "<li>".link_to($child,null,metadata($child,array('Item Type Metadata','Place name')))."</li>";
+                    endif;
                 endforeach;
                 $html .="</ul></li>";
             endif;
@@ -305,6 +307,7 @@ function libis_order_places($places){
               );
             }
             $p[$id]['id'] = $place->id;//metadata($place,array('Item Type Metadata','Place name'));
+            
         }else {
             if ( !array_key_exists( $pid, $p ) ) {
               $p[ $pid ] = array(
@@ -313,7 +316,7 @@ function libis_order_places($places){
               );
             }
             $p[ $pid ]['children'][ $id ] = $place->id;//metadata($place,array('Item Type Metadata','Place name'));
-        }         
+        }    
     endforeach;       
     return $p;
 }
