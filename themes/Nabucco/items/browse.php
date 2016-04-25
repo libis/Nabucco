@@ -1,8 +1,11 @@
 <?php
 $type = false;
 
-if(isset($GET_['per_page'])):
-    $per_page = $GET_['per_page'];
+  $session = new Zend_Session_Namespace('pagination_help');
+  $per_page = $session->per_page;
+
+if(isset($_GET['per_page'])):
+    $per_page = $_GET['per_page'];
 else:
     $per_page = get_option('public_per_page');
 endif;

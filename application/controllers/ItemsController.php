@@ -181,7 +181,12 @@ $options = $this->getFrontController()->getParam('bootstrap')
 if (is_admin_theme()) {
 $perPage = (int) $options['per_page_admin'];
 } else {
-$perPage = (int) $options['per_page_public'];
+    if(isset($_GET['per_page'])):
+        $perPage = $_GET['per_page'];
+    else:
+        $perPage = (int) $options['per_page_public'];
+    endif;
+
 }
 // If users are allowed to modify the # of items displayed per page,
 // then they can pass the 'per_page' query parameter to change that.
