@@ -272,9 +272,10 @@ function libis_places_tree(){
     $html = "<ul class='map-tree'>";
     foreach($places as $place):
         $place_item = get_record_by_id('Item', $place['id']);
-        
-            $html .= "<li><a class='map-tree-button' href='#'>+</a>".link_to($place_item,null,metadata($place_item,array('Item Type Metadata','Place name')))."</li>";
+            
             if(!empty($place['children'])):
+            $html .= "<li><a class='map-tree-button' href='#'>+</a>".link_to($place_item,null,metadata($place_item,array('Item Type Metadata','Place name')))."</li>";
+            
                 $html .= "<li class='map-tree-hidden'><ul>";
                 foreach($place['children'] as $child):                
                     $child = get_record_by_id('Item', $child);
@@ -283,14 +284,14 @@ function libis_places_tree(){
                     endif;
                 endforeach;
                 $html .="</ul></li>";
+            else:
+                $html .= "<li>".link_to($place_item,null,metadata($place_item,array('Item Type Metadata','Place name')))."</li>";
             endif;
         
     endforeach;
     $html .="</ul>";
     
-    return $html;
-    
-    
+    return $html;   
 }
 
 function libis_order_places($places){
@@ -299,7 +300,7 @@ function libis_order_places($places){
         $pid = metadata($place,array('Item Type Metadata','Parent id'));
         $id = metadata($place,array('Item Type Metadata','Place id'));
         
-        if ( $pid === null ) {
+        if ( $pid === null  || $pid == 1 || $pid == 4 ) {
             if ( !array_key_exists( $id, $p ) ) {
               $p[ $id ] = array(
                 'id' => $place->id,
