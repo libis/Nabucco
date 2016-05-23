@@ -18,10 +18,10 @@ switch ($type):
         $pageTitle = 'Catalogue';
         $element = 'Item Type Metadata,Museum No.';
         $sortLinks[__('Museum n°')] = 'Item Type Metadata,Museum No.';
-        $sortLinks[__('Publication')] = 'Item Type Metadata,Publication';        
-        $sortLinks[__('Archive')] = 'Item Type Metadata,Place of issue';        
-        $sortLinks[__('Julian date')] = 'Item Type Metadata,Type & Julian date';
-        $sortLinks[__('Type & content')] = 'Item Type Metadata,Type & content';
+        $sortLinks[__('Publication')] = 'Item Type Metadata,Publication name';        
+        $sortLinks[__('Archive')] = 'Item Type Metadata,Archief naam';        
+        $sortLinks[__('Julian date')] = 'Item Type Metadata,Julian date year';
+        $sortLinks[__('Type & content')] = 'Item Type Metadata,Type and content';
         $sortLinks[__('Place of issue')] = 'Item Type Metadata,Place of issue';
         $search_info = libis_get_simple_page_content('search_info_catalogue');
         break;
