@@ -481,12 +481,15 @@ function custom_paging()
             echo '<li id="previous-item" class="previous"><a href="' . html_escape($previousUrl) . '">' . $text . '</a></li>';
         }
         
-        if(substr($_SERVER['QUERY_STRING'], 0, 5) == 'query'):?>
+        if(get_current_record('Item')->getItemType()->name == 'Place'):?>          
+            <center><li class="return"><i><a href="<?php echo url('/map/browse'); ?>">Return to search results</a></i></li></center>
+        <?php else:
+            if(substr($_SERVER['QUERY_STRING'], 0, 5) == 'query'):?>
             <center><li class="return"><i><a href="<?php echo url('search').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
-        <?php else:?>
+            <?php else:?>
             <center><li class="return"><i><a href="<?php echo url('items/browse').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
-        <?php endif;
-
+            <?php endif;
+        endif;        
         // If we aren't at the end, print a Next link
         if ($key >= 0 && $key < (count($list) - 1)) {
             $nextItem = $list[$key + 1];
