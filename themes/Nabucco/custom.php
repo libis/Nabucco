@@ -482,7 +482,7 @@ function custom_paging()
         }
         
         if(get_current_record('Item')->getItemType()->name == 'Place'):?>          
-            <center><li class="return"><i><a href="<?php echo url('/map/browse'); ?>">Return to search results</a></i></li></center>
+            <center><li class="return"><i><a href="<?php echo url('/geolocation/map/browse/'); ?>">Return to search results</a></i></li></center>
         <?php else:
             if(substr($_SERVER['QUERY_STRING'], 0, 5) == 'query'):?>
             <center><li class="return"><i><a href="<?php echo url('search').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
