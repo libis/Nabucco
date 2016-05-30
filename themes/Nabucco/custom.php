@@ -481,8 +481,12 @@ function custom_paging()
             echo '<li id="previous-item" class="previous"><a href="' . html_escape($previousUrl) . '">' . $text . '</a></li>';
         }
         
-        if(get_current_record('Item')->getItemType()->name == 'Place'):?>          
-            <center><li class="return"><i><a href="<?php echo url('/geolocation/map/browse/'); ?>">Return to search results</a></i></li></center>
+        if(get_current_record('Item')->getItemType()->name == 'Place' || get_current_record('Item')->getItemType()->name == 'Glossary'):  
+            if(get_current_record('Item')->getItemType()->name == 'Place'):?>
+                <center><li class="return"><i><a href="<?php echo url('/geolocation/map/browse/'); ?>">Return to search results</a></i></li></center>
+            <?php else: ?>
+                <center><li class="return"><i><a href="<?php echo url('/glossary'); ?>">Return to search results</a></i></li></center>                
+             <?php endif;?>   
         <?php else:
             if(substr($_SERVER['QUERY_STRING'], 0, 5) == 'query'):?>
             <center><li class="return"><i><a href="<?php echo url('search').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
