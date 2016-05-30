@@ -163,6 +163,12 @@
                             <p><?php echo $text; ?></p>
                         </div>
                     <?php endif; ?>
+                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Imported'))): ?>
+                        <div align=right class="item-meta">
+                            <h3>Imported</h3>
+                            <p><?php echo $text; ?></p>
+                        </div>
+                    <?php endif; ?>
                     <?php if (isset($relations['people'])): ?>
                     <table>
                         <tr>
