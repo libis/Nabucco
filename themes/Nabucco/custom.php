@@ -60,7 +60,7 @@ function libis_get_news() {
             break;
         endif;
     endforeach;
-//sort the resulting array   
+//sort the resulting array
     krsort($news_array);
 //make a list
     foreach ($news_array as $news):
@@ -73,6 +73,9 @@ function libis_get_news() {
 function libis_get_date($date, $remark) {
     switch ($remark):
         case '-':
+            $date = $date;
+            break;
+        case '':
             $date = $date;
             break;
         case '?':
@@ -94,13 +97,13 @@ function libis_get_date($date, $remark) {
             $date = $remark;
             break;
     endswitch;
-    
+
     if($date == '-'):
         if($remark == 'no day' || $remark =='no year' || $remark =='no month' || $remark =='no king'):
             $date = $remark;
         endif;
     endif;
-    
+
     return $date;
 }
 
@@ -169,7 +172,7 @@ function libis_get_relations($item, $direction = 'subject') {
         endif;
         $itemtype = $item->getItemType()->name;
         switch ($itemtype):
-            case('People'):                
+            case('People'):
                 $item_relations['people'][] = $item;
                 break;
             case('Place'):
@@ -210,17 +213,17 @@ function libis_find_meta_person($id,$metas){
 
 function libis_print_person($person, $tablet) {
     $id = metadata($person, array('Item Type Metadata', "Entity ID"));
-    
+
     $roles = metadata($tablet, array('Item Type Metadata', "Person role"),array('all'=>true));
     $profs = metadata($tablet, array('Item Type Metadata', "Person profession"),array('all'=>true));
     $statuss = metadata($tablet, array('Item Type Metadata', "Person status"),array('all'=>true));
     $codes = metadata($tablet, array('Item Type Metadata', "Person code"),array('all'=>true));
-    
+
     $role = str_replace(array("<br>", "<br />"), "", libis_find_meta_person($id,$roles));
     $prof = str_replace(array("<br>", "<br />"), "", libis_find_meta_person($id,$profs));
-    $status = str_replace(array("<br>", "<br />"), "", libis_find_meta_person($id,$statuss));    
-    $code = str_replace(array("<br>", "<br />"), "", libis_find_meta_person($id,$codes)); 
-   
+    $status = str_replace(array("<br>", "<br />"), "", libis_find_meta_person($id,$statuss));
+    $code = str_replace(array("<br>", "<br />"), "", libis_find_meta_person($id,$codes));
+
     return "<td>" . link_to($person, $action = null, "<b>".$code."</b> ".metadata($person, array('Item Type Metadata', 'Name'))) . "</td>"
             . "<td>" . rtrim($role, ',') . "</td>"
             . "<td>" . rtrim($prof, ',') . "</td>"
@@ -265,19 +268,19 @@ function libis_advanced_search_seperate_fields() {
 
 function libis_places_tree(){
     $places = get_records('Item', array("type"=>'Place'),9999);
-    
-    
+
+
     $places = libis_order_places($places);
     //var_dump($places);
     $html = "<ul class='map-tree'>";
     foreach($places as $place):
         $place_item = get_record_by_id('Item', $place['id']);
-            
+
             if(!empty($place['children'])):
             $html .= "<li><a class='map-tree-button' href='#'>+</a>".link_to($place_item,null,metadata($place_item,array('Item Type Metadata','Place name')))."</li>";
-            
+
                 $html .= "<li class='map-tree-hidden'><ul>";
-                foreach($place['children'] as $child):                
+                foreach($place['children'] as $child):
                     $child = get_record_by_id('Item', $child);
                     if($child->id != $place_item->id):
                         $html .= "<li>".link_to($child,null,metadata($child,array('Item Type Metadata','Place name')))."</li>";
@@ -287,11 +290,11 @@ function libis_places_tree(){
             else:
                 $html .= "<li>".link_to($place_item,null,metadata($place_item,array('Item Type Metadata','Place name')))."</li>";
             endif;
-        
+
     endforeach;
     $html .="</ul>";
-    
-    return $html;   
+
+    return $html;
 }
 
 function libis_order_places($places){
@@ -299,7 +302,7 @@ function libis_order_places($places){
     foreach($places as $place):
         $pid = metadata($place,array('Item Type Metadata','Parent id'));
         $id = metadata($place,array('Item Type Metadata','Place id'));
-        
+
         if ( $pid === null  || $pid == 1 || $pid == 4 ) {
             if ( !array_key_exists( $id, $p ) ) {
               $p[ $id ] = array(
@@ -308,7 +311,7 @@ function libis_order_places($places){
               );
             }
             $p[$id]['id'] = $place->id;//metadata($place,array('Item Type Metadata','Place name'));
-            
+
         }else {
             if ( !array_key_exists( $pid, $p ) ) {
               $p[ $pid ] = array(
@@ -317,17 +320,17 @@ function libis_order_places($places){
               );
             }
             $p[ $pid ]['children'][ $id ] = $place->id;//metadata($place,array('Item Type Metadata','Place name'));
-        }    
-    endforeach;       
+        }
+    endforeach;
     return $p;
 }
 
 function libis_get_glossary($items){
     //$params['hasImage'] = 1;
-        
+
         $item_array = array();
         $tree = array();
-        
+
         foreach($items as $item):
             $title = metadata($item,array('Item Type Metadata','Label'));
             $hierarchy = metadata($item,array('Item Type Metadata','Hierarchy'),array('all'=>true));
@@ -340,42 +343,42 @@ function libis_get_glossary($items){
             else:
                  $item_array[$title]['objects']=array();
             endif;
-            
+
         endforeach;
-        
-        foreach($item_array as $row):            
+
+        foreach($item_array as $row):
             if(!isset($tree[$row['hierarchy'][0]])):
                 $tree[$row['hierarchy'][0]]=array();
                 $tree[$row['hierarchy'][0]]['Related objects']=$row['objects'];
             endif;
-            
+
             if(isset($row['hierarchy'][1]) && !isset($tree[$row['hierarchy'][0]][$row['hierarchy'][1]])):
                 $tree[$row['hierarchy'][0]][$row['hierarchy'][1]]=array();
                 $tree[$row['hierarchy'][0]][$row['hierarchy'][1]]['Related objects']=$row['objects'];
             endif;
-            
+
             if(isset($row['hierarchy'][2]) && !isset($tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]])):
                 $tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]]=array();
                 $tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]]['Related objects']=$row['objects'];
             endif;
-            
+
             if(isset($row['hierarchy'][3]) && !isset($tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]][$row['hierarchy'][3]])):
                 $tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]][$row['hierarchy'][3]]=array();
                 $tree[$row['hierarchy'][0]][$row['hierarchy'][1]][$row['hierarchy'][2]][$row['hierarchy'][3]]['Related objects']=$row['objects'];
-            endif;           
+            endif;
         endforeach;
-        
+
         $html = '';
         foreach($tree as $key=>$value):
             $html .= "<ul class='gloss-0'>";
             $html .= "<li><span class='top-li'>".$key."</span></li>";
             if(is_array($value)):
                 $html .= "<ul>";
-                foreach($value as $key=>$value):                    
+                foreach($value as $key=>$value):
                     if($key == 'Related objects'):
                         $html .= glossary_get_objects($value);
                     else:
-                        $html .= "<li>".$key."</li>";                                       
+                        $html .= "<li>".$key."</li>";
                         if(is_array($value)):
                             $html .= "<ul>";
                             foreach($value as $key=>$value):
@@ -389,22 +392,22 @@ function libis_get_glossary($items){
                                             if($key == 'Related objects'):
                                                 $html .= glossary_get_objects($value);
                                             else:
-                                                $html .= "<li>".$key."</li>";                        
-                                            endif;              
+                                                $html .= "<li>".$key."</li>";
+                                            endif;
                                         endforeach;
-                                        $html .= "</ul>";                
+                                        $html .= "</ul>";
                                     endif;
                                 endif;
                             endforeach;
-                            $html .= "</ul>";                
+                            $html .= "</ul>";
                         endif;
                      endif;
                 endforeach;
-                $html .= "</ul>";                
-            endif;            
+                $html .= "</ul>";
+            endif;
             $html .= "</ul>";
         endforeach;
-               
+
        return $html;
 }
 
@@ -480,20 +483,20 @@ function custom_paging()
                 $text = __('&larr; Previous Item');
             echo '<li id="previous-item" class="previous"><a href="' . html_escape($previousUrl) . '">' . $text . '</a></li>';
         }
-        
-        if(get_current_record('Item')->getItemType()->name == 'Place' || get_current_record('Item')->getItemType()->name == 'Glossary'):  
+
+        if(get_current_record('Item')->getItemType()->name == 'Place' || get_current_record('Item')->getItemType()->name == 'Glossary'):
             if(get_current_record('Item')->getItemType()->name == 'Place'):?>
                 <center><li class="return"><i><a href="<?php echo url('/geolocation/map/browse/'); ?>">Return to search results</a></i></li></center>
             <?php else: ?>
-                <center><li class="return"><i><a href="<?php echo url('/glossary'); ?>">Return to search results</a></i></li></center>                
-             <?php endif;?>   
+                <center><li class="return"><i><a href="<?php echo url('/glossary'); ?>">Return to search results</a></i></li></center>
+             <?php endif;?>
         <?php else:
             if(substr($_SERVER['QUERY_STRING'], 0, 5) == 'query'):?>
             <center><li class="return"><i><a href="<?php echo url('search').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
             <?php else:?>
             <center><li class="return"><i><a href="<?php echo url('items/browse').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
             <?php endif;
-        endif;        
+        endif;
         // If we aren't at the end, print a Next link
         if ($key >= 0 && $key < (count($list) - 1)) {
             $nextItem = $list[$key + 1];
@@ -512,4 +515,3 @@ function custom_paging()
         echo '<li id="next-item" class="next">'.link_to_next_item_show().'</li>';
     }
 }
-
