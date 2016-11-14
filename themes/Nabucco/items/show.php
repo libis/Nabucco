@@ -60,12 +60,12 @@
                         endif;
                         ?>
                         <?php
-                        if ($month = metadata($item, array('Item Type Metadata', 'Month')) || || $remark = metadata($item, array('Item Type Metadata', 'Month remark'))):
+                        if ($month = metadata($item, array('Item Type Metadata', 'Month')) || $remark = metadata($item, array('Item Type Metadata', 'Month remark'))):
                             $month = libis_get_date($month, $remark);
                         endif;
                         ?>
                         <?php
-                        if ($year = metadata($item, array('Item Type Metadata', 'Year')) || || $remark = metadata($item, array('Item Type Metadata', 'Year remark')) ):
+                        if ($year = metadata($item, array('Item Type Metadata', 'Year')) || $remark = metadata($item, array('Item Type Metadata', 'Year remark')) ):
                             $year = libis_get_date($year, $remark);
                         endif;
                         ?>
