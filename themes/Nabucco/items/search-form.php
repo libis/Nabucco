@@ -284,7 +284,32 @@ $formAttributes['method'] = 'GET';
             "Period",
             "Other markings",
             "Akkadian keywords",
-            "General keywords"
+            "General keywords",
+            "Alternative label",
+            "Archive ID",
+            "Concept ID",
+            "Hierarchy",
+            "Is part of",
+            "Is part off",
+            "Label",
+            "Kinship circle",
+            "Page number",
+            "Julian date year",
+            "Object ID",
+            "Occurrence ID",
+            "Parent id",
+            "Person",
+            "Person role",
+            "Person code",
+            "Person profession",
+            "Person status",
+            "Place description",
+            "Place id",
+            "Place name",
+            "Place of issue ID",
+            "Related object",
+            "Role",
+            "Volume no."
         ];
         jQuery.each(blackListElements, function (index, value) {
             jQuery(".advanced-search-element option").filter(function () {
