@@ -55,6 +55,8 @@
                                <?php echo $text; ?>
                             <?php endif; ?></td>
                         <?php
+                        $remark_day='';$remark_month='';$remark_year='';$remark_king='';  
+
                         if ($day = metadata($item, array('Item Type Metadata', 'Day')) || $remark_day = metadata($item, array('Item Type Metadata', 'Day remark'))):
                             $day = libis_get_date($day, $remark_day);
                         endif;
