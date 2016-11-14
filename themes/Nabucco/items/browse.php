@@ -19,7 +19,7 @@ switch ($type):
         $element = 'Item Type Metadata,Museum No.';
         $sortLinks[__('Museum n°')] = 'Item Type Metadata,Museum No.';
         $sortLinks[__('Publication')] = 'Item Type Metadata,Publication name';
-        $sortLinks[__('Archive')] = 'Item Type Metadata,Archief naam';
+        $sortLinks[__('Archive')] = 'Item Type Metadata,Archive';
         $sortLinks[__('Julian date')] = 'Item Type Metadata,Julian date year';
         $sortLinks[__('Type & content')] = 'Item Type Metadata,Type and content';
         $sortLinks[__('Place of issue')] = 'Item Type Metadata,Place of issue';

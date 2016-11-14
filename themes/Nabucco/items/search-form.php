@@ -221,6 +221,7 @@ $formAttributes['method'] = 'GET';
             "Type",
             "Alternative name",
             "Archive name",
+            "Archive",
             "Author",
             "BCC",
             "Bibliography",
