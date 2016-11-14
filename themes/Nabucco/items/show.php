@@ -55,24 +55,31 @@
                                <?php echo $text; ?>
                             <?php endif; ?></td>
                         <?php
-                        $remark_day='';$remark_month='';$remark_year='';$remark_king='';  
+                        $day = metadata($item, array('Item Type Metadata', 'Day'));
+                        $remark_day = metadata($item, array('Item Type Metadata', 'Day remark'));
+                        $month = metadata($item, array('Item Type Metadata', 'Month'));
+                        $remark_month = metadata($item, array('Item Type Metadata', 'Month remark'));
+                        $year = metadata($item, array('Item Type Metadata', 'Year'));
+                        $remark_year = metadata($item, array('Item Type Metadata', 'Year remark'));
+                        $king = metadata($item, array('Item Type Metadata', 'King'));
+                        $remark_king = metadata($item, array('Item Type Metadata', 'King remark'));
 
-                        if ($day = metadata($item, array('Item Type Metadata', 'Day')) || $remark_day = metadata($item, array('Item Type Metadata', 'Day remark'))):
+                        if ($day || $remark_day):
                             $day = libis_get_date($day, $remark_day);
                         endif;
                         ?>
                         <?php
-                        if ($month = metadata($item, array('Item Type Metadata', 'Month')) || $remark_month = metadata($item, array('Item Type Metadata', 'Month remark'))):
+                        if ($month || $remark_month):
                             $month = libis_get_date($month, $remark_month);
                         endif;
                         ?>
                         <?php
-                        if ($year = metadata($item, array('Item Type Metadata', 'Year')) || $remark_year = metadata($item, array('Item Type Metadata', 'Year remark')) ):
+                        if ($year || $remark_year):
                             $year = libis_get_date($year, $remark_year);
                         endif;
                         ?>
                         <?php
-                        if ($king = metadata($item, array('Item Type Metadata', 'King')) || $remark_king = metadata($item, array('Item Type Metadata', 'King remark'))):
+                        if ($king || $remark_king):
                             $king = libis_get_date($king, $remark_king);
                         endif;
                         ?>
