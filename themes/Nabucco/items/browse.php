@@ -18,8 +18,8 @@ switch ($type):
         $pageTitle = 'Catalogue';
         $element = 'Item Type Metadata,Museum No.';
         $sortLinks[__('Museum n°')] = 'Item Type Metadata,Museum No.';
-        $sortLinks[__('Publication')] = 'Item Type Metadata,Publication name';        
-        $sortLinks[__('Archive')] = 'Item Type Metadata,Archief naam';        
+        $sortLinks[__('Publication')] = 'Item Type Metadata,Publication name';
+        $sortLinks[__('Archive')] = 'Item Type Metadata,Archief naam';
         $sortLinks[__('Julian date')] = 'Item Type Metadata,Julian date year';
         $sortLinks[__('Type & content')] = 'Item Type Metadata,Type and content';
         $sortLinks[__('Place of issue')] = 'Item Type Metadata,Place of issue';
@@ -60,65 +60,65 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
         <?php echo $search_info;?>
     </p>
     <div id="left">
-        <div id="search-container">        
+        <div id="search-container">
             <form id="search-form" method="get" action="<?php echo WEB_ROOT; ?>/items/browse" name="search-form">
                 <input id="query" type="text" title="Search" value="" name="search">
                 <input type="hidden" name="type" value="<?php echo $type; ?>">
                 <button id="submit_search" value="Search" type="submit" name="submit_search">Search</button>
             </form>
-        </div>  
-        <?php if ($type == 'tablet'): ?>    
+        </div>
+        <?php if ($type == 'tablet'): ?>
             <p><span class="advanced-search-link"><?php echo link_to_item_search(__('Advanced Search')); ?></span></p>
             <?php
         else:
             echo alphabet_browser_nav($type, $element);
         endif;
         ?>
-            
+
     </div>
     <div id="right">
         <?php echo item_search_filters(); ?>
         <?php echo pagination_links(array('per_page'=>$per_page)); ?>
-        
+
         <?php if ($total_results > 0): ?>
                 <div id="sort-links">
                 <span class="sort-label"><?php echo __('Sort by: '); ?></span><?php echo browse_sort_links($sortLinks); ?>
             </div>
         <?php else: ?>
-            <h3>No results were found.</h3> 
+            <h3>No results were found.</h3>
         <?php endif; ?>
-        
-        
+
+
         <table>
-            <tr>  
-        <?php if($type == 'tablet'):?>            
+            <tr>
+        <?php if($type == 'tablet'):?>
                 <th>Museum n°</th>
                 <th>Publication</th>
                 <th>Archive</th>
                 <th>Babylonian date</th>
                 <th>Julian date</th>
                 <th>Type & content</th>
-                <th>Place of issue</th>  
-        <?php endif;?>                
-        <?php if($type == 'people'):?>           
+                <th>Place of issue</th>
+        <?php endif;?>
+        <?php if($type == 'people'):?>
                 <th>Name</th>
                 <th>Gender</th>
                 <th>Places</th>
         <?php endif;?>
-        <?php if($type == 'archive'):?>            
+        <?php if($type == 'archive'):?>
                 <th>Name</th>
                 <th>Alternative name</th>
                 <th>Related objects</th>
         <?php endif;?>
-        <?php if($type == 'bibliography'):?>            
+        <?php if($type == 'bibliography'):?>
                 <th>Title</th>
                 <th>Short title</th>
                 <th>Publication year</th>
                 <th>Author</th>
-        <?php endif;?>   
-        <tr>        
-            
-        <?php foreach (loop('items') as $item): ?>     
+        <?php endif;?>
+        <tr>
+
+        <?php foreach (loop('items') as $item): ?>
             <?php
                 $relations = libis_get_relations($item, 'subject');
                 $object_relations = libis_get_relations($item, 'object');
@@ -128,59 +128,68 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                     $showlink = record_url('item');
                 endif;
             ?>
-            <tr>  
-            <?php if ($item->getItemType()->name == 'Tablet'): ?>                 
+            <tr>
+            <?php if ($item->getItemType()->name == 'Tablet'): ?>
                     <td><?php echo '<a href="'.$showlink.'">'.metadata($item, array('Item Type Metadata', 'Museum No.')).'</a>'; ?></td>
                     <td>
-                        <?php if ($pub = metadata($item, array('Item Type Metadata', 'Publication'))): 
+                        <?php if ($pub = metadata($item, array('Item Type Metadata', 'Publication'))):
                             if ($text = metadata($item, array('Item Type Metadata', 'Text number'))):
-                                $pub .= " " . $text;    
+                                $pub .= " " . $text;
                             endif;
                             if ($text = metadata($item, array('Item Type Metadata', 'Page number'))):
-                                $pub .= ", " . $text; 
+                                $pub .= ", " . $text;
                             endif;
-                            if (isset($object_relations['bibliographies'])):                                    
+                            if (isset($object_relations['bibliographies'])):
                                 echo link_to($object_relations['bibliographies'][0], null,$pub);
                             else:
                                 echo $pub;
-                            endif; 
-                        endif;?>      
+                            endif;
+                        endif;?>
                     </td>
                     <td>
                         <?php
                         if(isset($object_relations['archives'])):
-                           $text = ''; 
+                           $text = '';
                            foreach ($object_relations['archives'] as $archive):
                                 $text .= link_to($archive, null, metadata($archive, array('Dublin Core', 'Title')));
-                            endforeach;                            
+                            endforeach;
                             echo rtrim($text, ', ');
                         endif;
                         ?>
-                    </td>    
+                    </td>
                     <td>
-                        <?php
-                        if ($day = metadata($item, array('Item Type Metadata', 'Day'))):
-                            $day = libis_get_date($day, metadata($item, array('Item Type Metadata', 'Day remark')));
-                        endif;
-                        ?>
-                        <?php
-                        if ($month = metadata($item, array('Item Type Metadata', 'Month'))):
-                            $month = libis_get_date($month, metadata($item, array('Item Type Metadata', 'Month remark')));
-                        endif;
-                        ?>
-                        <?php
-                        if ($year = metadata($item, array('Item Type Metadata', 'Year'))):
-                            $year = libis_get_date($year, metadata($item, array('Item Type Metadata', 'Year remark')));
-                        endif;
-                        ?>
-                        <?php
-                        if ($king = metadata($item, array('Item Type Metadata', 'King'))):
-                            $king = libis_get_date($king, metadata($item, array('Item Type Metadata', 'King remark')));
-                        endif;
-                        ?>
-                      
+                      <?php
+                      $day = metadata($item, array('Item Type Metadata', 'Day'));
+                      $remark_day = metadata($item, array('Item Type Metadata', 'Day remark'));
+                      $month = metadata($item, array('Item Type Metadata', 'Month'));
+                      $remark_month = metadata($item, array('Item Type Metadata', 'Month remark'));
+                      $year = metadata($item, array('Item Type Metadata', 'Year'));
+                      $remark_year = metadata($item, array('Item Type Metadata', 'Year remark'));
+                      $king = metadata($item, array('Item Type Metadata', 'King'));
+                      $remark_king = metadata($item, array('Item Type Metadata', 'King remark'));
+
+                      if ($day || $remark_day):
+                          $day = libis_get_date($day, $remark_day);
+                      endif;
+                      ?>
+                      <?php
+                      if ($month || $remark_month):
+                          $month = libis_get_date($month, $remark_month);
+                      endif;
+                      ?>
+                      <?php
+                      if ($year || $remark_year):
+                          $year = libis_get_date($year, $remark_year);
+                      endif;
+                      ?>
+                      <?php
+                      if ($king || $remark_king):
+                          $king = libis_get_date($king, $remark_king);
+                      endif;
+                      ?>
+
                         <?php echo $day . "." . $month . "." . $year . " " . $king; ?>
-                            
+
                     </td>
                     <td>
                         <?php if ($text = metadata($item, array('Item Type Metadata', 'Julian date'))): ?>
@@ -195,37 +204,37 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                     <td>
                         <?php if (isset($object_relations['places'])): ?>
                             <?php
-                                $text = ''; 
+                                $text = '';
                                 foreach ($object_relations['places'] as $place):
                                     $text .= link_to($place, null, metadata($place, array('Dublin Core', 'Title'))).", ";
                                 endforeach;
                                 echo rtrim($text, ', ');
                              ?>
-                        <?php endif; ?>     
+                        <?php endif; ?>
                     </td>
-                </tr>                    
-                
-                <?php endif; ?>                    
-                 
-                    
+                </tr>
+
+                <?php endif; ?>
+
+
                 <?php if ($item->getItemType()->name == 'People'): ?>
                     <td><?php echo '<a href="'.$showlink.'">'.metadata($item, array('Item Type Metadata', 'Name')).'</a>'; ?></td>
                     <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Gender'))): ?>
                         <?php echo $text; ?>
-                        <?php endif; ?>   
+                        <?php endif; ?>
                     </td>
                     <td>
                         <?php if (isset($relations['places'])): ?>
                             <?php
-                                $text = ''; 
+                                $text = '';
                                 foreach ($relations['places'] as $place):
                                     $text .= link_to($place, null, metadata($place, array('Dublin Core', 'Title'))).", ";
                                 endforeach;
                                 echo rtrim($text, ', ');
                              ?>
                         <?php endif; ?>
-                    </td>  
-                        
+                    </td>
+
                     <?php endif; ?>
                     <?php if ($item->getItemType()->name == 'Bibliography'): ?>
                         <td><?php echo '<a href="'.$showlink.'">'.metadata($item, array('Dublin Core', 'Title')).'</a>'; ?></td>
@@ -236,14 +245,14 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                         <td>
                             <?php if ($text = metadata($item, array('Item Type Metadata', 'Publication year'))): ?>
                             <?php echo $text; ?>
-                            <?php endif; ?>   
+                            <?php endif; ?>
                         </td>
                         <td>
-                            <?php if ($text = metadata($item, array('Item Type Metadata', 'Author'), array('all' => 'true', 'delimiter' => '<br>'))): ?>                
+                            <?php if ($text = metadata($item, array('Item Type Metadata', 'Author'), array('all' => 'true', 'delimiter' => '<br>'))): ?>
                             <?php echo $text; ?>
                             <?php endif; ?>
-                        </td>      
-                    <?php endif;?>    
+                        </td>
+                    <?php endif;?>
                     <?php if ($item->getItemType()->name == 'Archive'): ?>
                         <td><?php echo '<a href="'.$showlink.'">'.metadata($item, array('Dublin Core', 'Title')).'</a>'; ?></td>
                         <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Alternative name'))): ?>
@@ -257,17 +266,17 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                                     $text =  link_to($tablet, null, metadata($tablet, array('Dublin Core', 'Title'))) . ", ";
                                 endforeach;
                                 echo rtrim($text, ', ');
-                            ?>   
-                            <?php endif; ?>   
-                        </td>      
+                            ?>
+                            <?php endif; ?>
+                        </td>
 
-                    <?php endif; ?>         
-                             
+                    <?php endif; ?>
+
                     </tr>
                     <?php endforeach; ?>
-                   
-                    </table>                        
-                                           
+
+                    </table>
+
                     <?php echo fire_plugin_hook('public_items_browse', array('items' => $items, 'view' => $this)); ?>
                     <?php echo pagination_links(array('per_page'=>$per_page)); ?>
                 </div>
