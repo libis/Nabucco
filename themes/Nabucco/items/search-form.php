@@ -20,15 +20,15 @@ $formAttributes['method'] = 'GET';
             );
             ?>
         </div>
-        
+
     </div>
-    
-    
+
+
     <div id="search-narrow-by-fields" class="field">
         <div class="label"><?php echo __('Narrow by Specific Fields'); ?></div>
         <p class="search-description">
             <?php echo libis_get_simple_page_content('search_info_advanced_2');?>
-        </p>    
+        </p>
         <div class="inputs">
             <?php
 // If the form has been submitted, retain the number of search
@@ -38,7 +38,7 @@ $formAttributes['method'] = 'GET';
             } else {
                 $search = array(array('field' => '', 'type' => '', 'value' => ''));
             }
-          
+
             //Here is where we actually build the search form
             foreach ($search as $i => $rows):
             ?>
@@ -104,9 +104,9 @@ $formAttributes['method'] = 'GET';
         </div>
         <button type="button" class="add_search"><?php echo __('Add a Field'); ?></button>
     </div>
-            
+
 <!-- start aanpassing -->
-<?php 
+<?php
     $medium_commonly_searched_fields = array(111,120,141,129,156,162,165);
     $all_table_options = get_table_options('Element', null, array(
     'record_types' => array('Item', 'All'),
@@ -123,8 +123,8 @@ $formAttributes['method'] = 'GET';
   }
   ?>
     <?php if (!isset($buttonText)) $buttonText = __('Search'); ?>
-     
-   
+
+
     <p class="search-description">
         <?php echo libis_get_simple_page_content('search_info_advanced_3');?>
     </p>
@@ -141,14 +141,14 @@ $formAttributes['method'] = 'GET';
                   $hidden_element_id = $this->formHidden(
                           $basename . "[element_id]", $table_option, array('hidden' => true));
                   $hidden_type = $this->formHidden(
-                          $basename . "[type]", "contains", array('hidden' => true));
+                          $basename . "[type]", "is exactly", array('hidden' => true));
                   ?>
                   <td name="<?php echo $basename ?>" id="<?php echo $basenameID ?>"></td>
                   <td><?php
                   /*echo $this->formText(
                           $basename . "[terms]", array_key_exists($i, $search) ? $search[$i]["terms"] : "", array("style" => "margin-bottom:0;")
                   );*/
-                  
+
                   echo $this->formSelect(
                         'x', $table_option, array(
                         'title' => __("Select"),
@@ -156,7 +156,7 @@ $formAttributes['method'] = 'GET';
                         'class' => 'advanced-search-element'
                             ), findTextPairs($table_option)
                     );
-                  
+
                   ?></td>
               </tr>
               <script>
@@ -186,13 +186,13 @@ $formAttributes['method'] = 'GET';
             echo $this->formHidden(
                     'type', @$_REQUEST['type'], array('id' => 'item-type-search'), get_table_options('ItemType')
             );
-            ?> 
-   
+            ?>
+
             <?php //fire_plugin_hook('public_items_search', array('view' => $this)); ?>
     <div>
             <?php if (!isset($buttonText)) $buttonText = __('Search'); ?>
         <input type="submit" class="submit" name="submit_search" id="submit_search_advanced" value="<?php echo $buttonText ?>">
-         
+
     <input type="submit" class="submit" name="submit_search" id="reset_search_advanced" value="Reset">
     </div>
 </form>
@@ -293,11 +293,11 @@ $formAttributes['method'] = 'GET';
                 }
             });
         });
-        
+
         jQuery('#reset_search_advanced').click(function(event) {
             event.preventDefault();
             window.location.href = "<?php echo url('items/search/');?>";
         });
-                
+
     });
 </script>
