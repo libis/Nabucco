@@ -90,9 +90,9 @@
                             <td></td>
                         </tr></table>
 
-                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Julian date remark'))): ?>
+                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Julian date Remark'))): ?>
                              <div class="item-meta">
-                            <p><span class="show-title">Julian date remark</span>
+                            <p><span class="show-title">Julian date Remark</span>
                             <?php echo $text; ?></p>
                             </div>
                         <?php endif; ?>
