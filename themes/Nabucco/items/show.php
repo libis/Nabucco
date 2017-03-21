@@ -55,7 +55,7 @@
                                <?php echo $text; ?>
                             <?php endif; ?></td>
                         <?php
-                        $day = metadata($item, array('Item Type Metadata', 'Day'));
+                        $day = metadata($item, array('Item Type Metadata', 'Day (Babylonian)'));
                         $remark_day = metadata($item, array('Item Type Metadata', 'Day remark'));
                         $month = metadata($item, array('Item Type Metadata', 'Month'));
                         $remark_month = metadata($item, array('Item Type Metadata', 'Month remark'));
@@ -90,9 +90,9 @@
                             <td></td>
                         </tr></table>
 
-                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Date remark'))): ?>
+                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Julian date remark'))): ?>
                              <div class="item-meta">
-                            <p><span class="show-title">Date remark</span>
+                            <p><span class="show-title">Julian date remark</span>
                             <?php echo $text; ?></p>
                             </div>
                         <?php endif; ?>

@@ -246,7 +246,7 @@ $formAttributes['method'] = 'GET';
             "Interviewee",
             "Interviewer",
             "Journal",
-            "Archive oud",
+            "Archive identifier",
             "Lesson Plan Text",
             "Local URL",
             "Location",

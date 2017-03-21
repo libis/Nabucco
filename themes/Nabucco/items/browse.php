@@ -159,7 +159,7 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                     </td>
                     <td>
                       <?php
-                      $day = metadata($item, array('Item Type Metadata', 'Day'));
+                      $day = metadata($item, array('Item Type Metadata', 'Day (Babylonian)'));
                       $remark_day = metadata($item, array('Item Type Metadata', 'Day remark'));
                       $month = metadata($item, array('Item Type Metadata', 'Month'));
                       $remark_month = metadata($item, array('Item Type Metadata', 'Month remark'));
