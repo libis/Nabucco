@@ -130,30 +130,35 @@
 
                     <div class="show-interal-block">
 
-
-
-
                         <?php if (isset($object_relations['places'])): ?>
-                                <div class="item-meta">
-                                    <p><span class="show-title">Place of issue</span>
-                                        <?php
-                                        foreach ($object_relations['places'] as $place):
-                                            echo link_to($place, null, metadata($place, array('Dublin Core', 'Title')));
-                                        endforeach;
-                                        ?></p>
-                                </div>
-                            <?php endif; ?>
+                          <div class="item-meta">
+                              <p><span class="show-title">Place of issue</span>
+                                  <?php
+                                  foreach ($object_relations['places'] as $place):
+                                      echo link_to($place, null, metadata($place, array('Dublin Core', 'Title')));
+                                  endforeach;
+                                  ?></p>
+                          </div>
+                        <?php elseif ($text = metadata($item, array('Item Type Metadata', 'Place of issue'),array('all'=>'true','delimiter'=>', '))): ?>
+                          <div class="item-meta">
+                              <p><span class="show-title">Place of issue</span>
+                                <?php echo $text; ?>
+                        <?php endif; ?>
  </div>
-                            <?php if (isset($object_relations['archives'])): ?>
-                                <div class="item-meta">
-                                    <p><span class="show-title">Archive</span>
-                                        <?php
-                                        foreach ($object_relations['archives'] as $archive):
-                                            echo link_to($archive, null, metadata($archive, array('Dublin Core', 'Title')));
-                                        endforeach;
-                                        ?></p>
-                                </div>
-                            <?php endif; ?>
+                        <?php if (isset($object_relations['archives'])): ?>
+                          <div class="item-meta">
+                              <p><span class="show-title">Archive</span>
+                                  <?php
+                                  foreach ($object_relations['archives'] as $archive):
+                                      echo link_to($archive, null, metadata($archive, array('Dublin Core', 'Title')));
+                                  endforeach;
+                                  ?></p>
+                          </div>
+                        <?php elseif ($text = metadata($item, array('Item Type Metadata', 'Archive'),,array('all'=>'true','delimiter'=>', '))): ?>
+                          <div class="item-meta">
+                              <p><span class="show-title">Archive</span>
+                                <?php echo $text; ?>
+                        <?php endif; ?>
 
                         <?php if ($text = metadata($item, array('Item Type Metadata', 'Type and content'),array('all'=>'true','delimiter'=>', '))): ?>
                                 <div class="item-meta">

@@ -154,7 +154,9 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                                 $text .= link_to($archive, null, metadata($archive, array('Dublin Core', 'Title')));
                             endforeach;
                             echo rtrim($text, ', ');
-                        endif;
+                            elseif ($text = metadata($item, array('Item Type Metadata', 'Archive'),array('all'=>'true','delimiter'=>', '))):
+                                echo $text;
+                            endif;
                         ?>
                     </td>
                     <td>
@@ -183,12 +185,12 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                       endif;
                       ?>
                       <?php
-                      if ($king || $remark_king):
-                          $king = libis_get_date($king, $remark_king);
-                      endif;
+                        if ($king || $remark_king):
+                            $king = libis_get_date($king, $remark_king);
+                        endif;
                       ?>
 
-                        <?php echo $day . "." . $month . "." . $year . " " . $king; ?>
+                      <?php echo $day . "." . $month . "." . $year . " " . $king; ?>
 
                     </td>
                     <td>
@@ -202,20 +204,20 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                         <?php endif; ?>
                     </td>
                     <td>
-                        <?php if (isset($object_relations['places'])): ?>
-                            <?php
-                                $text = '';
-                                foreach ($object_relations['places'] as $place):
-                                    $text .= link_to($place, null, metadata($place, array('Dublin Core', 'Title'))).", ";
-                                endforeach;
-                                echo rtrim($text, ', ');
-                             ?>
-                        <?php endif; ?>
+                      <?php
+                        if (isset($object_relations['places'])):
+                            $text = '';
+                            foreach ($object_relations['places'] as $place):
+                                $text .= link_to($place, null, metadata($place, array('Dublin Core', 'Title'))).", ";
+                            endforeach;
+                            echo rtrim($text, ', ');
+                         elseif ($text = metadata($item, array('Item Type Metadata', 'Place of issue'),array('all'=>'true','delimiter'=>', '))):
+                             echo $text;
+                         endif;
+                       ?>
                     </td>
                 </tr>
-
                 <?php endif; ?>
-
 
                 <?php if ($item->getItemType()->name == 'People'): ?>
                     <td><?php echo '<a href="'.$showlink.'">'.metadata($item, array('Item Type Metadata', 'Name')).'</a>'; ?></td>
