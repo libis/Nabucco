@@ -38,7 +38,6 @@
                         <?php else: ?>
                           <?php echo $text; ?>
                         <?php endif; ?>
-                        CDLI reference
 
                     <?php endif; ?></td>
 
@@ -57,7 +56,7 @@
                             <th></th>
                         </tr>
                         <tr>
-                            <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Period'))): ?>
+                            <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Period'),array('all'=>'true','delimiter'=>', '))): ?>
                                <?php echo $text; ?>
                             <?php endif; ?></td>
                         <?php
@@ -96,7 +95,7 @@
                             <td></td>
                         </tr></table>
 
-                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Julian date Remark'))): ?>
+                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Julian date Remark'),array('all'=>'true','delimiter'=>', '))): ?>
                              <div class="item-meta">
                             <p><span class="show-title">Julian date Remark</span>
                             <?php echo $text; ?></p>
@@ -152,7 +151,7 @@
                                 </div>
                             <?php endif; ?>
 
-                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Type and content'))): ?>
+                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Type and content'),array('all'=>'true','delimiter'=>', '))): ?>
                                 <div class="item-meta">
                                     <p><span class="show-title">Type and content</span>
                                         <?php echo $text; ?></p>
@@ -164,7 +163,7 @@
                             <?php echo $text; ?></p>
                         </div>
                     <?php endif; ?>
-                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Other markings'))): ?>
+                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Other markings'),array('all'=>'true','delimiter'=>', '))): ?>
                             <div class="item-meta">
                                 <p><span class="show-title">Other Markings</span>
                                     <?php echo $text; ?></p>
@@ -172,13 +171,13 @@
                         <?php endif; ?>
                 </div>
                 <div class="show-block">
-                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Paraphrase'))): ?>
+                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Paraphrase'),array('all'=>'true','delimiter'=>', '))): ?>
                         <div class="item-meta">
                             <h3>Paraphrase</h3>
                             <p><?php echo $text; ?></p>
                         </div>
                     <?php endif; ?>
-                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Imported'))): ?>
+                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Imported'),array('all'=>'true','delimiter'=>', '))): ?>
                         <div align=right class="item-meta">
                             <h3>Imported</h3>
                             <p><?php echo $text; ?></p>
