@@ -154,7 +154,7 @@
                                   endforeach;
                                   ?></p>
                           </div>
-                        <?php elseif ($text = metadata($item, array('Item Type Metadata', 'Archive'),,array('all'=>'true','delimiter'=>', '))): ?>
+                        <?php elseif ($text = metadata($item, array('Item Type Metadata', 'Archive'),array('all'=>'true','delimiter'=>', '))): ?>
                           <div class="item-meta">
                               <p><span class="show-title">Archive</span>
                                 <?php echo $text; ?>
