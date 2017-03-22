@@ -41,13 +41,17 @@
 
                     <?php endif; ?></td>
 
-                    <td><?php if (isset($object_relations['tablets'])): ?>
+                    <td>
+                      <?php if (isset($object_relations['tablets'])): ?>
                         <?php
                         foreach ($object_relations['tablets'] as $tablet):
                             echo link_to($tablet, null, metadata($tablet, array('Dublin Core', 'Title')));
                         endforeach;
                         ?>
-                    <?php endif; ?></td>
+                      <?php elseif ($text = metadata($item, array('Item Type Metadata', 'Duplicate'))): ?>
+                          <?php echo $text; ?>
+                      <?php endif; ?>
+                    </td>
                     </tr>
                     <tr>
                             <th><h3>Period</h3></th>
