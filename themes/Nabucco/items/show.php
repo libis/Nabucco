@@ -33,7 +33,13 @@
                     <?php endif; ?></td>
 
                     <td><?php if ($text = metadata($item, array('Item Type Metadata', 'CDLI No.'))): ?>
-                        <?php echo $text; ?>
+                        <?php if ($link = metadata($item, array('Item Type Metadata', 'CDLI reference'))): ?>
+                          <a href="<?php echo $link; ?>"><?php echo $text; ?></a>
+                        <?php else: ?>
+                          <?php echo $text; ?>
+                        <?php endif; ?>
+                        CDLI reference
+
                     <?php endif; ?></td>
 
                     <td><?php if (isset($object_relations['tablets'])): ?>
