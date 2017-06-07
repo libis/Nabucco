@@ -24,7 +24,7 @@
                     <th><h3>Duplicate</h3></th>
                     </tr>
                     <tr>
-                    <td><?php if ($text = metadata($item, array('Item Type Metadata', 'NaBuCCo No.'))): ?>
+                    <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Object ID'))): ?>
                         <?php echo $text; ?>
                     <?php endif; ?></td>
 
