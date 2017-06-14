@@ -268,20 +268,20 @@ function libis_advanced_search_seperate_fields() {
 
 function libis_places_tree(){
     $places = get_records('Item', array("type"=>'Place'),9999);
-
-
     $places = libis_order_places($places);
-    //var_dump($places);
+    usort($places, function($a, $b){ return strcmp($a["name"], $b["name"]); });
+    //echo "<pre>".var_dump($places)."</pre>";
     $html = "<ul class='map-tree'>";
     foreach($places as $place):
         $place_item = get_record_by_id('Item', $place['id']);
 
             if(!empty($place['children'])):
-            $html .= "<li><a class='map-tree-button' href='#'>+</a>".link_to($place_item,null,metadata($place_item,array('Item Type Metadata','Place name')))."</li>";
+                usort($place['children'], function($a, $b){ return strcmp($a["name"], $b["name"]); });
+                $html .= "<li><a class='map-tree-button' href='#'>+</a>".link_to($place_item,null,metadata($place_item,array('Item Type Metadata','Place name')))."</li>";
 
                 $html .= "<li class='map-tree-hidden'><ul>";
                 foreach($place['children'] as $child):
-                    $child = get_record_by_id('Item', $child);
+                    $child = get_record_by_id('Item', $child['id']);
                     if($child->id != $place_item->id):
                         $html .= "<li>".link_to($child,null,metadata($child,array('Item Type Metadata','Place name')))."</li>";
                     endif;
@@ -302,24 +302,29 @@ function libis_order_places($places){
     foreach($places as $place):
         $pid = metadata($place,array('Item Type Metadata','Parent id'));
         $id = metadata($place,array('Item Type Metadata','Place id'));
+        $name = metadata($place,array('Item Type Metadata','Place name'));
+        $name = transliterator_transliterate('Any-Latin; Latin-ASCII; [\u0080-\u7fff] remove', $name);
 
         if ( $pid === null  || $pid == 1 || $pid == 4 ) {
             if ( !array_key_exists( $id, $p ) ) {
               $p[ $id ] = array(
                 'id' => $place->id,
+                'name'=> $name,
                 'children' => array()
               );
             }
             $p[$id]['id'] = $place->id;//metadata($place,array('Item Type Metadata','Place name'));
-
+            $p[$id]['name'] = $name;
         }else {
             if ( !array_key_exists( $pid, $p ) ) {
               $p[ $pid ] = array(
                 'id' => $place->id,
+                'name'=> $name,
                 'children' => array()
               );
             }
-            $p[ $pid ]['children'][ $id ] = $place->id;//metadata($place,array('Item Type Metadata','Place name'));
+            $p[ $pid ]['children'][ $id ]['id'] = $place->id;//metadata($place,array('Item Type Metadata','Place name'));
+            $p[$pid]['children'][ $id ]['name'] = $name;
         }
     endforeach;
     return $p;
