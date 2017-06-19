@@ -426,7 +426,7 @@ function libis_get_glossary($items){
  */
 function custom_paging(){
     //Starts a conditional statement that determines a search has been run
-    if (isset($_SERVER['QUERY_STRING'])) {
+    if ($_SERVER['QUERY_STRING']!="") {
         // Sets the current item ID to the variable $current
         $current = metadata('item', 'id');
         //Break the query into an array
@@ -437,18 +437,7 @@ function custom_paging(){
         $itemIds = array();
         $list = array();
 
-        if (isset($queryarray['query'])){
-            //We only want to browse previous and next for Items
-            $queryarray['record_types'] = array('Item');
-            //Get an array of the texts from the query.
-            $textlist = get_db()->getTable('SearchText')->findBy($queryarray);
-            //Loop through the texts ans populate the ids and records.
-            foreach ($textlist as $value) {
-                $itemIds[] = $value->record_id;
-                $record = get_record_by_id($value['record_type'], $value['record_id']);
-                $list[] = $record;
-            }
-        }elseif (isset($queryarray['advanced']) || isset($queryarray['search'])){
+        if (isset($queryarray['advanced']) || isset($queryarray['search'])){
             if (!array_key_exists('sort_field', $queryarray)){
                 $queryarray['sort_field'] = 'added';
                 $queryarray['sort_dir'] = 'd';
