@@ -80,7 +80,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     box-sizing: border-box;
   }
 
- 
+
   body {
   background: white;
   color: #333;
@@ -99,7 +99,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     font-family: "Lato",sans-serif;
     color: #843418;
     text-transform: uppercase;
-    
+
   }
 
   h2 {
@@ -108,9 +108,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     line-height: 1em;
     margin-bottom: 0.85714em;
     padding-bottom:8px;
-    border-bottom:1px dotted #ccc;  
-    color:#843418;   
- 
+    border-bottom:1px dotted #ccc;
+    color:#843418;
+
   }
 
   h3 {
@@ -194,7 +194,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     color: #7B8D78;
   }
 
-  
+
   h1 a,
   h2 a,
   h3 a,
@@ -226,8 +226,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     /* Move the subscripted text down, but only half as far down as the superscript moved up */
     bottom: -0.25em;
   }
-  
-  
+
+
   table {
     width: 100%;
     margin: 3em 0;
@@ -239,7 +239,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     padding: 10px 10px;
     border: 1px solid #dddddd;
   }
-  
+
   tr td:first-child {
       background: #eee;
   }
@@ -343,7 +343,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     left: -9999px;
   }
 
-  #wrap {    
+  #wrap {
     margin: 0 auto;
   }
 
@@ -351,11 +351,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     clear: both;
     padding-bottom: 1em;
     max-width: 960px;
-    margin:0 auto;   
+    margin:0 auto;
     overflow:hidden;
     width: 100%;
-   
-    
+
+
   }
   #content > h1:first-of-type {
     padding: 0.75em 0;
@@ -390,76 +390,76 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     position: absolute;
     right: -1px;
     top: 0;
-    bottom: 0;    
+    bottom: 0;
     width: 1px;
   }
-  
+
    #content > #primary:not(:only-child) {
       width: 75%;
   }
-  
+
   #content nav {
     overflow: hidden;
   }
-  
+
   .primary-section img, .secondary-block img{
       float:left;
       width:65px;
       height:75px;
       margin: 4px 8px 0px 0;
   }
-  
+
   .welcome{
       font-size:1.4em;
       font-family: "Lato",sans-serif;
-      font-weight:100;      
-      border-left: 10px solid #843418;  
+      font-weight:100;
+      border-left: 10px solid #843418;
       text-align: justify;
     text-justify: inter-word;
-      
+
   }
-  
+
   .welcome p{
       margin:0.5em 1em 1em 1em;
-      line-height: 1.6em!important; 
+      line-height: 1.6em!important;
   }
-  
+
   .welcome .start{
       color:#843418;
-      font-weight:bold;      
-      text-transform:uppercase;  
-      border-bottom: 1px dotted #843418;   
+      font-weight:bold;
+      text-transform:uppercase;
+      border-bottom: 1px dotted #843418;
       font-size:1.1em;
   }
-  
+
   .section-left, .section-right{
       width:48.5%;
   }
-  
+
   .section-left{
       float:left;
   }
-  
+
   .section-right{
       float:right;
   }
 
   #secondary {
     float: right;
-    width: 23.5%;    
-    word-wrap: break-word;    
-    margin-left: 1em;    
+    width: 23.5%;
+    word-wrap: break-word;
+    margin-left: 1em;
   }
-  
+
   .secondary-block{
     background:#fff;
     padding: 1em;
     margin: 0 0 1em 0;
     border-bottom:2px solid #aaa;
     border:1px solid #843418;
-   
+
   }
-  
+
   .secondary-block ul,.featured ul{
       margin-bottom:0.5em;
   }
@@ -468,7 +468,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     list-style: none;
     margin-left: 0;
   }
-  
+
   #home #right-nav .navigation li ul{
       display:none;
   }
@@ -495,13 +495,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   .page-input {
     padding-right: 10px;
   }
-  
+
   .per_page_select{
       float:right;
       vertical-align: top;
       margin:0 0 0 5px;
   }
-  
+
   .per_page_select select{
       margin:0 0 0 5px;
       padding: 0.30357em;
@@ -510,7 +510,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       font-family: "Lato",sans-serif;
     font-size: 14px;
     line-height: 21px;
-  }    
+  }
 
   .pagination_next,
   .pagination_previous {
@@ -631,29 +631,29 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
   /* @end */
   /* @group ----- Header ----- */
-  header {    
+  header {
     background: #fff url('../images/Handcopypart.jpg') no-repeat right bottom;
     overflow:hidden;
   }
-  
+
   #header-wrapper{
       float:left;
       width:50%;
   }
 
-  #site-title {   
+  #site-title {
     font-family: "Lato",serif;
     font-size: 4.5em;
-    padding:10px 0 0 0;    
-    font-weight:bold;    
+    padding:10px 0 0 0;
+    font-weight:bold;
     color:#333;
   }
-  
+
   #site-title .smallcaps{
       font-variant: small-caps;
        font-weight:100;
   }
-  
+
   #map{
       float:left;
       padding:5px 0;
@@ -661,25 +661,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       border-right:1px dotted #843418;
       background-color: #fff;
   }
-  #map img{    
+  #map img{
     height:110px;
   }
-  
+
   #caroussel img{
       height:auto;
       width:100%;
       margin-bottom:10px;
   }
 
-  #search-container {    
+  #search-container {
     text-align: right;
     vertical-align: top;
     width: 295px;
-    padding:5px;   
-    overflow:hidden;    
+    padding:5px;
+    overflow:hidden;
   }
   #search-container form {
-    margin: 0 0;  
+    margin: 0 0;
     margin-left:5px;
     width: 99%;
     position: relative;
@@ -738,7 +738,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
 
   #advanced-form {
-    
+
     top: 2.625em;
     background-color: #fff;
     z-index: 20;
@@ -786,39 +786,39 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     z-index: 15;
     float: left;
     border-top:2px solid #843418;
-    border-bottom:1px dotted #843418;   
+    border-bottom:1px dotted #843418;
     background:#fff;
     text-align:center;
   }
   .nav-menu a {
     text-decoration: none;
     text-transform:uppercase;
-    
+
   }
   .nav-menu a:link, .nav-menu a:visited {
-    
+
   }
   .nav-menu a:hover, .nav-menu a:focus {
-    
+
   }
 
   /* a top level navigation item in the mega menu */
   .nav-item {
     list-style: none;
-    display: inline;    
-    padding: 0;   
-    margin: 0;    
-    position: relative;    
+    display: inline;
+    padding: 0;
+    margin: 0;
+    position: relative;
   }
-  
+
   .nav-item a{
-      
+
   }
-  
-  .nav-item +li {      
+
+  .nav-item +li {
       border-left:1px solid #843418;
       padding-left: 1em;
-  }  
+  }
 
   /* first descendant link within a top level navigation item */
   .nav-item > a {
@@ -830,14 +830,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     font-size:110%;
   }
 
-  /* focus/open states of first descendant link within a top level 
+  /* focus/open states of first descendant link within a top level
      navigation item */
   .nav-item > a:focus,
   .nav-item > a.open {
     background-color: #fff;
   }
 
-  /* open state of first descendant link within a top level 
+  /* open state of first descendant link within a top level
      navigation item */
   .nav-item > a.open {
     background-color: #fff;
@@ -854,16 +854,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     padding: 0.5em 1em;
     border: 0;
     margin: 0;
-    background-color: #843418;     
+    background-color: #843418;
     z-index: 2;
     left:0;
     width:auto;
     text-align:left;
   }
-  
+
   .sub-nav a{
       color:#fff;
-      
+
   }
 
   /* sub-navigation panel open state */
@@ -892,7 +892,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     margin: 0;
     padding: 0;
   }
-  
+
   .sub-nav li +li{
       padding-top:0.3em;
   }
@@ -915,10 +915,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   footer {
     clear: both;
     padding-bottom: 0.5em;
-    background:#fff;   
+    background:#fff;
   }
-  
-  #footer-content{      
+
+  #footer-content{
       max-width: 960px;
       margin:1em auto 0 auto;
   }
@@ -926,32 +926,32 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       background: #843418;
       border-top:1px dotted #fff;
   }
-  
-  footer ul {     
+
+  footer ul {
     margin:0 auto;
     padding:0.8em 0 0.8em 0;
     max-width:960px;
-    
+
   }
   footer ul ul {
     display: none;
   }
   footer li {
     margin-bottom: 0;
-    display: inline;   
+    display: inline;
     padding-right: 1em;
   }
-  
+
   footer li +li {
     padding-left: 1em;
     border-left:1px dotted #fff;
   }
-  
-  footer li a {   
-    text-decoration: none;    
+
+  footer li a {
+    text-decoration: none;
     white-space: nowrap;
     color:#fff!important;
-   
+
   }
   footer li.nav-home a {
     border-width: 0;
@@ -961,21 +961,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
 
   #footer-text {
-    float:right;  
+    float:right;
     width: 30%;
     margin-bottom: 0.2em;
     line-height:1.5em;
     font-family: "Lato",sans-serif;
     font-size:0.9em;
     text-align:right;
-    
+
   }
-  
+
   #footer-logo{
       float:left;
       vertical-align: top;
   }
-  
+
   #footer-logo img {
       max-width:150px;
       max-height:100px;
@@ -1054,7 +1054,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     color: #fff;
     padding: 1em;
     border-bottom:2px solid #4F584D;
-   
+
   }
   .featured h2,
   #featured-exhibit h2 {
@@ -1074,7 +1074,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
 
   #home #content #primary {
-    
+
   }
 
   #featured-item *:last-child,
@@ -1109,62 +1109,62 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   .items.show #secondary {
     padding-top: 0;
   }
-  
+
   .title-type{
       font-style: italic;
       margin-right:5px;
       text-transform: lowercase;
       font-family: "kepler-std",Georgia,Times,serif;
   }
-  
+
   .show-title{
     font-family: "Lato",sans-serif;
     font-size: 1em;
     margin-bottom: 0;
     width: auto;
-    color: #7b8d78;   
+    color: #7b8d78;
     line-height: 21px;
     margin-right:5px;
     display: inline-block;
     width:20%;
   }
-  
+
   .show .item h3{
       margin-bottom:10px;
       font-family: "Lato",sans-serif;
       font-size:1em;
       width:auto;
-  }  
-  
+  }
+
   .show .middle-table td{
       padding:0 20px;
       border:none;
       width:30%;
-  }  
-    
-  .show-section{     
+  }
+
+  .show-section{
       margin-bottom:20px;
   }
-  
+
   .show-block{
-      vertical-align: top;      
+      vertical-align: top;
       margin-bottom:30px;
   }
-  
+
    .show-block:last-child{
       border-right:none;
   }
-  
+
   .show-block:last-child p{
       margin-bottom:20px;
   }
-  
-  
- 
+
+
+
   .show-block:first-child p{
       margin-bottom:0.1em;
   }
-  
+
   .show-block table{
       width:100%;
       margin: 0 0 2em 0;
@@ -1172,29 +1172,40 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       border-collapse:collapse;
       font-size:1em;
   }
-  
+
   .show-block th, .show-block td{
       padding:10px 40px 10px 0px;
       font-weight: normal;
       border:none;
       background:none;
-      
+
   }
-  
+
   .show-block td:first-child{
       background:none;
   }
-  
+
   .show-block th{
       padding:20px 40px 0px 0px;
   }
-  
+
   .show-interal-block .item-meta:last-child{
       border-top:1px solid #eee;
       margin-top:10px;
       padding-top:10px;
   }
-  
+
+  .toggle-more{
+    font-weight: bold;
+    padding:0.3rem;
+    font-family: "Lato",sans-serif;
+  }
+  .more-info{
+    display:none;
+    padding:2rem;
+    background: #fafafa;
+  }
+
   #item-relations-display-item-relations{
       display:none;
   }
@@ -1241,33 +1252,33 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     overflow: hidden;
     padding: 1.42857em 1.5em;
   }
-  
+
   .map-links-wrapper{
       background:#eee;
       padding:10px;
       border-top:2px solid #843418;
       border-bottom:1px solid #843418;
   }
-  
+
   #map-links .map-tree li{
       padding:0;
       padding-left:20px;
       margin:0;
   }
-  
+
   #map-links li a{
       display:initial;
   }
-  
+
   #map-links .map-tree-hidden{
       display:none;
   }
-  
+
   .map-tree-button{
       font-weight:bold;
       margin-right:5px;
   }
-  
+
   .browse .item table{
       width:70%;
       margin:10px 0;
@@ -1278,18 +1289,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       font-size:1em;
       width:auto;
   }
-  
+
   .browse .item td{
       border:none;
       padding:5px 20px;
-      color:#333;  
+      color:#333;
       vertical-align: baseline;
   }
-  
+
   .browse .item li{
       list-style:none;
   }
-  
+
   .alphabet_list{
       list-style:none;
       margin: 1.5em 0;
@@ -1299,40 +1310,40 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       border-bottom:1px solid #843418;
       overflow:hidden;
   }
-  
+
   .alphabet_list li{
       display:inline;
       padding:8px 4px;
       float:left;
       width:16px;
   }
-  
+
   .gloss{
-      margin:0 10px 0 0;          
+      margin:0 10px 0 0;
       text-transform: uppercase;
       font-family: "Lato",serif;
       font-weight:bold;
       display:block;
       float:left;
       width:280px;
-  } 
-  
+  }
+
   .gloss li{
      list-style:none;
-     font-size:1em;     
+     font-size:1em;
   }
-  
+
   .top-li{
       border-bottom:1px dotted #843418;
       color:#843418;
-     
+
   }
-  
+
   .gloss ul{
       font-weight:normal;
-      
+
   }
-  
+
   .gloss ul li{
       font-weight:normal;
       padding:3px 0;
@@ -1341,12 +1352,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       font-size:0.8em;
       border:none;
   }
-  
+
   .item td.title-cell{
       background:none;
       width:40%;
   }
-  
+
   .search-description{
       color:#666;
       font-style:italic;
@@ -1354,11 +1365,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       text-justify: inter-word;
       margin: 5px 0 5px 0;
   }
-  
+
   #search-by-certain-fields table{
       margin-top:5px;
   }
-  
+
   .museum{
       text-transform: none;
       font-style:italic;
@@ -1366,7 +1377,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
 
   .item img,
-  .item-file img {    
+  .item-file img {
     width:400px;
     height:auto;
     overflow:hidden;
@@ -1388,7 +1399,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   .element-text-empty {
     display: none;
   }
-  
+
   .date{
       color:#999;
   }
@@ -1398,7 +1409,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     overflow: hidden;
     border-top: 1px dotted #ccc;
     font-weight: bold;
-   
+
     padding-top: 1.42857em;
     margin: 1.5em 0 0;
     float: left;
@@ -1410,11 +1421,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     width: 200px;
     margin-bottom: 0;
   }
- 
+
   .item-pagination li.return {
     float: none;
   }
-  
+
   .item-pagination li.next {
     float: right;
     text-align: right;
@@ -1434,7 +1445,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     display: block;
   }
   .item-file img {
-   
+
     margin:0 0.5em 0.5em 0;
   }
 
@@ -1478,14 +1489,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   #advanced-search-form input {
     display: inline-block;
   }
-  
+
   #advanced-search-form th,#advanced-search-form td{
       border:none;
       font-size:1.2em;
       padding:10px 0 10px 10px;
       border-top:1px solid #ddd;
   }
-  
+
   #advanced-search-form tr td:first-child{
       background:none;
   }
@@ -1508,31 +1519,31 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     position: absolute;
     line-height: 31.5px;
   }
-  
-   
+
+
   #search-filters{
       margin-bottom:1em;
   }
-  
+
   #content > #primary.browse h1{
       margin-bottom:1.5em;
   }
-  
+
   .browse #search-form{
       margin:0;
   }
-  
+
   .browse #primary #search-container{
       width:100%;
       padding:0;
   }
-  
+
   .browse #primary #left{
       width:25%;
       padding-right:2%;
       float:left;
   }
-  
+
   .advanced-search-link{
       font-size:1em;
       border-left:5px solid #843418;
@@ -1541,14 +1552,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       text-transform: uppercase;
       text-decoration:underline;
   }
-  
+
   .browse #primary #right{
       width:75%;
       padding-left:2%;
       float:right;
       border-left: 1px dotted #ccc;
   }
- 
+
 
   /* @end */
   /* @group ----- Collections ----- */
@@ -1576,7 +1587,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   /* @end */
   /* @group ----- Simple Pages ----- */
   .page #primary {
-    
+
   }
 
   /* @end */
@@ -1659,7 +1670,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     float: left;
     width: 100%;
   }
-  
+
   /* @end */
 }
 @media screen and (max-width: 844px) {
@@ -1678,7 +1689,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     width: 100%;
     margin-bottom: 1.5em;
   }
- 
+
 }
 @media screen and (max-width: 480px) {
   .navigation {

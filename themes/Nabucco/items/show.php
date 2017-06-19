@@ -18,51 +18,51 @@
                 <div class="show-block">
                     <table>
                     <tr>
-                    <th><h3>NaBuCCo No.</h3></th>
-                    <th><h3>Museum No.</h3></th>
-                    <th><h3>CDLI No.</h3></th>
-                    <th><h3>Duplicate</h3></th>
+                      <th><h3>NaBuCCo No.</h3></th>
+                      <th><h3>Museum No.</h3></th>
+                      <th><h3>CDLI No.</h3></th>
+                      <th><h3>Duplicate</h3></th>
                     </tr>
                     <tr>
-                    <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Object ID'))): ?>
-                        <?php echo $text; ?>
-                    <?php endif; ?></td>
+                        <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Object ID'))): ?>
+                            <?php echo $text; ?>
+                        <?php endif; ?></td>
 
-                    <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Museum No.'))): ?>
-                        <?php echo $text; ?>
-                    <?php endif; ?></td>
+                        <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Museum No.'))): ?>
+                            <?php echo $text; ?>
+                        <?php endif; ?></td>
 
-                    <td><?php if ($text = metadata($item, array('Item Type Metadata', 'CDLI No.'))): ?>
-                        <?php if ($link = metadata($item, array('Item Type Metadata', 'CDLI reference'))): ?>
-                          <a href="<?php echo $link; ?>"><?php echo $text; ?></a>
-                        <?php else: ?>
-                          <?php echo $text; ?>
-                        <?php endif; ?>
+                        <td><?php if ($text = metadata($item, array('Item Type Metadata', 'CDLI No.'))): ?>
+                            <?php if ($link = metadata($item, array('Item Type Metadata', 'CDLI reference'))): ?>
+                              <a href="<?php echo $link; ?>"><?php echo $text; ?></a>
+                            <?php else: ?>
+                              <?php echo $text; ?>
+                            <?php endif; ?>
 
-                    <?php endif; ?></td>
+                        <?php endif; ?></td>
 
-                    <td>
-                      <?php if (isset($object_relations['tablets'])): ?>
-                        <?php
-                        foreach ($object_relations['tablets'] as $tablet):
-                            echo link_to($tablet, null, metadata($tablet, array('Dublin Core', 'Title')));
-                        endforeach;
-                        ?>
-                      <?php elseif ($text = metadata($item, array('Item Type Metadata', 'Duplicate'))): ?>
-                          <?php echo $text; ?>
-                      <?php endif; ?>
-                    </td>
+                        <td>
+                          <?php if (isset($object_relations['tablets'])): ?>
+                            <?php
+                            foreach ($object_relations['tablets'] as $tablet):
+                                echo link_to($tablet, null, metadata($tablet, array('Dublin Core', 'Title')));
+                            endforeach;
+                            ?>
+                          <?php elseif ($text = metadata($item, array('Item Type Metadata', 'Duplicate'))): ?>
+                              <?php echo $text; ?>
+                          <?php endif; ?>
+                        </td>
                     </tr>
                     <tr>
-                            <th><h3>Period</h3></th>
-                            <th><h3>Babylonian date</h3></th>
-                            <th><h3>Julian date</h3></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Period'),array('all'=>'true','delimiter'=>', '))): ?>
-                               <?php echo $text; ?>
-                            <?php endif; ?></td>
+                        <th><h3>Period</h3></th>
+                        <th><h3>Babylonian date</h3></th>
+                        <th><h3>Julian date</h3></th>
+                        <th><h3>Join</h3></th>
+                    </tr>
+                    <tr>
+                        <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Period'),array('all'=>'true','delimiter'=>', '))): ?>
+                           <?php echo $text; ?>
+                        <?php endif; ?></td>
                         <?php
                         $day = metadata($item, array('Item Type Metadata', 'Day (Babylonian)'));
                         $remark_day = metadata($item, array('Item Type Metadata', 'Day remark'));
@@ -92,92 +92,90 @@
                             $king = libis_get_date($king, $remark_king);
                         endif;
                         ?>
-                            <td><?php echo $day . "." . $month . "." . $year . " " . $king; ?></td>
-                            <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Julian date'))): ?>
-                                <?php echo $text; ?>
-                                <?php endif; ?></td>
-                            <td></td>
-                        </tr></table>
-
-                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Julian date Remark'),array('all'=>'true','delimiter'=>', '))): ?>
-                             <div class="item-meta">
-                            <p><span class="show-title">Julian date Remark</span>
-                            <?php echo $text; ?></p>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if ($pub = metadata($item, array('Item Type Metadata', 'Publication'))): ?>
-                            <div class="item-meta">
-                                <p><span class="show-title">Publication</span>
-                                <?php
-                                if ($text = metadata($item, array('Item Type Metadata', 'Text number'))):
-                                    $pub .= " " . $text;
-                                endif;
-                                if ($text = metadata($item, array('Item Type Metadata', 'Page number'))):
-                                    $pub .= ", " . $text;
-                                endif;
-
-                                if (isset($object_relations['bibliographies'])):
-                                    echo link_to($object_relations['bibliographies'][0], null,$pub);
-                                else:
-                                    echo $pub;
-                                endif;
-                                ?>
-                                </p>
-                            </div>
-                        <?php endif; ?>
+                        <td><?php echo $day . "." . $month . "." . $year . " " . $king; ?></td>
+                        <td><?php if ($text = metadata($item, array('Item Type Metadata', 'Julian date'))): ?>
+                            <?php echo $text; ?>
+                            <?php endif; ?></td>
+                        <td>
+                          <?php if ($text = metadata($item, array('Item Type Metadata', 'Join'),array('all'=>'true','delimiter'=>', '))): ?>
+                             <?php echo $text; ?>
+                          <?php endif; ?>
+                        </td>
+                    </tr>
+                  </table>
 
 
-                    <div class="show-interal-block">
+                  <?php if ($pub = metadata($item, array('Item Type Metadata', 'Publication'))): ?>
+                      <div class="item-meta">
+                          <p><span class="show-title">Publication</span>
+                          <?php
+                          if ($text = metadata($item, array('Item Type Metadata', 'Text number'))):
+                              $pub .= " " . $text;
+                          endif;
+                          if ($text = metadata($item, array('Item Type Metadata', 'Page number'))):
+                              $pub .= ", " . $text;
+                          endif;
 
-                        <?php if (isset($object_relations['places'])): ?>
-                          <div class="item-meta">
-                              <p><span class="show-title">Place of issue</span>
-                                  <?php
-                                  foreach ($object_relations['places'] as $place):
-                                      echo link_to($place, null, metadata($place, array('Dublin Core', 'Title')));
-                                  endforeach;
-                                  ?></p>
-                          </div>
-                        <?php elseif ($text = metadata($item, array('Item Type Metadata', 'Place of issue'),array('all'=>'true','delimiter'=>', '))): ?>
-                          <div class="item-meta">
-                              <p><span class="show-title">Place of issue</span>
-                                <?php echo $text; ?>
-                        <?php endif; ?>
- </div>
-                        <?php if (isset($object_relations['archives'])): ?>
+                          if (isset($object_relations['bibliographies'])):
+                              echo link_to($object_relations['bibliographies'][0], null,$pub);
+                          else:
+                              echo $pub;
+                          endif;
+                          ?>
+                          </p>
+                      </div>
+                  <?php endif; ?>
+
+                  <div class="show-interal-block">
+                      <?php if (isset($object_relations['places'])): ?>
+                      <div class="item-meta">
+                          <p><span class="show-title">Place of issue</span>
+                              <?php
+                              foreach ($object_relations['places'] as $place):
+                                  echo link_to($place, null, metadata($place, array('Dublin Core', 'Title')));
+                              endforeach;
+                              ?></p>
+                      </div>
+                      <?php elseif ($text = metadata($item, array('Item Type Metadata', 'Place of issue'),array('all'=>'true','delimiter'=>', '))): ?>
+                      <div class="item-meta">
+                          <p><span class="show-title">Place of issue</span>
+                            <?php echo $text; ?>
+                      </div>
+                      <?php endif; ?>
+                      <?php if (isset($object_relations['archives'])): ?>
                           <div class="item-meta">
                               <p><span class="show-title">Archive</span>
-                                  <?php
-                                  foreach ($object_relations['archives'] as $archive):
-                                      echo link_to($archive, null, metadata($archive, array('Dublin Core', 'Title')));
-                                  endforeach;
-                                  ?></p>
+                              <?php
+                              foreach ($object_relations['archives'] as $archive):
+                                  echo link_to($archive, null, metadata($archive, array('Dublin Core', 'Title')));
+                              endforeach;
+                              ?></p>
                           </div>
-                        <?php elseif ($text = metadata($item, array('Item Type Metadata', 'Archive'),array('all'=>'true','delimiter'=>', '))): ?>
+                      <?php elseif ($text = metadata($item, array('Item Type Metadata', 'Archive'),array('all'=>'true','delimiter'=>', '))): ?>
                           <div class="item-meta">
                               <p><span class="show-title">Archive</span>
-                                <?php echo $text; ?>
-                        <?php endif; ?>
+                              <?php echo $text; ?></p>
+                          </div>
+                      <?php endif; ?>
 
-                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Type and content'),array('all'=>'true','delimiter'=>', '))): ?>
-                                <div class="item-meta">
-                                    <p><span class="show-title">Type and content</span>
-                                        <?php echo $text; ?></p>
-                                </div>
-                            <?php endif; ?>
-                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Items and quantifiable data'),array('all'=>'true','delimiter'=>'; '))): ?>
+                      <?php if ($text = metadata($item, array('Item Type Metadata', 'Type and content'),array('all'=>'true','delimiter'=>', '))): ?>
+                          <div class="item-meta">
+                              <p><span class="show-title">Type and content</span>
+                                  <?php echo $text; ?></p>
+                          </div>
+                      <?php endif; ?>
+                      <?php if ($text = metadata($item, array('Item Type Metadata', 'Items and quantifiable data'),array('all'=>'true','delimiter'=>'; '))): ?>
                         <div class="item-meta">
                             <p><span class="show-title">Items and quantifiable data</span>
                             <?php echo $text; ?></p>
                         </div>
-                    <?php endif; ?>
-                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Other markings'),array('all'=>'true','delimiter'=>', '))): ?>
-                            <div class="item-meta">
-                                <p><span class="show-title">Other Markings</span>
-                                    <?php echo $text; ?></p>
-                            </div>
-                        <?php endif; ?>
+                      <?php endif; ?>
+                      <?php if ($text = metadata($item, array('Item Type Metadata', 'Other markings'),array('all'=>'true','delimiter'=>', '))): ?>
+                          <div class="item-meta">
+                              <p><span class="show-title">Other Markings</span>
+                                  <?php echo $text; ?></p>
+                          </div>
+                      <?php endif; ?>
                 </div>
                 <div class="show-block">
                     <?php if ($text = metadata($item, array('Item Type Metadata', 'Paraphrase'),array('all'=>'true','delimiter'=>', '))): ?>
@@ -196,52 +194,92 @@
                     <table>
                         <tr>
                             <th><h3>Persons</h3></th>
-                        <th><h3>Role</h3></th>
-                        <th><h3>Profession</h3></th>
-                        <th><h3>Status</h3></th>
+                            <th><h3>Role</h3></th>
+                            <th><h3>Profession</h3></th>
+                            <th><h3>Status</h3></th>
                         </tr>
-                    <?php
-                    foreach ($relations['people'] as $person):
-                       echo "<tr>" . libis_print_person($person, $item) . "</tr>";
-                    endforeach;
-                    ?>
+                        <?php
+                        foreach ($relations['people'] as $person):
+                           echo "<tr>" . libis_print_person($person, $item) . "</tr>";
+                        endforeach;
+                        ?>
                     </table>
-                <?php endif; ?>
-                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Akkadian keywords'),array('all'=>'true','delimiter'=>', '))): ?>
-                        <div class="item-meta">
-                            <h3>Akkadian keywords</h3>
+                    <?php endif; ?>
+                </div>
+
+            <p><a class="toggle-more" href="#">+ Show more</a></p>
+            <div class="more-info">
+                  <?php if ($text = metadata($item, array('Item Type Metadata', 'Babylonian date Remark'),array('all'=>'true','delimiter'=>', '))): ?>
+                      <div class="item-meta">
+                          <h3>Babylonian date remark</h3>
+                          <p><?php echo $text; ?></p>
+                      </div>
+                  <?php endif; ?>
+                  <?php if ($text = metadata($item, array('Item Type Metadata', 'Julian date Remark'),array('all'=>'true','delimiter'=>', '))): ?>
+                      <div class="item-meta">
+                          <h3>Julian date remark</h3>
+                          <p><?php echo $text; ?></p>
+                      </div>
+                  <?php endif; ?>
+                  <?php if ($text = metadata($item, array('Item Type Metadata', 'Transliteration'))): ?>
+                      <div class="item-meta">
+                          <h3>Transliteration</h3>
+                          <p><?php echo $text;?></p>
+                      </div>
+                  <?php endif; ?>
+                  <?php if ($text = metadata($item, array('Item Type Metadata', 'Other markings'),array('all'=>'true','delimiter'=>', '))): ?>
+                      <div class="item-meta">
+                          <h3>Other markings</h3>
+                          <p><?php echo $text; ?></p>
+                      </div>
+                  <?php endif; ?>
+                  <?php if ($text = metadata($item, array('Item Type Metadata', 'Other markings Description'),array('all'=>'true','delimiter'=>', '))): ?>
+                      <div class="item-meta">
+                          <h3>Other markings Description</h3>
+                          <p><?php echo $text; ?></p>
+                      </div>
+                  <?php endif; ?>
+
+                  <?php if ($text = metadata($item, array('Item Type Metadata', 'Photo'))): ?>
+                      <div class="item-meta">
+                          <h3>Photo</h3>
+                          <div class="tablet-foto">
+                              <img src="<?php echo $text;?>">
+                              <p><a href="<?php echo $text;?>"><?php echo $text;?></a></p
+                          </div>
+                      </div>
+                  <?php endif; ?>
+
+                  <?php if ($text = metadata($item, array('Item Type Metadata', 'Akkadian keywords'),array('all'=>'true','delimiter'=>', '))): ?>
+                      <div class="item-meta">
+                          <h3>Akkadian keywords</h3>
+                          <p><?php echo $text; ?></p>
+                      </div>
+                  <?php endif; ?>
+                  <?php if ($text = metadata($item, array('Item Type Metadata', 'General keywords'),array('all'=>'true','delimiter'=>', '))): ?>
+                      <div class="item-meta">
+                          <h3>General keywords</h3>
+                          <p><?php echo $text; ?></p>
+                      </div>
+                  <?php endif; ?>
+                  <?php if ($text = metadata($item, array('Item Type Metadata', 'Orientation'),array('all'=>'true','delimiter'=>', '))): ?>
+                      <div class="item-meta">
+                          <h3>Orientation</h3>
+                          <p><?php echo $text; ?></p>
+                      </div>
+                  <?php endif; ?>
+                  <?php if ($text = metadata($item, array('Item Type Metadata', 'Philological notes'),array('all'=>'true','delimiter'=>', '))): ?>
+                      <div class="item-meta">
+                          <h3>Philological notes</h3>
+                          <p><?php echo $text; ?></p>
+                          <?php if ($text = metadata($item, array('Item Type Metadata', 'Philological notes Remark'),array('all'=>'true','delimiter'=>', '))): ?>
+                            <h4>Remark</h4>
                             <p><?php echo $text; ?></p>
-                        </div>
-                    <?php endif; ?>
-                    <?php if ($text = metadata($item, array('Item Type Metadata', 'General keywords'),array('all'=>'true','delimiter'=>', '))): ?>
-                        <div class="item-meta">
-                            <h3>General keywords</h3>
-                            <p><?php echo $text; ?></p>
-                        </div>
-                    <?php endif; ?>
-                </div>
+                          <?php endif; ?>
+                      </div>
+                  <?php endif; ?>
 
-                <div class="show-block">
-                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Transliteration'))): ?>
-                        <div class="item-meta">
-                            <h3>Transliteration</h3>
-                            <p><?php echo $text;?></p>
-                        </div>
-                    <?php endif; ?>
-
-                </div>
-                <div class="show-block">
-                    <?php if ($text = metadata($item, array('Item Type Metadata', 'Photo'))): ?>
-                        <div class="item-meta">
-                            <h3>Photo</h3>
-                            <div class="tablet-foto">
-                                <img src="<?php echo $text;?>">
-                                <p><a href="<?php echo $text;?>"><?php echo $text;?></a></p
-                            </div>
-                        </div>
-                    <?php endif; ?>
-                </div>
-
+            </div>
         <?php endif; ?>
         <!-- PEOPLE -->
         <?php if ($item->getItemType()->name == 'People'): ?>
@@ -492,4 +530,21 @@
             <?php custom_paging(); ?>
         </ul>
     </div><!-- end primary -->
+    <script>
+    jQuery( document ).ready(function() {
+      if (jQuery(".more-info").find(".item-meta").length < 1){
+          jQuery( ".toggle-more" ).css("display","none");
+      }
+      jQuery( ".toggle-more" ).click(function(event) {
+        event.preventDefault();
+        if(jQuery( ".toggle-more" ).text()=="+ Show more"){
+          jQuery( ".toggle-more" ).text("- Show less");
+        }else{
+          jQuery( ".toggle-more" ).text("+ Show more");
+        }
+        jQuery( ".more-info" ).toggle(function() {
+        });
+      });
+    });
+    </script>
 <?php echo foot(); ?>
