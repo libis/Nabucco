@@ -527,7 +527,7 @@
         <?php endif; ?>
 
         <ul class="item-pagination navigation">
-            <?php //custom_paging(); ?>
+            <?php custom_paging(); ?>
         </ul>
     </div><!-- end primary -->
     <script>
