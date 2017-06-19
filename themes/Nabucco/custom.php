@@ -436,7 +436,7 @@ function custom_paging(){
 
         $itemIds = array();
         $list = array();
-        
+
         if (isset($queryarray['query'])){
             //We only want to browse previous and next for Items
             $queryarray['record_types'] = array('Item');
@@ -454,8 +454,8 @@ function custom_paging(){
                 $queryarray['sort_dir'] = 'd';
             }
             //Get an array of the items from the query.
-            $list = get_db()->getTable('Item')->findBy($queryarray);
-            foreach ($list as $value) {
+            $items = get_db()->getTable('Item')->findBy($queryarray);
+            foreach ($items as $value) {
                 $itemIds[] = $value->id;
                 $list[] = $value;
             }
@@ -466,8 +466,8 @@ function custom_paging(){
                     $queryarray['sort_field'] = 'added';
                     $queryarray['sort_dir'] = 'd';
             }
-            $list = get_db()->getTable('Item')->findBy($queryarray);
-            foreach ($list as $value) {
+            $items = get_db()->getTable('Item')->findBy($queryarray);
+            foreach ($items as $value) {
                     $itemIds[] = $value->id;
             }
         }
