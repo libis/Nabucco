@@ -444,6 +444,7 @@ function custom_paging(){
             }
             //Get an array of the items from the query.
             $items = get_db()->getTable('Item')->findBy($queryarray);
+
             foreach ($items as $value) {
                 $itemIds[] = $value->id;
                 $list[] = $value;
@@ -458,6 +459,7 @@ function custom_paging(){
             $items = get_db()->getTable('Item')->findBy($queryarray);
             foreach ($items as $value) {
                     $itemIds[] = $value->id;
+                    $list[] = $value;
             }
         }
 
@@ -472,7 +474,7 @@ function custom_paging(){
         if ($key > 0) {
             $previousItem = $list[$key - 1];
             $previousUrl = record_url($previousItem, 'show') . '?' . $updatedquery;
-                $text = __('&larr; Previous Item');
+            $text = __('&larr; Previous Item');
             echo '<li id="previous-item" class="previous"><a href="' . html_escape($previousUrl) . '">' . $text . '</a></li>';
         }
 
@@ -481,20 +483,20 @@ function custom_paging(){
                 <center><li class="return"><i><a href="<?php echo url('/geolocation/map/browse/'); ?>">Return to search results</a></i></li></center>
             <?php else: ?>
                 <center><li class="return"><i><a href="<?php echo url('/glossary'); ?>">Return to search results</a></i></li></center>
-             <?php endif;?>
+            <?php endif;?>
         <?php else:
             if(substr($_SERVER['QUERY_STRING'], 0, 5) == 'query'):?>
-            <center><li class="return"><i><a href="<?php echo url('search').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
+                <center><li class="return"><i><a href="<?php echo url('search').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
             <?php else:?>
-            <center><li class="return"><i><a href="<?php echo url('items/browse').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
+                <center><li class="return"><i><a href="<?php echo url('items/browse').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
             <?php endif;
         endif;
         // If we aren't at the end, print a Next link
         if ($key >= 0 && $key < (count($list) - 1)) {
             $nextItem = $list[$key + 1];
             $nextUrl = record_url($nextItem, 'show') . '?' . $updatedquery;
-                $text = __("Next Item &rarr;");
-                echo '<li id="next-item" class="next"><a href="' . html_escape($nextUrl) . '">' . $text . '</a></li>';
+            $text = __("Next Item &rarr;");
+            echo '<li id="next-item" class="next"><a href="' . html_escape($nextUrl) . '">' . $text . '</a></li>';
         }
     } else {
         // If a search was not run, then the normal next/previous navigation is displayed.
