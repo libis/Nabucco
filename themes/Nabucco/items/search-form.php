@@ -107,7 +107,7 @@ $formAttributes['method'] = 'GET';
 
 <!-- start aanpassing -->
 <?php
-    $medium_commonly_searched_fields = array(111,120,141,129,156,162,165);
+    $medium_commonly_searched_fields = array(111,120,141,129,156,162,165,283,286);
     $all_table_options = get_table_options('Element', null, array(
     'record_types' => array('Item', 'All'),
     'sort' => 'alphaBySet')
@@ -309,7 +309,9 @@ $formAttributes['method'] = 'GET';
             "Place of issue ID",
             "Related object",
             "Role",
-            "Volume no."
+            "Volume no.",
+            "Orientation",
+            "Philological notes"
         ];
         jQuery.each(blackListElements, function (index, value) {
             jQuery(".advanced-search-element option").filter(function () {
