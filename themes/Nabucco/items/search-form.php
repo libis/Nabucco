@@ -96,9 +96,9 @@
 <?php
     $medium_commonly_searched_fields = array(111,120,141,129,156,162,165,283,286);
     $all_table_options = get_table_options('Element', null, array(
-    'record_types' => array('Item', 'All'),
-    'sort' => 'alphaBySet')
-    );
+            'record_types' => array('Item', 'All'),
+            'sort' => 'alphaBySet')
+        );
     $merged_table_options = $all_table_options["Dublin Core"] + $all_table_options["Item Type Metadata"];
 ?>
 <div id="search-by-certain-fields" class="field">
@@ -164,6 +164,49 @@
                   }
               </script>
         <?php endforeach; ?>
+        <tr>
+           <td>
+               <div>Month</div>
+           </td>
+           <td name="advanced[3]" id="advanced-3"></td>
+           <td>
+               <select name="x" id="advanced-3-terms" title="Select" class="advanced-search-element">
+                   <option value="">Select Below </option>
+                   <option value="-">-</option>
+                   <option value="I">I</option>
+                   <option value="II">II</option>
+                   <option value="III">III</option>
+                   <option value="IV">IV</option>
+                   <option value="V">V</option>
+                   <option value="VI">VI</option>
+                   <option value="VIb">VIb</option>
+                   <option value="VII">VII</option>
+                   <option value="VIII">VIII</option>
+                   <option value="IX">IX</option>
+                   <option value="X">X</option>
+                   <option value="XI">XI</option>
+                   <option value="XII">XII</option>
+                   <option value="XIIb">XIIb</option>
+                </select>
+            </td>
+        </tr>
+        <script>
+           function addRestFields() {
+               jQuery('#advanced-3-element_id').remove();
+               jQuery('#advanced-3-type').remove();
+               if (jQuery('#advanced-3-terms').val()) {
+                   jQuery('#advanced-3-terms').attr("name","advanced[3][terms]");
+                   jQuery('td#advanced-3').append('<input type="hidden" name="advanced[3][element_id]" value="129" hidden="1" id="advanced-3-element_id">');
+                   jQuery('td#advanced-3').append('<input type="hidden" name="advanced[3][type]" value="is exactly" hidden="1" id="advanced-3-type">');
+               }else{
+                   jQuery('#advanced-3-terms').attr("name","x");
+               }
+           }
+           jQuery('#advanced-3-terms').change(addRestFields);
+           if (jQuery('#advanced-3-terms').val().length > 0) {
+               addRestFields();
+           }
+        </script>
         <tr>
               <td>
                   <div>Type and content</div>
