@@ -1560,6 +1560,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
       border-left: 1px dotted #ccc;
   }
 
+  .type-select{
+      min-width:300px;
+      display:block;
+      margin-bottom:10px;
+  }
+
 
   /* @end */
   /* @group ----- Collections ----- */

@@ -1,12 +1,14 @@
 <?php
-if (!empty($formActionUri)):
-    $formAttributes['action'] = $formActionUri;
-else:
-    $formAttributes['action'] = url(array('controller' => 'items',
-        'action' => 'browse'));
-endif;
-$formAttributes['method'] = 'GET';
+    if (!empty($formActionUri)):
+        $formAttributes['action'] = $formActionUri;
+    else:
+        $formAttributes['action'] = url(array('controller' => 'items',
+            'action' => 'browse'));
+    endif;
+    $formAttributes['method'] = 'GET';
 ?>
+
+
 <form <?php echo tag_attributes($formAttributes); ?>>
     <div id="search-keywords" class="field">
         <?php echo $this->formLabel('keyword-search', __('Search for Keywords')); ?>
@@ -20,9 +22,7 @@ $formAttributes['method'] = 'GET';
             );
             ?>
         </div>
-
     </div>
-
 
     <div id="search-narrow-by-fields" class="field">
         <div class="label"><?php echo __('Narrow by Specific Fields'); ?></div>
@@ -31,8 +31,8 @@ $formAttributes['method'] = 'GET';
         </p>
         <div class="inputs">
             <?php
-// If the form has been submitted, retain the number of search
-// fields used and rebuild the form
+            // If the form has been submitted, retain the number of search
+            // fields used and rebuild the form
             if (!empty($_GET['advanced'])) {
                 $search = $_GET['advanced'];
             } else {
@@ -84,19 +84,6 @@ $formAttributes['method'] = 'GET';
                         ), findTextPairs(@$rows['element_id'])
                 );
 
-
-                /* print_r(@$rows);
-                  $list = array('Period', 'Type and content', 'Month', 'King', 'Other markings', 'Akkadian keywords', 'General keywords');
-
-                  if (in_array($rows['value'], $list)):
-                  echo $this->formSelect(
-                  "advanced[$i][element_id]", @$rows['element_id'], array(
-                  'title' => __("Search Terms Select"),
-                  'id' => null,
-                  'class' => 'advanced-search-element'
-                  ), findTextPairs(@$rows['element_id'])
-                  );
-                  endif; */
                 ?>
                 <button type="button" class="remove_search" disabled="disabled" style="display: none;"><?php echo __('Remove field'); ?></button>
             </div>
@@ -177,23 +164,36 @@ $formAttributes['method'] = 'GET';
                   }
               </script>
         <?php endforeach; ?>
-                    </table>
-            </div>
-
+        <tr>
+              <td>
+                  <div>Type and content</div>
+              </td>
+              <td name="advanced[1]" id="advanced-1"></td>
+              <td>
+                <!-- advanced-1-terms -->
+                <select class="type-select advanced-search-element" name="x" id="stateSel" title="Select" id="" size="1">
+                  <option value="" disabled selected>Select</option>
+                </select>
+                <select class="type-select" name="opttwo" disabled=true id="countySel" size="1">
+                </select>
+                <select class="type-select" name="optthree" disabled=true id="citySel" size="1">
+                </select>
+              </td>
+          </tr>
+        </table>
+    </div>
 
     <!-- Type: Hidden -->
-            <?php
-            echo $this->formHidden(
-                    'type', @$_REQUEST['type'], array('id' => 'item-type-search'), get_table_options('ItemType')
-            );
-            ?>
+    <?php
+      echo $this->formHidden(
+              'type', @$_REQUEST['type'], array('id' => 'item-type-search'), get_table_options('ItemType')
+      );
+    ?>
 
-            <?php //fire_plugin_hook('public_items_search', array('view' => $this)); ?>
     <div>
-            <?php if (!isset($buttonText)) $buttonText = __('Search'); ?>
+        <?php if (!isset($buttonText)) $buttonText = __('Search'); ?>
         <input type="submit" class="submit" name="submit_search" id="submit_search_advanced" value="<?php echo $buttonText ?>">
-
-    <input type="submit" class="submit" name="submit_search" id="reset_search_advanced" value="Reset">
+        <input type="submit" class="submit" name="submit_search" id="reset_search_advanced" value="Reset">
     </div>
 </form>
     <?php echo js_tag('items-search'); ?>
@@ -327,5 +327,59 @@ $formAttributes['method'] = 'GET';
             window.location.href = "<?php echo url('items/search/');?>";
         });
 
+    });
+</script>
+
+<?php $test = type_and_content_search();?>
+<script>
+    jQuery(document).ready(function() {
+      var src = <?php echo (json_encode($test));?>
+
+      var stateSel = document.getElementById("stateSel"),
+          countySel = document.getElementById("countySel"),
+          citySel = document.getElementById("citySel");
+      for (var state in src) {
+          stateSel.options[stateSel.options.length] = new Option(state, state);
+      }
+      stateSel.onchange = function () {
+          countySel.length = 1; // remove all options bar first
+          citySel.length = 1; // remove all options bar first
+          if (this.selectedIndex < 1) {
+            countySel.options[0].text = "";
+            citySel.options[0].text = "";
+            return; // done
+          }
+          //countySel.options[0].text = ""
+          for (var county in src[this.value]) {
+              countySel.options[countySel.options.length] = new Option(county, county);
+              countySel.disabled=false;
+          }
+          if (countySel.options.length==2) {
+              countySel.selectedIndex=1;
+              countySel.onchange();
+          }
+          if (countySel.options.length==1) {
+              countySel.disabled=true;
+              citySel.disabled=true;
+          }
+      }
+      stateSel.onchange(); // reset in case page is reloaded
+      countySel.onchange = function () {
+          citySel.length = 1; // remove all options bar first
+          if (this.selectedIndex < 1) {
+            citySel.options[0].text = "";
+            citySel.disabled=true;
+            return; // done
+          }
+
+          var cities = src[stateSel.value][this.value];
+          for (var city in cities) {
+              citySel.options[citySel.options.length] = new Option(city, city);
+              citySel.disabled=false;
+          }
+          if (citySel.options.length==2) {
+              citySel.selectedIndex=1;
+          }
+      }
     });
 </script>

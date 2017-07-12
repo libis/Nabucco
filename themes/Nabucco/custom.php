@@ -509,3 +509,56 @@ function custom_paging(){
         echo '<li id="next-item" class="next">'.link_to_next_item_show().'</li>';
     }
 }
+
+function type_and_content_search(){
+    $records = get_records('Item', array("type"=>'Type and content'),9999);
+    $types = array();$final = array();
+    $i=0;
+    foreach($records as $record):
+        $types[$i]['name'] = metadata($record,array('Item Type Metadata','Name'));
+        $types[$i]['parent'] = metadata($record,array('Item Type Metadata','Parent name'));
+        $i++;
+    endforeach;
+
+    $tree = build_tree_type($types);
+
+    $final = type_make_assoc($tree,"0");
+
+    return $final;
+}
+
+function build_tree_type(array $types, $parent_0 = null) {
+    $branch = array();$row = array();
+
+    foreach ($types as $type) {
+
+        if ($type["parent"] == $parent_0) {
+            $children = build_tree_type($types, $type["name"]);
+            if ($children) {
+                $type['children'] = $children;
+            }
+
+            if(isset($type["children"])):
+                $row = array($type["name"],$type["children"]);
+            else:
+                $row = array($type["name"]);
+            endif;
+            $branch[] = $row;
+        }
+    }
+
+    return $branch;
+}
+
+function type_make_assoc($tree,$level){
+  foreach($tree as $branch):
+      if(isset($branch['1'])):
+        $final[$branch[0]] = type_make_assoc($branch['1'],$level);
+
+      else:
+        $final[$branch[0]]="";
+      endif;
+  endforeach;
+
+  return $final;
+}
