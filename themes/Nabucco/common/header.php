@@ -28,7 +28,7 @@ queue_js_file('globals');
 queue_js_file('jquery-accessibleMegaMenu');
 queue_js_file('backstretch');
 queue_js_file('wallop');
-echo head_js(); 
+echo head_js();
 ?>
 </head>
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
@@ -50,7 +50,7 @@ N<span class="smallcaps">a</span>B<span class="smallcaps">u</span>CC<span class=
         <input type="hidden" name="query_type" value="exact_match">
         <button id="submit_search" value="Search" type="submit" name="submit_search">Search</button>
     </form>
-</div>           
+</div>
 <?php echo theme_header_image(); ?>
 </div>
 </header>
@@ -83,6 +83,6 @@ N<span class="smallcaps">a</span>B<span class="smallcaps">u</span>CC<span class=
 <a id="" href="">Explore</a>
 </li>
 </ul>-->
-</nav>        
+</nav>
 <article id="content">
 <?php fire_plugin_hook('public_content_top', array('view'=>$this)); ?>
