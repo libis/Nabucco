@@ -207,13 +207,12 @@
                addRestFields();
            }
         </script>
-        <tr>
+        <!--<tr>
               <td>
                   <div>Type and content</div>
               </td>
               <td name="advanced[1]" id="advanced-1"></td>
-              <td>
-                <!-- advanced-1-terms -->
+              <td>                
                 <select class="type-select advanced-search-element" name="x" id="stateSel" title="Select" id="" size="1">
                   <option value="" disabled selected>Select</option>
                 </select>
@@ -222,7 +221,7 @@
                 <select class="type-select" name="optthree" disabled=true id="citySel" size="1">
                 </select>
               </td>
-          </tr>
+          </tr>-->
         </table>
     </div>
 

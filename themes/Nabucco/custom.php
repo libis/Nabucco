@@ -551,6 +551,7 @@ function build_tree_type(array $types, $parent_0 = null) {
 }
 
 function type_make_assoc($tree,$level){
+  $final = array();
   foreach($tree as $branch):
       if(isset($branch['1'])):
         $final[$branch[0]] = type_make_assoc($branch['1'],$level);
