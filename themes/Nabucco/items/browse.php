@@ -43,7 +43,7 @@ switch ($type):
         $pageTitle = 'Archives';
         $element = 'Item Type Metadata,Archive name';
         $sortLinks[__('Archive name')] = $element;
-        $search_info = libis_get_simple_page_content('search_info_archive');
+        $search_info = libis_get_simple_page_content('search_info_archives');
         break;
     default:
         $pageTitle = __('Browse');
