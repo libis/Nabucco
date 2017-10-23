@@ -122,6 +122,7 @@
                       <div><?php echo $merged_table_options[$table_option]; ?></div>
                   </td>
                   <?php
+                  $i = $i + 99;
                   $basename = "advanced[$i]";
                   $basenameC = "advanced\\\\[$i\\\\]";
                   $basenameID = "advanced-$i";
@@ -212,7 +213,7 @@
                   <div>Type and content</div>
               </td>
               <td name="advanced[1]" id="advanced-1"></td>
-              <td>                
+              <td>
                 <select class="type-select advanced-search-element" name="x" id="stateSel" title="Select" id="" size="1">
                   <option value="" disabled selected>Select</option>
                 </select>
@@ -377,7 +378,7 @@
     jQuery(document).ready(function() {
       var src = <?php echo (json_encode($test));?>
 
-      var stateSel = document.getElementById("stateSel"),
+      /*var stateSel = document.getElementById("stateSel"),
           countySel = document.getElementById("countySel"),
           citySel = document.getElementById("citySel");
       for (var state in src) {
@@ -422,6 +423,6 @@
           if (citySel.options.length==2) {
               citySel.selectedIndex=1;
           }
-      }
+      }*/
     });
 </script>

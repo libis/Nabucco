@@ -23,7 +23,7 @@ queue_css_file(array('iconfonts', 'style','wallop'));
 echo head_css();
 ?>
 <!-- JavaScripts -->
-<?php 
+<?php
 queue_js_file('globals');
 queue_js_file('jquery-accessibleMegaMenu');
 queue_js_file('backstretch');
@@ -54,35 +54,8 @@ N<span class="smallcaps">a</span>B<span class="smallcaps">u</span>CC<span class=
 <?php echo theme_header_image(); ?>
 </div>
 </header>
-<nav id="top-nav">
-<?php echo public_nav_main(); ?>
-<!--
-<ul class="navigation nav-menu">
-<li class="nav-item">
-<a id="" href="">Home</a>
-</li>
-<li class="nav-item">
-<a id="" href="">Catalogue</a>
-</li>
-<li class="nav-item">
-<a id="" href="">People</a>
-</li>
-<li class="nav-item">
-<a id="" href="">Places and maps</a>
-</li>
-<li class="nav-item">
-<a id="" href="">Archives</a>
-</li>
-<li class="nav-item">
-<a id="" href="">Glossaries</a>
-</li>
-<li class="nav-item">
-<a id="" href="">Bibliography</a>
-</li>
-<li class="nav-item">
-<a id="" href="">Explore</a>
-</li>
-</ul>-->
+<nav id="top-nav" role="navigation">
+<?php echo public_nav_main();?>
 </nav>
 <article id="content">
 <?php fire_plugin_hook('public_content_top', array('view'=>$this)); ?>
