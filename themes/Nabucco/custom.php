@@ -38,7 +38,7 @@ function libis_get_simple_page_content($title) {
 }
 
 function libis_get_news() {
-    $html = "<ul>";
+    $html = "";
     $news = get_records('item', array('type' => 'News'), 999);
     $today = date('Ymd');
     $news_array = array();
@@ -53,7 +53,8 @@ function libis_get_news() {
         $end = date('Ymd', $end);
         if ($end > $today):
 //+i to help sort news with same start date
-            $news_array[$start . $i] = "<li><a href='" . record_url($new) . "'>" . metadata($new, array('Dublin Core', 'Title')) . "</a></li>";
+            $news_array[$start . $i] = metadata('item', array('Item Type Metadata', 'End date'))."-"."
+              <a href='" . record_url($new) . "'>" . metadata($new, array('Dublin Core', 'Title')) . "</a></br>";
             $i++;
         endif;
         if ($i == 5):
@@ -66,7 +67,6 @@ function libis_get_news() {
     foreach ($news_array as $news):
         $html .= $news;
     endforeach;
-    $html .= "</ul>";
     return $html;
 }
 
