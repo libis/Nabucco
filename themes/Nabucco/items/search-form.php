@@ -94,7 +94,7 @@
 
 <!-- start aanpassing -->
 <?php
-    $medium_commonly_searched_fields = array(111,120,141,129,156,162,165,283,286);
+    $medium_commonly_searched_fields = array(111,120,141,156,162,165,283,286);
     $all_table_options = get_table_options('Element', null, array(
             'record_types' => array('Item', 'All'),
             'sort' => 'alphaBySet')
