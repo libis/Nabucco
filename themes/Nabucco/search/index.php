@@ -2,12 +2,21 @@
 $pageTitle = __('Search results ') . __('(%s total)', $total_results);
 echo head(array('title' => $pageTitle, 'bodyclass' => 'search'));
 $searchRecordTypes = get_search_record_types();
+
+$session = new Zend_Session_Namespace('pagination_help');
+$per_page = $session->per_page;
+
+if(isset($_GET['per_page'])):
+  $per_page = $_GET['per_page'];
+else:
+  $per_page = get_option('public_per_page');
+endif;
 ?>
-<div id="primary">    
+<div id="primary">
     <h2><?php echo $pageTitle; ?></h2>
     <?php echo search_filters(); ?>
     <?php if ($total_results): ?>
-        <?php echo pagination_links(); ?>
+        <?php echo pagination_links(array('per_page'=>$per_page)); ?>
         <table id="search-results">
             <thead>
                 <tr>
@@ -24,7 +33,7 @@ $searchRecordTypes = get_search_record_types();
                     <tr class="<?php echo strtolower($filter->filter($recordType)); ?>">
                         <td>
                             <?php if($searchRecordTypes[$recordType] == 'Item'):
-                                echo $record->getItemType()->name;                                
+                                echo $record->getItemType()->name;
                             else:
                                 echo $searchRecordTypes[$recordType];
                             endif;?>
@@ -38,13 +47,13 @@ $searchRecordTypes = get_search_record_types();
                                 <a href="<?php echo $searchlink; ?>"><?php echo $searchText['title'] ? $searchText['title'] : '[Unknown]'; ?></a>
                             <?php else:?>
                                 <a href="<?php echo record_url($record, 'show'); ?>"><?php echo $searchText['title'] ? $searchText['title'] : '[Unknown]'; ?></a>
-                            <?php endif;?>                        
+                            <?php endif;?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <?php echo pagination_links(); ?>
+        <?php echo pagination_links(array('per_page'=>$per_page)); ?>
     <?php else: ?>
         <div id="no-results">
             <p><?php echo __('Your query returned no results.'); ?></p>
