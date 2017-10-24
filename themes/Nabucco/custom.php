@@ -485,10 +485,10 @@ function custom_paging(){
                 <center><li class="return"><i><a href="<?php echo url('/glossary'); ?>">Return to search results</a></i></li></center>
             <?php endif;?>
         <?php else:
-            if(substr($_SERVER['QUERY_STRING'], 0, 5) == 'query'):?>
-                <center><li class="return"><i><a href="<?php echo url('search').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
+            if(isset($queryarray['query'])):?>
+                <!--<center><li class="return"><i><a href="<?php echo url('/search').'?'.$updatedquery; ?>">Return to search results</a></i></li></center>-->
             <?php else:?>
-                <center><li class="return"><i><a href="<?php echo url('items/browse').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
+                <center><li class="return"><i><a href="<?php echo url('items/browse').'?'.$updatedquery; ?>">Return to search results</a></i></li></center>
             <?php endif;
         endif;
         // If we aren't at the end, print a Next link
@@ -501,11 +501,7 @@ function custom_paging(){
     } else {
         // If a search was not run, then the normal next/previous navigation is displayed.
         echo '<li id="previous-item" class="previous">'.link_to_previous_item_show().'</li>';
-        if(substr($_SERVER['QUERY_STRING'], 0, 5) == 'query'):?>
-            <center><li class="return"><i><a href="<?php echo url('search').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
-        <?php else:?>
-            <center><li class="return"><i><a href="<?php echo url('items/browse').'?'.$_SERVER['QUERY_STRING'] ?>">Return to search results</a></i></li></center>
-        <?php endif;
+
         echo '<li id="next-item" class="next">'.link_to_next_item_show().'</li>';
     }
 }

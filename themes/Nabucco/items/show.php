@@ -293,8 +293,10 @@
                           <?php endif; ?>
                       </div>
                   <?php endif; ?>
-
+                </div>
             </div>
+          </div>
+            
         <?php endif; ?>
         <!-- PEOPLE -->
         <?php if ($item->getItemType()->name == 'People'): ?>
