@@ -267,7 +267,6 @@
             "Archive name",
             "Author",
             "BCC",
-            "Bibliography",
             "Bibliography ID",
             "Biographical Text",
             "Birth Date",

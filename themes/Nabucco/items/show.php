@@ -104,7 +104,6 @@
                     </tr>
                   </table>
 
-
                   <?php if ($pub = metadata($item, array('Item Type Metadata', 'Publication'))): ?>
                       <div class="item-meta">
                           <p><span class="show-title">Publication</span>
@@ -122,6 +121,22 @@
                               echo $pub;
                           endif;
                           ?>
+                          </p>
+                      </div>
+                  <?php endif; ?>
+
+                  <?php if ($biblio = metadata($item, array('Item Type Metadata', 'Bibliography'))): ?>
+                      <div class="item-meta">
+                          <p><span class="show-title">Bibliography (free text)</span>
+                          <?php if (isset($object_relations['bibliographies'])): ?>
+                              <?php
+                              foreach ($object_relations['bibliographies'] as $bib):
+                                  echo link_to($bib, null, metadata($bib, array('Dublin Core', 'Title')));
+                              endforeach;
+                              ?>
+                          <?php else: ?>
+                              <?php echo $biblio;?>
+                          <?php endif; ?>
                           </p>
                       </div>
                   <?php endif; ?>
