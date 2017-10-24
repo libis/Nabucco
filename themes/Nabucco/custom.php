@@ -53,7 +53,7 @@ function libis_get_news() {
         $end = date('Ymd', $end);
         if ($end > $today):
 //+i to help sort news with same start date
-            $news_array[$start . $i] = metadata($new, array('Item Type Metadata', 'End date'))."-"."
+            $news_array[$start . $i] = metadata($new, array('Item Type Metadata', 'Start date'))."-"."
               <a href='" . record_url($new) . "'>" . metadata($new, array('Dublin Core', 'Title')) . "</a></br>";
             $i++;
         endif;

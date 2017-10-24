@@ -8,7 +8,7 @@
     $object_relations = libis_get_relations($item, 'object');
 
     if ($type = 'News'):
-        echo "<div class='date'>" . metadata('item', array('Item Type Metadata', 'End date')) . "</div>";
+        echo "<div class='date'>" . metadata('item', array('Item Type Metadata', 'Start date')) . "</div>";
     endif;
     ?>
     <!-- TABLET -->
