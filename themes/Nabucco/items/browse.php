@@ -199,7 +199,7 @@ echo head(array('title' => $pageTitle, 'bodyclass' => 'items browse'));
                         <?php endif; ?>
                     </td>
                     <td>
-                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Type and content'))): ?>
+                        <?php if ($text = metadata($item, array('Item Type Metadata', 'Type and content'),array('all'=>'true','delimiter'=>', '))): ?>
                            <?php echo $text; ?>
                         <?php endif; ?>
                     </td>
