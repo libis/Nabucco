@@ -125,18 +125,10 @@
                       </div>
                   <?php endif; ?>
 
-                  <?php if ($biblio = metadata($item, array('Item Type Metadata', 'Bibliography'))): ?>
+                  <?php if ($biblio = metadata($item, array('Item Type Metadata', 'Bibliography (free text)'))): ?>
                       <div class="item-meta">
                           <p><span class="show-title">Bibliography (free text)</span>
-                          <?php if (isset($object_relations['bibliographies'])): ?>
-                              <?php
-                              foreach ($object_relations['bibliographies'] as $bib):
-                                  echo link_to($bib, null, metadata($bib, array('Dublin Core', 'Title')));
-                              endforeach;
-                              ?>
-                          <?php else: ?>
                               <?php echo $biblio;?>
-                          <?php endif; ?>
                           </p>
                       </div>
                   <?php endif; ?>
@@ -236,6 +228,12 @@
                           <p><?php echo $text; ?></p>
                       </div>
                   <?php endif; ?>
+                  <?php if ($text = metadata($item, array('Item Type Metadata', 'Seal'))): ?>
+                      <div class="item-meta">
+                          <h3>Seal</h3>
+                          <p><?php echo $text;?></p>
+                      </div>
+                  <?php endif; ?>
                   <?php if ($text = metadata($item, array('Item Type Metadata', 'Transliteration'))): ?>
                       <div class="item-meta">
                           <h3>Transliteration</h3>
@@ -296,7 +294,7 @@
                 </div>
             </div>
           </div>
-            
+
         <?php endif; ?>
         <!-- PEOPLE -->
         <?php if ($item->getItemType()->name == 'People'): ?>

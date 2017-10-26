@@ -332,6 +332,7 @@
             "Archive ID",
             "Concept ID",
             "Hierarchy",
+            "Bibliography",
             "Is part of",
             "Is part off",
             "Label",
