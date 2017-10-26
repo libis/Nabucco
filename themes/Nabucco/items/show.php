@@ -177,12 +177,12 @@
                             <?php echo $text; ?></p>
                         </div>
                       <?php endif; ?>
-                      <?php if ($text = metadata($item, array('Item Type Metadata', 'Other markings'),array('all'=>'true','delimiter'=>', '))): ?>
+                      <!--<?php if ($text = metadata($item, array('Item Type Metadata', 'Other markings'),array('all'=>'true','delimiter'=>', '))): ?>
                           <div class="item-meta">
                               <p><span class="show-title">Other Markings</span>
                                   <?php echo $text; ?></p>
                           </div>
-                      <?php endif; ?>
+                      <?php endif; ?>-->
                 </div>
                 <div class="show-block">
                     <?php if ($text = metadata($item, array('Item Type Metadata', 'Paraphrase'),array('all'=>'true','delimiter'=>', '))): ?>
