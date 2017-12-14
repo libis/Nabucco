@@ -426,11 +426,10 @@ function libis_get_glossary($items){
  */
 function custom_paging(){
     //Starts a conditional statement that determines a search has been run
-    if ($_SERVER['QUERY_STRING']!="") {
+    if (count($_GET)) {
+        $queryarray = $_GET;
         // Sets the current item ID to the variable $current
         $current = metadata('item', 'id');
-        //Break the query into an array
-        parse_str($_SERVER['QUERY_STRING'], $queryarray);
         //Items don't need the page level
         unset($queryarray['page']);
 
@@ -438,7 +437,7 @@ function custom_paging(){
         $list = array();
 
         if (isset($queryarray['advanced']) || isset($queryarray['search'])){
-            if (!array_key_exists('sort_field', $queryarray)){
+            if (!isset($queryarray['sort_field'])){
                 $queryarray['sort_field'] = 'added';
                 $queryarray['sort_dir'] = 'd';
             }
@@ -452,7 +451,7 @@ function custom_paging(){
         }
         //Browsing all items in general
         else{
-            if (!array_key_exists('sort_field', $queryarray)){
+            if (!isset($queryarray['sort_field'])){
                     $queryarray['sort_field'] = 'added';
                     $queryarray['sort_dir'] = 'd';
             }
