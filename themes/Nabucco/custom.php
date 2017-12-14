@@ -469,13 +469,15 @@ function custom_paging(){
         // Find where we currently are in the result set
         $key = array_search($current, $itemIds);
 
+        /*
         // If we aren't at the beginning, print a Previous link
         if ($key > 0) {
             $previousItem = $list[$key - 1];
             $previousUrl = record_url($previousItem, 'show') . '?' . $updatedquery;
             $text = __('&larr; Previous Item');
             echo '<li id="previous-item" class="previous"><a href="' . html_escape($previousUrl) . '">' . $text . '</a></li>';
-        }
+        }*/
+
 
         if(get_current_record('Item')->getItemType()->name == 'Place' || get_current_record('Item')->getItemType()->name == 'Glossary'):
             if(get_current_record('Item')->getItemType()->name == 'Place'):?>
@@ -485,18 +487,19 @@ function custom_paging(){
             <?php endif;?>
         <?php else:
             if(isset($queryarray['query'])):?>
-                <!--<center><li class="return"><i><a href="<?php echo url('/search').'?'.$updatedquery; ?>">Return to search results</a></i></li></center>-->
+                <center><li class="return"><i><a href="<?php echo url('/search').'?'.$updatedquery; ?>">Return to search results</a></i></li></center>
             <?php else:?>
                 <center><li class="return"><i><a href="<?php echo url('items/browse').'?'.$updatedquery; ?>">Return to search results</a></i></li></center>
             <?php endif;
         endif;
+        /*
         // If we aren't at the end, print a Next link
         if ($key >= 0 && $key < (count($list) - 1)) {
             $nextItem = $list[$key + 1];
             $nextUrl = record_url($nextItem, 'show') . '?' . $updatedquery;
             $text = __("Next Item &rarr;");
             echo '<li id="next-item" class="next"><a href="' . html_escape($nextUrl) . '">' . $text . '</a></li>';
-        }
+        }*/
     } else {
         // If a search was not run, then the normal next/previous navigation is displayed.
         echo '<li id="previous-item" class="previous">'.link_to_previous_item_show().'</li>';
