@@ -364,8 +364,8 @@
             "Itemname",
             "Listid",
             "parent",
-            "ParentID",
-            "Text number"            
+            "Parentid",
+            "Text number"
         ];
         jQuery.each(blackListElements, function (index, value) {
             jQuery(".advanced-search-element option").filter(function () {
