@@ -355,7 +355,17 @@
             "Role",
             "Volume no.",
             "Orientation",
-            "Philological notes"
+            "Philological notes",
+            "Day remark",
+            "King remark",
+            "Month remark",
+            "dc:title",
+            "ID",
+            "Itemname",
+            "Listid",
+            "parent",
+            "ParentID",
+            "Text number"            
         ];
         jQuery.each(blackListElements, function (index, value) {
             jQuery(".advanced-search-element option").filter(function () {
