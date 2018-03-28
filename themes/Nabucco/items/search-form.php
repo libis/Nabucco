@@ -209,7 +209,7 @@
                addRestFields();
            }
         </script>
-        <!--<tr>
+        <tr>
               <td>
                   <div>Type and content</div>
               </td>
@@ -223,7 +223,7 @@
                 <select class="type-select" name="optthree" disabled=true id="citySel" size="1">
                 </select>
               </td>
-          </tr>-->
+          </tr>
         </table>
     </div>
 
@@ -389,7 +389,7 @@
     jQuery(document).ready(function() {
       var src = <?php echo (json_encode($test));?>
 
-      /*var stateSel = document.getElementById("stateSel"),
+      var stateSel = document.getElementById("stateSel"),
           countySel = document.getElementById("countySel"),
           citySel = document.getElementById("citySel");
       for (var state in src) {
@@ -434,6 +434,6 @@
           if (citySel.options.length==2) {
               citySel.selectedIndex=1;
           }
-      }*/
+      }
     });
 </script>
